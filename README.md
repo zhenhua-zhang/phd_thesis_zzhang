@@ -6,7 +6,7 @@ This is the repository for my Ph.D. thesis and it will be publicly available on
 xx-xx-2021.
 
 ## Files and directories
-
+```
 ├── figures/
 │   ├── cover.jpg
 │   └── README
@@ -19,6 +19,8 @@ xx-xx-2021.
 ├── LICENSE
 ├── Makefile
 └── README.md
+```
+
 
 ## Build
 
@@ -35,11 +37,18 @@ cd phd_thesis_zzhang/
 make
 ```
 
+Also, for the convinience to revise it in Office suit like MS Office, the
+`.tex` can be compiled into `.docx` by:
+
+``` {bash}
+make name-of-file.docx
+```
+
 To clean up the intermediate files during preparation of `.pdf`, use:
 
 ``` {bash}
+make clean    # remove all intermediate and `.pdf` files
 make clean-build  # remove the intermediate files
-make clean-all    # remove all intermediate and `.pdf` files
 ```
 
 ## Contact

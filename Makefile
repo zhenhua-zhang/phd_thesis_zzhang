@@ -1,8 +1,13 @@
-LATEXMK    := latexmk
-LATEXFLAGS := -pdf -quiet
+LATEXMK     := latexmk
+LATEX_FLAGS := -pdf -quiet
+
+PANDOC         := pandoc
+PANDOC_FLAGS   := --from latex+raw_tex
+PANDOC_FILTERS := ./misc/tikz.lua
 
 SRCDIR   = ./src
 PDFDIR   = ./pdfs
+DOCDIR   = ./docs
 BUILDDIR = ./build
 
 SRCFILES = $(wildcard ${SRCDIR}/*.tex)
@@ -32,13 +37,21 @@ all: ${PDFFILES}
 	@echo Making $@ from $?...
 
 	@mkdir -p ./${BUILDDIR}
-	$(LATEXMK) ${LATEXFLAGS} -outdir=${BUILDDIR} $? 2>&1 1>/dev/null
+	$(LATEXMK) ${LATEX_FLAGS} -outdir=${BUILDDIR} $? 2>&1 1>/dev/null
+
+
+# Generate .docx from the .tex file.
+%.docx: src/%.tex
+	@echo Making $@ from $?...
+
+	@mkdir -p ${BUILDDIR} ${DOCDIR}
+	$(PANDOC) ${PANDOC_FLAGS} --lua-filter=${PANDOC_FILTERS} -o ${DOCDIR}/$@ $?
 
 
 # Clean-ups
 clean:
 	@echo Clean up...
-	rm -fr ${BUILDDIR} ${PDFDIR}
+	rm -fr ${BUILDDIR} ${PDFDIR} ${DOCDIR}
 
 clean-build:
 	@echo Clean up...
