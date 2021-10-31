@@ -83,17 +83,27 @@ While, for rare variants, the innovation and development of next-generation sequ
 These advancements promoted our understandings on genetic complexity and diversity in rare/complex diseases \reqref (e.g., cancers \reqref), microbe-host interactions \reqref, and human evolution \textbf{[10.1038/nrg3625]}.
 
 \paragraph*{Profiling phenotypic molecular traits.}
+% TODO: Joeri feels missing core message for current paragraph
 The profile of human molecular traits that connect genotypes (i.e., genetic variants) and complex phenotypes (e.g., cancers) is a centre of attraction because studying these traits could aid to answer complex biological questions.
-In the past decades, various molecular traits have been studied, such as gene expression (mRNA abundance) \reqref, chromatin accessibility \reqref, latent viral genomes \reqref, and methylation of DNA \reqref.
+In the past decades, various molecular traits have been studied, such as gene expression (mRNA abundance) \reqref, chromatin accessibility \reqref, and latent viral genomes \reqref.
 Many studies suggested molecular traits also resemble complex traits (e.g., height) in that the variation of the studied traits are attributed to heritable factors, environmental exposures, and their interplay\textbf{[10.1101/gr.176933.114]}.
 These findings provoke questions like, how does the genome guide cells to produce, distribute, and consume different moleculars?
-Regarding the question(s), the comprehensive profiling of human molecular traits at diverse scale offers researchers chance to integrate different layers (i.e., multi-omics) of data to gain insights of complicated biological processes.
+The comprehensive profiling of human molecular traits at diverse scale offers researchers chance to answer these questions by integrating different layers (i.e., multi-omics) of data to gain insights of complicated biological processes.
 
 \paragraph*{Integration of multiple profiles of human molecular traits.}
-To integrate multi-omics data, researchers combine profiles of molecular traits using general/advanced statistical and machine learning approaches, which meet the prosperity in the post-genome ara.
+To integrate multi-omics data, researchers combine profiles of molecular traits using general/advanced statistical and machine learning approaches, in which multi-omic integration studies encounter prosperity in the post-genome ara.
 The integration ranges from personal multi-omics data to large cohort involving tens of thousands individuals.
 At a personalized genome scale, integrative analyses of multi-omics profile, including genomic, transcriptomic, proteomic, and metabolomic measurements, suggested dynamics of molecular traits and diverse medical risks\textbf{[10.1016/j.cell.2012.02.009]}.
 While, on large cohort scale, studies involving genomic and one/more molecular traits also broadened our knowledge about complex human phenotypes, e.g., common adult diseases \reqref and evolution of humans \reqref.
+
+% TODO: a paragraph with a very brief summary what you told so far, then explain that you need all kinds of ingredients to start understanding (and ultimately, treating) complex (infectious) disease - 
+% with each linking to a section below, ending with multi-omics integration of all these different layers of data, using the right models, to extract the knowledge etc.
+% This way, all the sections below make sense.
+Benefited from the omic techniques, researchers can profile genome-wide genotypes and molecular phenotypes at large scales, which supplies ingredients to understand mechanisms underlying complex diseases and ultimately treat them.
+Statistically, the variations of a phenotype of interest can be partitioned based on nature-nurture model that is the corner-stone of GWAS.
+Estimating the proportion of variance explained by each compartment (i.e., genetic and environmental factors) can help researchers prioritize factors that should be focused on.
+Thus, the accurate estimation of genotypic proportion of the phenotype variations is essential to dissect genetic determinants of a phenotype, where both association and fine-mapping studies play important roles.
+Additionally, the integration of multi-omic data also allows researchers to understand the biological mechanisms of human phenotypes from multiple aspects.
 
 
 \section*{Phenotypic variation partition and association studies}
@@ -102,9 +112,10 @@ The organisms' genome (e.g., human beings) contains huge amount of heritable inf
 The information determines the phenotype diversities and behaviors of the members in different populations.
 However, an observed phenotype is also influenced by various environmental factors and their interactions with the heritable information.
 Hence, the phenotype in a population can be statistically modeled through three components based on the nature-nurture model\reqref.
-More are described in details \textbf{Box 1}.
+More are described in details \textbf{Box 1}. % TODO: use this in discussion.
 
 \begin{figure}[h]
+  \centering
   \begin{tikzpicture}
     \node [termbox] (box) {%
       \begin{minipage}{0.8725\textwidth}
@@ -157,7 +168,6 @@ Meta-analysis combines multiple summary statistics from different studies but wo
 Recently, a group of researchers performed a comprehensive meta-analysis using \textcolor{red}{xxx} eQTL summary statistics and identified a large set of eQTL regulating blood gene expression and suggested potential driving factors for complex phenotypes \textbf{[10.1038/s41588-021-00913-z]}.
 
 \section*{GWAS for infectious diseases}
-% TODO: not adapted from Manoj's version
 The causes of infectious diseases are pathogens including virus, bacteria, fungi and parasites.
 The innovation and discovery of antibiotic like penicillins almost eliminated mortal threats of bacterial infections.
 However, many infectious disease, such as viral infection by human immunodeficiency virus (HIV) and severe acute respiratory syndrome coronavirus (SARS), are still hazard to the public health.
@@ -176,7 +186,6 @@ Since the end of 2019, the COVID-19 pandemic has brought about hundreds of milli
 To combat this deadly disease, to date, several large-scale GWAS identified genetic variants associated with the severity of COVID-19\textbf{[10.1056/NEJMoa2020283; 10.1038/s41586-020-03065-y;10.1038/s41586-021-03767-x;10.1038/s41588-021-00854-7]}.
 The identified genetic loci revealed underlying mechanisms of host anti-virus defence and organ damage caused by inflammation in COVID-19.
 This in turn provided new drug-targets for future prevention and treatment.
-% Two factors to mortality risk: viral infection and harmful pulmonary inflammation.
 
 \section*{Allele-specific analysis}
 A useful technique for finding cis-regulated gene expression variants that underpin phenotypic differences across individuals is allele-specific analysis, which measures the relative difference of two alleles in diploid organisms, e.g., allele-specific expression \textbf{[10.1371/journal.pgen.1008786]}.
@@ -185,13 +194,7 @@ The difference between two parental alleles are critical for the diversities of 
 Thus, quantification of the difference can give insights in the underlying mechanisms of regulating program.
 Studies involving allele-specific analysis for open chromatin (ASoC), expression (ASE), and methylation (ASM) reveal complex regulatory networks underlying the studied traits\reqref.
 The allele-specific analysis and potential application are illustrated in \textbf{Figure \ref{fig:example-image-a}}.
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth,height=5cm]{example-image-a}
-  \vspace*{0.2cm}
-  \caption{Allelic analysis schemes}
-  \label{fig:example-image-a}
-\end{figure}
+
 \paragraph*{ASoC analysis.} The gene expression in eukaryotic organisms is modulated at different stages, including chromatin opening, basal transcription factors (TF) binding to core promoter forming TF-DNA complex, and then the polymerase biding to TF-DNA complex.
 However, in most cases, the promoter regions interact with other local or distal sequences (e.g., enhancers, insulators, and silencers).
 Enhancer sequences guide the formation of activator complexes which determine the activation of a promoter in a cell-type specific or non-specific manner.
@@ -203,7 +206,7 @@ For instance, by identifying ASoC SNPs in pluripotent stem cell-derive neurons, 
 \paragraph*{ASM analysis}
 The demethylation of the promoter regions (5-prime end of the gene) can be vital for transcription initiation, which is a reversible epigenetic regulating scheme.
 In genomes of diploid mammalian, the well-described ASM are imprinted regions and X-chromosome inactivation in females, while, additionally, heterozygous SNPs of ASM displayed a mild frequency in pluripotent human cells and a distinct ASM profiles across cell types were observed \textbf{[10.1101/gr.104695.109]}, which suggests genetic contribution to epigenome.
-Thus, Identifying ASM SNPs could be an useful methods to localize regulatory SNPs at the post-GWAS stage \textbf{[10.1186/s13059-020-02059-3]}.
+Thus, identifying ASM SNPs could be an useful methods to localize regulatory SNPs at the post-GWAS stage \textbf{[10.1186/s13059-020-02059-3]}.
 
 \paragraph*{ASE analysis.}
 Theoretically, ASE is the result of ASoC, ASM, or genetic regulations.
@@ -213,10 +216,18 @@ The well-developed large-scale profiling techniques for transcriptome and genomi
 Together with clinical and demographic information, ASE analysis is an powerful approach to pinpoint potential biological mechanisms, e.g., regulatory elements in proximal to the genes involving in phenotypes of interest.
 Moreover, ASE also works as a complementary for QTL analysis in fine-mapping studies to attribute genetic variants to phenotypes of interest\reqref.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth,height=5cm]{example-image-a}
+  \vspace*{0.2cm}
+  \caption{Allelic analysis schemes}
+  \label{fig:example-image-a}
+\end{figure}
+
 \section*{Multi-omics integration in post-genome era}
 The integration of multiple layer of omics data aims to holistically understand complex biological processes using molecular variations from different levels data including genome, epigenome, transcriptome, proteome, and metabolome.
 Together with phenotypic data, e.g., clinical and demographic information, integrative analysis of multi-omics is a promising approach to interpret biological mechanisms of complex phenotypes \textbf{[10.1093/bib/bbx066]} and likely to innovate novel diagnostic schemes and therapeutic tactics \textbf{[10.1142/9789814583220\_0013; 10.1093/bib/bbx066]}.
-Base on the way to combine different omics data, there are two schemes to integrate multi-omics data: multi-stages and multi-modal scheme (\textbf{Figure \ref{fig:chapter_1_figure_1}}).
+Base on the way to combine different omics data, there are two schemes to integrate multi-omics data: multi-stages and multi-modal scheme (\textbf{Figure \ref{fig:example-image-b}}).
 
 \begin{figure}[h]
   \centering
@@ -246,11 +257,13 @@ The data reprocessing and organization before the model construction could be sc
 E.g., For transformation-based methods, a kernel-based integrative analysis was used to build model which predicts protein functions via different type of features \textbf{[10.1093/bioinformatics/bth294]}.
 
 \begin{figure}[h]
+  \centering
   \begin{tikzpicture}
     \node [termbox] (box) {%
       \begin{minipage}{0.8725\textwidth}
-        \paragraph*{Central dogma theory.} In molecular biology, central dogma
-        \paragraph*{Viral-load set point.} In xxx.
+        \paragraph*{Central dogma theory:} In molecular biology, the central dogma.
+        \paragraph*{Viral-load set point:} In xxx.
+        \paragraph*{Fine-mapping:} In post-GWAS studies.
       \end{minipage}}; %
       \node [termtitle, right=10pt] at (box.north west) {%
         \textbf{\small Box 2 |} \textit{Terminology}};
@@ -259,6 +272,8 @@ E.g., For transformation-based methods, a kernel-based integrative analysis was 
 
 \section*{Purpose and outline of the current thesis}
 This thesis aims to understand the association between genetic architecture and various human molecular traits genome-widely.
+However, due to the complicated relations between human genotypes and phenotypes, this work will investigate and answer a number of important open questions that are essential in completing the full picture.
+
 \paragraph*{The Chapter 1}(the current chapter) is a general introduction and a summary for the whole thesis.
 \paragraph*{The Chapter 2} is a study to estimate the feasibility to predict the ASE effects from genetic variants (SNPs) using ML methods.
 \paragraph*{The Chapter 3}...
