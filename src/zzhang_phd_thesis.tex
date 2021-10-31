@@ -1,12 +1,13 @@
-\documentclass[12pt,usletter, fancy]{elegantbook}
+\documentclass[12pt,usletter,fancy]{elegantbook}
 \usepackage{tikz}
 \usepackage{titlesec}
 \usepackage{setspace}% spaces between lines
 \usepackage{parskip}% spaces between paragraphs
 \usepackage{xcolor}
+\usepackage{tcolorbox}
 
-\title{Ph.D. thesis}
-\subtitle{A study on xx}
+\title{Genetic determinants of human phenotypes}
+\subtitle{A study focusing on infectious diseases}
 
 \author{Zhenhua Zhang}
 \institute{University Medical Center Groningen}
@@ -66,41 +67,42 @@
 % \blankpage
 
 \chapter{General introduction}
-Zhenhua Zhang
-
-\textit{Unpublished}
 
 \newpage
 \section*{Genome-wide profiling of human molecular traits}
-The genome-wide high-throughput profiling of human molecular traits provided opportunity to understand the underlying mechanisms of genetic and phenotypic complexity and diversity.
+The human draft genome was released in 2001 by the Human Genome Project and Celera Corporation \textbf{[10.1038/nature03001]}, which have improved our understandings of its architecture and provided knowledge about the location and structure of genes.
+However, the genetic diversity within and among human populations is required to biologically understand the whole picture of human body.
+As a complement, the 1000 Genome Project demonstrated genetic variation among humans \textbf{[10.1038/nature11632]}.
+It also supplied opportunities to identify genetic markers associated with traits of interest, especially diseases, using methods like genome-wide association studies (GWAS).
+The genome-wide profile of biological molecule at large scale in human body is the corner-stone for the prosperity and success of GWAS.
 
-\paragraph*{Profiling genetic molecular.}
-On one hand, the announcement of the human draft genome in 2003 \textbf{[10.1038/nature03001]} and the 1000 Genome Project \textbf{[10.1038/nature11632]} enable researchers to identify common genetic variants genome-widely.
+\paragraph*{Profiling genetic molecules.}
 The commonly used approaches are target-probe hybridization based technologies such as DNA microarray and NanoString \textbf{[10.1038/nbt1385]}.
 These methods can identify various variants from small variants, such as single-nucleotide polymorphism (SNP) and short insertions/deletions (indel), to large variation, such as structural variation and copy number variants.
 While, for rare variants, the innovation and development of next-generation sequencing (NGS) brought efficient and cost-effective methods to profile them for the whole exome (WES), genome (WGS), or transcriptome (WTS)\reqref.
-These advancements promoted our understandings on genetic complexity and diversity in rare/complex diseases\reqref, cancers\reqref, microbe-host interactions\reqref, evolution of human beings\textbf{[10.1038/nrg3625]}.
+These advancements promoted our understandings on genetic complexity and diversity in rare/complex diseases \reqref (e.g., cancers \reqref), microbe-host interactions \reqref, and human evolution \textbf{[10.1038/nrg3625]}.
 
 \paragraph*{Profiling phenotypic molecular traits.}
-On the other hand, the profile of human molecular traits that intermediate genotypes (i.e., genetic variants) and complex phenotypes (e.g., cancers) attracted more and more interests as studying these traits could aid to answer complex biological questions.
-In the past decades, various molecular traits have been studied, such as gene expression (mRNA abundance)\reqref, chromatin accessibility\reqref, latent viral genomes\reqref, and methylation of DNA\reqref.
-Many studies suggested molecular traits just resemble complex traits (e.g., height) in that the variation of the studied traits are attributed to heritable factors, environmental exposures, and their interplay\textbf{[10.1101/gr.176933.114]}.
+The profile of human molecular traits that connect genotypes (i.e., genetic variants) and complex phenotypes (e.g., cancers) is a centre of attraction because studying these traits could aid to answer complex biological questions.
+In the past decades, various molecular traits have been studied, such as gene expression (mRNA abundance) \reqref, chromatin accessibility \reqref, latent viral genomes \reqref, and methylation of DNA \reqref.
+Many studies suggested molecular traits also resemble complex traits (e.g., height) in that the variation of the studied traits are attributed to heritable factors, environmental exposures, and their interplay\textbf{[10.1101/gr.176933.114]}.
 These findings provoke questions like, how does the genome guide cells to produce, distribute, and consume different moleculars?
 Regarding the question(s), the comprehensive profiling of human molecular traits at diverse scale offers researchers chance to integrate different layers (i.e., multi-omics) of data to gain insights of complicated biological processes.
 
 \paragraph*{Integration of multiple profiles of human molecular traits.}
-By integrating genetic information and various molecular traits via general/advanced statistical and machine learning (ML) techniques, the multi-omics studies meet the prosperity in the post-genomic era.
-Regarding personalized genome scale, integrative analyses of multi-omics profile, including genomic, transcriptomic, proteomic, and metabolomic measurements, suggested dynamics of molecular traits and diverse medical risks\textbf{[10.1016/j.cell.2012.02.009]}.
-While, on large cohort scale, studies involving genomic and one/more molecular traits also broadened our knowledge about complex human phenotypes, e.g., common adult diseases\reqref and evolution of humans\reqref.
+To integrate multi-omics data, researchers combine profiles of molecular traits using general/advanced statistical and machine learning approaches, which meet the prosperity in the post-genome ara.
+The integration ranges from personal multi-omics data to large cohort involving tens of thousands individuals.
+At a personalized genome scale, integrative analyses of multi-omics profile, including genomic, transcriptomic, proteomic, and metabolomic measurements, suggested dynamics of molecular traits and diverse medical risks\textbf{[10.1016/j.cell.2012.02.009]}.
+While, on large cohort scale, studies involving genomic and one/more molecular traits also broadened our knowledge about complex human phenotypes, e.g., common adult diseases \reqref and evolution of humans \reqref.
 
 
 \section*{Phenotypic variation partition and association studies}
 \paragraph*{Partition of phenotypic variation.}
-The organisms' genome (e.g., human beings) deposits the heritable information via the architecture and function.
-The information determines the diversities of phenotypes and behaviors of the members in the population.
-However, an observed phenotype is also influenced by environmental factors and their interactions with the heritable information.
-Hence, the phenotype in a population can be statistically modeled through three components  based on the nature-nurture model\reqref.
-More details are described in details \textbf{Box 1}.
+The organisms' genome (e.g., human beings) contains huge amount of heritable information via its architecture and functions of genes.
+The information determines the phenotype diversities and behaviors of the members in different populations.
+However, an observed phenotype is also influenced by various environmental factors and their interactions with the heritable information.
+Hence, the phenotype in a population can be statistically modeled through three components based on the nature-nurture model\reqref.
+More are described in details \textbf{Box 1}.
 
 \begin{figure}[h]
   \begin{tikzpicture}
@@ -132,31 +134,30 @@ More details are described in details \textbf{Box 1}.
   % \label{}
 \end{figure}
 
-\paragraph*{Genome-wide association studies (GWAS).}
-GWAS estimate the association between millions of genetic variants and interested phenotypes (e.g., diseases and gene expression).
-The test identifies the genetic contribution to the phenotypic variation regressing potential non-genetic factors and the underlying interactions.
+\paragraph*{Genome-wide association studies.}
+GWAS estimate the association between millions of genetic variants and phenotypes of interest (e.g., diseases and gene expression).
+The test identifies the genetic contribution to the phenotypic variation regressing potential non-genetic factors and the underlying interactions, which can in turn bring insights of underlying biological mechanisms.
 Since the very first GWAS work published in 2005 \textbf{[10.1126/science.1109557]}, more than 5,000 GWAS have been performed \textbf{[10.1038/s41588-019-0481-0]}
 Regarding human beings, these GWAS pinpointed numerous genomic loci that are associated with up to \textcolor{red}{xxx} human traits, including gene expression traits\reqref, protein abundance\reqref, metabolites diversity\reqref, cell-type phenotypes\reqref, complex diseases\reqref, and other complex phenotypes\reqref.
 The identified genomic loci gave insights in the underlying mechanisms of the studied phenotypes, for examples, type 2 diabetes\reqref and HIV-1 infection\reqref.
 In GWAS studies, the phenotype of interest could be either continuous or discrete, which is modeled by logistic or linear models, respectively.
 For continuous or quantitative phenotype, the identified genomic regions harboring genetic variation associated with quantitative traits are called quantitative trait loci (QTL).
-Genome-wide QTL analysis is an ideal way to identify genetic variants attributable to phenotypic variation, which can bring insights of underlying biology.
+Hence, genome-wide QTL analysis is an ideal way to identify genetic variants attributable to phenotypic variation.
 
 \section*{Expression quantitative trait loci (eQTL)}
 In routine GWAS practices, eQTL are usually used to interpret regulatory program by leveraging the gene expression profile and genetic variants at the genome-wide scale.
 An eQTL is a genetic region or locus whose variation are statistically attributable to the expression of a gene.
 The locus potentially modulates the gene expression via affecting RNA transcription activity, alternative splicing events, and the stability of RNA molecules.
 Therefore, identifying eQTL for all genes or a panel of genes of interest is an ideal tool to discover novel genetic components that affect RNA abundance in given tissues or cell types\reqref.
-The identified eQTL can be proximal or distal (\textit{cis}-eQTL or \textit{trans}-eQTL, respectively) which depends on their distance to the regulated gene.
-\textit{cis}-eQTL which are proximal to the associated genes are commonly used to interpret and construct expression regulatory networks.
-However, \textit{cis}-eQTL can only explain partial variation of phenotypes of interest regarding the heritability\reqref.
-While, \textit{trans}-eQTL require large sample size to detect as they typically have smaller effect size comparing to \textit{cis}-eQTL\reqref.
+The identified eQTL can be proximal (\textit{cis}-eQTL) or distal (\textit{trans}-eQTL) which depends on their distance to the regulated gene.
+The \textit{cis}-eQTL which are proximal to the associated genes are commonly used to interpret and construct expression regulatory networks.
+However, both \textit{cis}-eQTL and \textit{trans}-eQTL can only explain limited proportion of variations that are estimated for the phenotypes or traits of interest.
 Given the small effect size of eQTL, large samples size is required to increase the statistical power to detect small effect size, especially for \textit{trans}-eQTLs.
 Meta-analysis combines multiple summary statistics from different studies but working on the same material (e.g, tissue or cell type) to estimate small effect size of eQTLs.
-A recent published comprehensive meta-analysis using \textcolor{red}{xxx} eQTL summary statistics identified a large set of eQTL regulating blood gene expression and suggested potential driving factors for complex phenotypes \textbf{[10.1038/s41588-021-00913-z]}.
+Recently, a group of researchers performed a comprehensive meta-analysis using \textcolor{red}{xxx} eQTL summary statistics and identified a large set of eQTL regulating blood gene expression and suggested potential driving factors for complex phenotypes \textbf{[10.1038/s41588-021-00913-z]}.
 
 \section*{GWAS for infectious diseases}
-% TODO: a table to show genetic variants associated with infectious diseases?
+% TODO: not adapted from Manoj's version
 The causes of infectious diseases are pathogens including virus, bacteria, fungi and parasites.
 The innovation and discovery of antibiotic like penicillins almost eliminated mortal threats of bacterial infections.
 However, many infectious disease, such as viral infection by human immunodeficiency virus (HIV) and severe acute respiratory syndrome coronavirus (SARS), are still hazard to the public health.
@@ -165,21 +166,23 @@ When the host's immune defence system fails or compromise, the disease symptoms 
 Due to the strong heritability of susceptibility to immune-mediated diseases like fatal infections, many GWAS on infectious diseases identified host-side genetic factors attributable to the diseases symptoms (e.g., acquisition, severity and latency).
 
 \paragraph*{Acquired immunodeficiency syndrome (AIDS).}
-HIV causes AIDS which is characterized by noticeable heterogeneity in terms of susceptibility and disease progression rates after infection.
-In GWAS field, the first reported GWAS on AIDS was published in 2007, in which the disease set-point HIV RNA viral load was the target phenotype\textbf{[10.1126/science.1143767]}.
-Since then, many GWAS focusing on different AIDS phenotypes were performed and suggested genetic loci associated with AIDS symptoms including HIV susceptibility\textbf{[10.1097/QAD.0b013e328343817b;10.1128/JVI.01499-12]}, viral load control\textbf{[10.1126/science.1143767]}, disease progression\reqref, HIV acquisition\textbf{[10.1371/journal.ppat.1003515]}, mother-to-child transmission\textbf{[10.1186/gm138]}, etc.
-These studies revealed genetic loci that involved in the AIDS pathogenesis (e.g., \textit{HCP5} and \textit{HLA-C} loci).
-Moreover, by estimate the heritability of HIV-1 acquisition in a GWAS meta-analysis, the authors found the trait is heritable\textbf{[10.1038/s41598-020-59256-0]}.
+HIV causes AIDS, which is characterized by noticeable heterogeneity in terms of susceptibility and disease progression rates after infection.
+In 2007, the first reported GWAS on AIDS was published in which the HIV RNA viral loads at the disease set-point were associated with genome-wide SNPs\textbf{[10.1126/science.1143767]}.
+Since then, many GWAS focusing on different AIDS phenotypes were performed and identified genetic loci (e.g., \textit{HCP5} and \textit{HLA-C} loci) associated with AIDS symptoms including HIV susceptibility\textbf{[10.1097/QAD.0b013e328343817b;10.1128/JVI.01499-12]}, disease progression \reqref, viral load control \textbf{[10.1126/science.1143767]}, HIV acquisition \textbf{[10.1371/journal.ppat.1003515]}, mother-to-child transmission \textbf{[10.1186/gm138]}, etc.
+Moreover, HIV-1 acquisition was polygenic and heritable which was suggested by a GWAS meta-analysis \textbf{[10.1038/s41598-020-59256-0]}.
 
 \paragraph*{Coronavirus disease 2019 (COVID-19).}
 Since the end of 2019, the COVID-19 pandemic has brought about hundreds of millions confirmed cases and millions reported death according to the COVID-19 Dashboard by the Center for Systems Science and Engineering at Johns Hopkins University\reqref.
-Several large-scale GWAS identified genetic variants associated with deadly illness of COVID-19\textbf{[10.1056/NEJMoa2020283; 10.1038/s41586-020-03065-y;10.1038/s41586-021-03767-x;10.1038/s41588-021-00854-7]}.
-The identified genetic loci revealed underlying mechanisms of host anti-virus defence and organ damage caused by inflammation in COVID-19, which provided new drug-targets for future prevention and treatment.
+To combat this deadly disease, to date, several large-scale GWAS identified genetic variants associated with the severity of COVID-19\textbf{[10.1056/NEJMoa2020283; 10.1038/s41586-020-03065-y;10.1038/s41586-021-03767-x;10.1038/s41588-021-00854-7]}.
+The identified genetic loci revealed underlying mechanisms of host anti-virus defence and organ damage caused by inflammation in COVID-19.
+This in turn provided new drug-targets for future prevention and treatment.
 % Two factors to mortality risk: viral infection and harmful pulmonary inflammation.
 
 \section*{Allele-specific analysis}
-For diploid organisms, the genetic and epigenetic (partially) characteristics of two alleles are inherited from parents who usually deposit distinct genetic and epigenetic information.
-The difference between two parental alleles are critical for the diversities of offspring's phenotypes, thus, quantification of the difference can give insights in the underlying mechanisms of regulating program.
+A useful technique for finding cis-regulated gene expression variants that underpin phenotypic differences across individuals is allele-specific analysis, which measures the relative difference of two alleles in diploid organisms, e.g., allele-specific expression \textbf{[10.1371/journal.pgen.1008786]}.
+For diploid organisms, the genetic and epigenetic (partially) characteristics of two alleles are inherited from parents who usually consist of distinct genetic and epigenetic information.
+The difference between two parental alleles are critical for the diversities of offspring's phenotypes.
+Thus, quantification of the difference can give insights in the underlying mechanisms of regulating program.
 Studies involving allele-specific analysis for open chromatin (ASoC), expression (ASE), and methylation (ASM) reveal complex regulatory networks underlying the studied traits\reqref.
 The allele-specific analysis and potential application are illustrated in \textbf{Figure \ref{fig:example-image-a}}.
 \begin{figure}[h]
@@ -213,30 +216,31 @@ Moreover, ASE also works as a complementary for QTL analysis in fine-mapping stu
 \section*{Multi-omics integration in post-genome era}
 The integration of multiple layer of omics data aims to holistically understand complex biological processes using molecular variations from different levels data including genome, epigenome, transcriptome, proteome, and metabolome.
 Together with phenotypic data, e.g., clinical and demographic information, integrative analysis of multi-omics is a promising approach to interpret biological mechanisms of complex phenotypes \textbf{[10.1093/bib/bbx066]} and likely to innovate novel diagnostic schemes and therapeutic tactics \textbf{[10.1142/9789814583220\_0013; 10.1093/bib/bbx066]}.
-Regarding the integration of multi-omics data, three strategies are available to connect multi-omic informations in biological scenarios (\textbf{Figure \ref{fig:example-image-b}}).
+Base on the way to combine different omics data, there are two schemes to integrate multi-omics data: multi-stages and multi-modal scheme (\textbf{Figure \ref{fig:chapter_1_figure_1}}).
 
 \begin{figure}[h]
   \centering
   % \includegraphics[width=\textwidth]{chapter_1_figure_1.png}
   \includegraphics[width=\textwidth,height=5cm]{example-image-b}
   \vspace*{0.2cm}
-  \caption{Three schemes of multi-omic integrative analysis.}
-  %\label{fig:chapter_1_figure_1}
+  \caption{Schemes of multi-omic integrative analysis.}
+  % \label{fig:chapter_1_figure_1}
   \label{fig:example-image-b}
 \end{figure}
 
 \paragraph*{Central dogma centered multi-stages scheme.}
-In molecular biology, the central dogma (\textbf{Box 2}) describes a macroscopic flow which is biologically multi-stage and pipe genetic information from genome to phenotypes.
+In molecular biology, the central dogma (\textbf{Box 2}) describes a macroscopic flow which transmits genetic information from genome to phenotypes across multiple biological stages (multi-stage).
 The biological multi-stage nature allows researchers to integrate multi-omics data using a divided-conquer strategy.
-Concretely, the analysis is divided into isolated scopes biologically and technically.
+Concretely, the analysis is divided into isolated scopes, both biologically and technically.
 Then, for each scope, proper statistical analysis is performed independently and main findings are prepared in a compatible format across all scopes.
 By combining the findings, the results are interpreted in respect to the information flow under central dogma hypothesis.
 One frequently used method is the combination of various QTL from transcriptome (eQTL), epigenome (methylation QTL or methQTL), proteome (protein QTL or pQTL), and metabolome (metabolites QTL or mQTL).
-The other is the integration through functional and pathway informations which are reviewed and consolidated by experts and initiatives, e.g., Gene Ontology (GO) Consortium\reqref and Kyoto Encyclopedia of Genes and Genomes (KEGG)\reqref.
+The other approach is the integration through functional and pathway informations which are reviewed and consolidated by experts and initiatives, e.g., Gene Ontology (GO) Consortium\reqref and Kyoto Encyclopedia of Genes and Genomes (KEGG)\reqref.
 
 \paragraph*{Multi-modal centered scheme.}
 In contrast to the divided-conquer strategy in multi-stages approaches, the multi-modal centered scheme analyzes all layers of omics data simultaneously.
-The underlying hypothesis is that each type of omics data is a snapshot at a specific perspective, the proper combination of all perspectives and subsequent abstracts by decent statistical and machine learning techniques can give insights into the underlying biological mechanisms.
+The underlying hypothesis is that each type of omics data is a snapshot at a specific perspective.
+The proper combination of all perspectives and subsequent abstracts by decent statistical and machine learning techniques can give insights into the underlying biological mechanisms.
 In this scheme, the ultimate goal is to build a model or an ensemble model from all measured omic data.
 The data reprocessing and organization before the model construction could be scoped into concatenation-based, transformation-based, and multi-model-based methods\textbf{[10.1038/nrg3868]}.
 E.g., For transformation-based methods, a kernel-based integrative analysis was used to build model which predicts protein functions via different type of features \textbf{[10.1093/bioinformatics/bth294]}.
@@ -246,7 +250,7 @@ E.g., For transformation-based methods, a kernel-based integrative analysis was 
     \node [termbox] (box) {%
       \begin{minipage}{0.8725\textwidth}
         \paragraph*{Central dogma theory.} In molecular biology, central dogma
-        \paragraph*{Viral-load set point.} xxx
+        \paragraph*{Viral-load set point.} In xxx.
       \end{minipage}}; %
       \node [termtitle, right=10pt] at (box.north west) {%
         \textbf{\small Box 2 |} \textit{Terminology}};
