@@ -49,14 +49,21 @@ all: ${PDFFILES}
 
 
 # Clean-ups
-clean:
-	@echo Clean up...
-	rm -fr ${BUILDDIR} ${PDFDIR} ${DOCDIR}
-
 clean-build:
 	@echo Clean up...
 	rm -fr ${BUILDDIR}
 
+clean-pdf:
+	@echo Clean up pdfs...
+	rm -fr ${PDFDIR}
 
-.PHONY: all clean
+clean-doc:
+	@echo Clean ip docs...
+	rm -fr ${DOCDIR}
+
+clean-all: clean-build clean-pdf clean-doc
+	@echo Clean up...
+
+
+.PHONY: all clean-all clean-build clean-doc clean-pdf
 # vim: ts=4:

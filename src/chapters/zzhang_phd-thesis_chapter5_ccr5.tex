@@ -1,0 +1,648 @@
+\documentclass{book}
+
+\begin{document}
+\marginwatermark{\thechapter}{-280}
+\renewcommand{\thetable}{\textbf{Table \arabic{chapter}.\arabic{table}}}
+\renewcommand{\thefigure}{\textbf{Figure \arabic{chapter}.\arabic{figure}}}
+
+\begin{refsection} % To make a local bibliography
+
+\chapter{Host genetic variants regulates CCR5 expression on immune cells: a study in people living with HIV and healthy controls}
+Jéssica C. dos Santos\textsuperscript{*}, \textbf{Zhenhua Zhang}\textsuperscript{*}, Louise E. van Eekeren, Ezio T. Fok, Nadira Vadaq, Lisa van de Wijer, Wouter A. van der Heijden, Valerie A. C. M. Koeken, Hans J.P.M. Koenen, Musa Mhlanga, Mihai G. Netea, André J. van der Ven, Yang Li
+
+
+\vfill
+\begin{flushright}
+  \textsuperscript{*}These authors contributed equally to this work. \par
+  \textit{Draft is ready}
+\end{flushright}
+
+
+\clearpage
+\newpage
+\section*{Abstract}
+C-C chemokine receptor 5 (CCR5) is the main HIV co-receptor affecting susceptibility and disease course.
+In people living with HIV (PLHIV), CCR5 surface expression is affected by various factors, including the use of long-term antiretroviral treatment (ART), cell differentiation stage, genetics, and epigenetics.
+Quantitative trait loci (QTL) mapping analysis was performed to assess genetic variants associated with CCR5 expression on circulating immune cells in 209 PLHIV using ART and 304 healthy controls, all of Western European ancestry.
+The percentage of CCR5+ cells and CCR5 mean fluorescence intensity (MFI) were assessed by flow cytometry in monocytes and twelve CD4+ and CD8+ T cell subsets.
+Interestingly, rs60939770, which is not in linkage disequilibrium with \textit{CCR5d32}, was related to the proportion of CCR5+ memory T regulatory cells, both in PLHIV and healthy controls.
+Two genome-wide significant loci, in linkage equilibrium with \textit{CCR5d32}, were found to be associated with CCR5 MFI of multiple subsets of mostly differentiated memory T cells in PLHIV and healthy controls.
+The expression of nearby chemokines receptors (\textit{CCR1}, \textit{CCR2}, \textit{CCR3}), which are part of the same topologically associating domain, were also associated by these genetic variants.
+Furthermore, we show that the modulation of CCR5 surface expression through genetic variants are also correlated the production of inflammatory mediators, including monocyte- and lymphocyte-derived cytokines as well as CCL4 and IL-8.
+Our data indicate that the genetic regulation of CCR5 expression is cell-specific, and affects the production of inflammatory mediators, also by influencing the expression of nearby genes.
+
+
+\clearpage
+\newpage
+\section*{Introduction}
+Human immunodeficiency virus-1 (HIV-1) enters host cells upon binding to the primary receptor CD4 and then to a co-receptor.
+The main co-receptor for HIV viral entry is C-C chemokine receptor 5 (CCR5) \cite{Brelot2018CCR5}.
+In addition to its crucial role in viral entry, CCR5 expression levels on the surface of specific populations of CD4+ T cells have been shown to be associated with the response to treatment and disease progression in HIV infection, with low CCR5 surface expression being protective \cite{Gervaix2002Response}.
+Apart from being a co-receptor for HIV, CCR5 and its ligands CCL3, CCL4, CCL5 and CCL3L1 play important roles in innate and adaptive immune responses.
+As such, CCR5 could contribute to non-AIDS comorbidities which remain more prevalent in people living with HIV (PLHIV), despite long-term suppressive combination antiretroviral treatment (cART) \cite{van2007HowWill}.
+The central role of CCR5 in HIV infection demands a thorough understanding of its regulation in these patients.
+
+Many studies have been carried out to identify genetic factors that influence HIV acquisition and progression \cite{Brelot2018CCR5}.
+A consistent finding is a 32-base pair deletion in the open reading frame (ORF) of the \textit{CCR5} gene, resulting in a defective CCR5, referred to as \textit{CCR5d32} (rs333).
+Healthy controls and PLHIV bearing a heterozygous genotype have reduced levels of CCR5 and PLHIV with this genotype show slower disease progression, while the absence of CCR5 on cell surfaces due to a homozygous \textit{CCR5d32} deletion may prevent infection by CCR5-tropic strains \cite{Liu1996Homozygous}.
+Moreover, stem cell transplantation by a donor with a homozygous \textit{CCR5d32} genotype has led to a functional cure of HIV in the recipient \cite{Hütter2009Long}.
+These consequences of \textit{CCR5d32} highlight the possible clinical impact of genetic variants on CCR5 expression levels.
+Instead of focusing on genome-wide genetic variants that are associated with CCR5 expression levels of HIV-1 target cells, previous studies have often bypassed the assessment of CCR5 expression levels and directly evaluated CCR5 genotypes in relation to HIV pathogenesis \cite{Gonzalez1999Race,Mangano2001Concordance}.
+These genotypes include specific single nucleotide polymorphisms (SNPs) in the \textit{CCR5} \textit{cis}-regulatory region and \textit{CCR2} coding region that were grouped into seven phylogenetically distinct clusters known as the CCR5 human haplotypes A-G \cite{Gonzalez1999Race}.
+Current evidence on the association between specific CCR5 haplotypes and CCR5 expression is scarce and contradictory \cite{Jaumdally2017CCR5,Picton2012CCR5}.
+Moreover, associations have not been studied for cell subsets with varying differentiation states: this is of importance since memory cells show more CCR5 expression than naive cells \cite{Gornalusse2015Epigenetic}.
+Thus, although several SNPs related to HIV pathogenesis are found in the \textit{CCR5} gene, it remains unknown whether genome-wide genetic factors determine inter-individual variation in \textit{CCR5} expression levels in PLHIV with an intact \textit{CCR5} ORF, eventually leading to HIV infection risk.
+
+In this study we aimed to conduct a quantitative trait loci (QTL) mapping in PLHIV, to assess the contribution of host genetic variation in the regulation of cell surface CCR5 density and CCR5-expressing cell proportions of circulating immune cell subsets.
+As one of QTL SNPs (rs11574435) maps to the intronic region of a previously described, antisense transcribed sequence named \textit{CCR5AS} \cite{Kulkarni2019CCR5AS}, we also aimed to assess its effects in modulating the expression of \textit{CCR5AS}, \textit{CCR5} and nearby genes in PLHIV.
+In addition, we validated these genetic associations found in PLHIV in an independent cohort (300BCG cohort) of healthy individuals \cite{Koeken2020BCG}.
+
+
+\section*{Results}
+\subsection*{Characteristics of the study populations}
+Two independent cohorts of individuals of Western European ancestry were included consisting of 209 PLHIV using long-term ART (200HIV) and 304 healthy individuals (300BCG study), all adults ($\geq$ 18 years) (\ref{fig:chp5fig1}A).
+The average age of PLHIV and the healthy individuals was 52 years and 23 years, respectively, of which 91\% and 43\% respectively were males.
+HIV transmission routes included homosexual contact (157/209), heterosexual contact (39/209), intravenous drug use (IDU, 3/209), needle stick injury (1/209), and contaminated blood products (1/209).
+For the remaining 8/209 participants, the route of transmission was unknown.
+PLHIV were having the following HIV-specific characteristics: CD4 nadir: median $250 \times 10^6$ cells/L (IQR 230), latest CD4: median $660 \times 10^6$ cells/L (IQR 330), zenith HIV-RNA: median 100.000 copies/ml (IQR 345.591), and cART duration: median 6.61 years (IQR 7.70).
+A total of 67\% (139/209) used an integrase inhibitor, 30\% (63/209) non-nucleoside analogue and 15\% (32/209) a protease inhibitor.
+The HIV-RNA viral load was beneath the detection limit in 203/209 PLHIV.
+
+\subsection*{Identifying genome-wide genetic determinants of CCR5 surface expression in PLHIV}
+CCR5 is the major co-receptor of HIV in immune cells and its expression influences the outcome of HIV infection \cite{Brelot2018CCR5}.
+To explore how genetics modulates the CCR5 density on immune cell subsets and the corresponding cell proportions, we conducted QTL mapping analysis using genome-wide SNP genotypes in the two independent cohorts (\ref{fig:chp5fig1}A).
+CCR5 expression on the surface of immune cells was measured in both cohorts and expressed by the geometric mean of fluorescence intensity (MFI) and percentage of CCR5 positive cells or cell proportion (CP).
+The differences in CCR5 expression levels between PLHIV and healthy controls were extensively reported elsewhere (\textit{van Eekeren et al, submitted}).
+In short, PLHIV had increased percentages of CCR5-expressing CD45+ cells, monocytes, lymphocytes, and CD8+ T cells, including naive, central memory (CM), effector memory (EM), terminally differentiated effector memory cells (TEMRA), and the total population of CD8+ EM (TEM) cells, and decreased CCR5-expressing naive CD4 cells and naive and memory Tregs.
+Differences in the percentage of CCR5-expressing cells were especially stressed for CCR5+CD8+ T naive cells and CD8+ CM cells.
+In addition, we found lower CCR5 MFIs on most cell types from PLHIV compared to controls.
+These differences remained when adjusting for age, sex, cytomegalovirus serostatus and smoking status.
+
+After testing the association between common variants ($MAF > 0.1$) and CCR5 MFI or CP using a linear regression model with age and sex corrected, we identified five independent genome-wide significant loci ($P-value < 5 \times 10^{-8}$) associated with CCR5 MFI or CP in PLHIV (\ref{tab:chp5tab1}).
+CCR5 MFI and CP showed associations with three independent variants in the \textit{cis}-region to \textit{CCR5} locus (\ref{fig:chp5fig1}B, \ref{tab:chp5tab1}) on chromosome 3.
+Moreover, two trans-loci variants associated with CCR5 MFI or CP were located at chromosome 2 (\ref{fig:chp5supfig2}A).
+Interestingly, the majority of significant associations (75\%) were found in relation to T cells with memory functions, suggesting that the genetic effects on CCR5 cell-surface expression might be cell-type specific.
+
+To validate these genetic associations and verify their specificity to PLHIV, we performed a QTL mapping analysis of the same measurements of the immune cell subsets in an independent cohort of healthy controls (HC).
+We validated the same genetic loci associated with CCR5+CD4+ mTreg (\ref{fig:chp5fig1}C, \ref{tab:chp5tab1}) and MFI for the 10 subsets of immune cells, except for CD8+ central memory T cells (\ref{fig:chp5fig1}D, \ref{tab:chp5tab1}, \ref{tab:chp5suptab2}).
+Previous studies have shown that the expression of CCR5 in memory T cells varies due to cell differentiation \cite{Lee1999Quantification}, a process that seems to be under genetics influence.% The author used quantitative fluorescence-activated cell sorting assay to determine the number of CD4, CCR5, and CXCR4 antibody-binding sites (ABS)
+Based on the data from both PLHIV and HC cohorts, we found specific genetic effects on subsets of immune T cells that exert memory functions.
+
+\subsection*{\textit{Cis}- and \textit{trans}-genetic effects on CCR5 density in CD4+ mTreg and total CD4+ T cells}
+The strongest association (\textit{cis}-SNP rs60939770, chromosome 3, $P-value = 4.29 \times 10^{-16}$) was identified for the proportion of CCR5+CD4+ mTreg cells in PLHIV (\ref{fig:chp5fig2}A).
+PLHIV carrying at least one rs60939770-G allele had a significantly higher proportion of CCR5+CD4+ mTreg cells than WT subjects (\ref{fig:chp5fig2}C).
+The same pattern was also observed in the HC cohort (\ref{fig:chp5fig2}C).
+The rs60939770 SNP is an intergenic variant in \textit{cis}-region to \textit{CCR5} gene and it is in a linkage disequilibrium (LD) with a previously reported SNP rs1015164 ($R^2 = 0.6823$, $D' = 0.8594$, $P-value < 0.0001$) that is associated with CCR5 MFI levels in CD4+ mTreg cells (nominal $P-value = 0.03$).
+However, our QTL mapping results showed a strong correlation between rs1015164 and the percentages of CD4+ mTreg cells expressing CCR5 ($P-value = 2.0 \times 10^{-15}$) in PLHIV (\ref{fig:chp5supfig3}A).
+Remarkably, rs1015164 has previously been associated with plasma HIV viral load in untreated PLHIV \cite{McLaren2015Polymorphisms}.
+Moreover, Kulkarni and colleagues reported in 2019 that the rs1015164 genotype significantly affects CCR5 MFI surface expression in bulk memory and effector memory CD4+ T cells of healthy individuals \cite{Kulkarni2019CCR5AS}.
+PLHIV carrying the rs1015164-A allele have significantly higher proportions of CCR5+CD4+ mTreg cells than rs1015164-G PLHIV (\ref{fig:chp5supfig3}B).
+Of importance, these effects were replicated in the HC cohort at genome-wide significant level ($P-value < 5 \times 10^{-8}$) (\ref{tab:chp5tab1}, \ref{fig:chp5supfig3}C).
+
+Additionally, a trans-loci genetic variant, rs12467868 was also identified and associated with the percentage of CCR5 in the surface of CD4+ T cells ($P-value = 4.07 \times 10^{-8}$) in PLHIV only.
+The rs12467868 SNP lies in the intron 3 of the \textit{RPS27} gene, a coding ribosomal protein gene implicated in viral replication of DNA and RNA viruses \cite{Fernandez2011Conservation}.
+Collectively, these results suggested that the proportion of CCR5+CD4+ T cells in PLHIV and healthy controls is under \textit{cis}-genetic regulation.
+
+\subsection*{A shared genetic association with CCR5 MFI in multiple differentiated CD4+ and CD8+ T cell subsets of PLHIV}
+For the traits of CCR5 MFI surface expression, we identified a shared genetic association led by rs11574435 ($P-value < 5 \times 10^{-8}$) with the majority of CD4+ and CD8+ T cell subsets (\ref{tab:chp5tab1}).
+
+\begin{landscape}
+% Figure 1
+\begin{figure}
+  \centering
+  \includegraphics[height=0.7\textwidth]{Chapter5_figure1-1.png}
+  \caption{\label{fig:chp5fig1}
+    \textbf{Combined Manhattan plots of multiple immune cell subpopulations (1).}
+    \textbf{(A)} The study design.
+    \textbf{(B)}, \textbf{(C)} and \textbf{(D)} are all combined Manhattan plots of multiple immune cell subpopulations (chromosome 3).
+    \textbf{(B)} includes associations for both CCR5 MFI (red) and cell proportions (CP) (yellow) for PLHIV.
+  }
+\end{figure}
+\begin{figure}
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[height=0.7\textwidth]{Chapter5_figure1-2.png}
+  \caption{
+    \textbf{Combined Manhattan plots of multiple immune cell subpopulations (2).}
+    \textbf{(C)} consists of associations for CP from PLHIV (green) and healthy individuals (blue) while \textbf{(D)} shows associations for MFI from PLHIV (green) and healthy individuals (blue).
+    From outer to inner, the first track (black) shows assessed immune cell subpopulation name, where each sector represents one cell types;
+    the second and third tracks include P-value Manhattan plots for each cell type assessed for CP \textbf{(yellow)} and MFI (red) in \textbf{(B)}, or PLHIV (green) and healthy individuals (blue) in \textbf{(C)} and \textbf{(D)}, respectively;
+    the innermost is hierarchical tree of cell types.
+  }
+\end{figure}
+
+% Table 1
+\begin{table}
+  \tiny
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{m{0.4cm}m{1cm}m{1.5cm}p{0.5cm}p{1cm}p{1.3cm}p{0.4cm}p{0cm}p{1.3cm}p{0.7cm}p{0cm}p{1.3cm}p{0.7cm}p{1.6cm}}
+                          &                              &                                &                          &                                     & \multicolumn{2}{c}{eQTL$^B$}                                                && \multicolumn{2}{c}{PLHIV}       && \multicolumn{2}{c}{HC}               & \\
+    \cline{6-7} \cline{9-10} \cline{12-13}
+    Trait                 & RS ID                        & Chr:Pos-EffectAllele           & AF$^A$                   & Proxy SNP($R^2$)                    & Gene ($5\times 10^{-8}$)                               & Effect (CCR5)       && P-value                & Beta   && P-value                & Beta        & Cell type $^C$ \\
+    \hline
+    \multirow{2}{*}{CP}   & rs12467868                   & 2:55460833-G                   & 0.4186                   & \textit{NA}                         & CLHC1,RTN4, SPTBN1                                     & \textit{NA}         && $4.07 \times 10^{-8}$  & -0.524 && \textit{NA}            & \textit{NA} & CD4+  \\
+    \cline{2-14}
+                          & rs60939770                   & 3:46337606-G                   & 0.2815                   & rs1015164 (0.682)                   & CCR1,CCR3, CCR2,CCR5, CCRl2,CCR9                       & +                   && $4.30 \times 10^{-16}$ & 0.784  && $3.18 \times 10^{-10}$ & 0.534       & mTreg \\
+    \hline
+    \multirow{12}{*}{MFI} & rs7603982                    & 2:50682596-C                   & 0.1170                   & \textit{NA}                         & \textit{NA}                                            & \textit{NA}         && $2.28 \times 10^{-8}$  & 0.806  && \textit{NA}            & \textit{NA} & CD45+  \\
+    \cline{2-14}
+                          & \multirow{10}{*}{rs11574435} & \multirow{10}{*}{3:46447972-T} & \multirow{10}{*}{0.1006} & \multirow{10}{1.1cm}{rs333 (0.842)} & \multirow{10}{2cm}{CCR3,CCR1, CCR5,CCR9, FLT1P1,LIMD1} & \multirow{10}{*}{+} && $9.32 \times 10^{-11}$ & -1.081 && $5.78 \times 10^{-16}$ & -1.012      & CD4+  \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $8.64 \times 10^{-13}$ & -1.184 && $1.40 \times 10^{-18}$ & -1.088      & CD8+        \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $1.78 \times 10^{-11}$ & -1.117 && $1.14 \times 10^{-05}$ & -0.557      & CM CD8+     \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $5.90 \times 10^{-13}$ & -1.191 && $1.28 \times 10^{-24}$ & -1.241      & TEM CD8+    \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $4.04 \times 10^{-10}$ & -1.050 && $2.31 \times 10^{-23}$ & -1.213      & Lymphocyte       \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $1.43 \times 10^{-12}$ & -1.168 && $1.28 \times 10^{-24}$ & -1.241      & EM CD8+     \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $4.07 \times 10^{-12}$ & -1.147 && $1.37 \times 10^{-16}$ & -1.031      & EM CD4+     \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $6.49 \times 10^{-13}$ & -1.187 && $1.95 \times 10^{-12}$ & -0.882      & TEMRA CD8+  \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $2.01 \times 10^{-12}$ & -1.163 && $3.73 \times 10^{-18}$ & -1.077      & TEM CD4+    \\
+    \cline{9-14}
+                          &                              &                                &                          &                                     &                                                        &                     && $2.91 \times 10^{-09}$ & -0.999 && $6.91 \times 10^{-16}$ & -1.004      & mTreg            \\
+    \cline{2-14}
+                          & rs71327064                   & 3:46478866-T                   & 0.2507                   & rs333 (0.338)                       & CCR3,CXCR6, CCR5,CCR2, CCR1,LRRC2, SACM1L              & +                   && $6.22 \times 10^{-09}$ & -0.667 && $1.87 \times 10^{-10}$ & -0.632      & TEMRA CD4+  \\
+    \hline
+  \end{tabular}
+  \caption{
+    \label{tab:chp5tab1} \textbf{Genomic-wide significant CCR5 QTL SNPs in PLHIV.} \\
+    \textsuperscript{A} Allele frequency (AF) of the effect allele in ERU cohort from 1000 Genome project phase 3. \\
+    \textsuperscript{B} \textit{cis}-eQTL gene identified in eQTLGen (Release 2019-12-23). The sign (-/+) represents the direction of the assessed allele affecting CCR5 expression in whole blood. \\
+    \textsuperscript{C} Abbreviations: CM = central memory, EM = effector memory cells (CD45RA-CCR7-), TEMRA = effector memory cells expressing CD45RA (CD45RA+CCR7+), and TEM = total effector memory (i.e. the total pool of effector memory cells).
+  }
+\end{table}
+\end{landscape}
+
+ % Figure 2
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{Chapter5_figure2.png}
+  \caption{\label{fig:chp5fig2} \textbf{QTL associated with CCR5 positive proportion of CD4+ mTreg cells of PLHIV and healthy individuals.}
+  \textbf{(A)} Regional plot (LocusZoom) showing the QTL associated with CP in CD4+ mTreg of PLHIV, where the top SNP is rs60939770.
+  \textbf{(B)} and \textbf{(C)} are box-plots of CCR5+ CP in CD4+ mTreg subpopulation stratified by genotypes of rs60939770 in PLHIV ($P-value = 4.29 \times 10^{-16}$) and HC ($P-value = 3.18 \times 10^{-10}$), respectively.
+  }
+\end{figure}
+
+ % Figure 3
+\begin{figure}
+  \centering
+  \includegraphics[width=0.98\textwidth]{Chapter5_figure3.png}
+  \caption{
+    \label{fig:chp5fig3}
+    \textbf{Chemokine receptors that are part of the \textit{CCR5} gene cluster.}
+    \textbf{(A)} Topologically associating domains (TADs) of \textit{CCR5} locus.
+    \textbf{(B)} Spearman’s correlation as the measure of similarities between the pattern mRNA expression of \textit{CCR1}, \textit{CCR3}, \textit{CCR2}, \textit{CCRL2}, \textit{LTF}, \textit{CCR5} and \textit{CCR5AS} assessed by RT-PCR. Red indicates a strong positive correlation, whereas blue indicates a strong negative correlation (n = 58 PLHIV).
+    \textbf{(C)} Spearman’s correlation of \textit{CCR5} mRNA with CCR5+CD4+ and CD8+ T lymphocytes (n = 58 PLHIV).
+    \textbf{(D)} mRNA levels of \textit{CCR1}, \textit{CCR3}, \textit{CCR2}, \textit{CCRL2}, \textit{LTF}, \textit{CCR5} and \textit{CCR5AS} were determined by RT-PCR and the values were stratified based on rs11574435 genotypes (CC = 34, TC = 26).
+  }
+\end{figure}
+\begin{figure}
+  \addtocounter{figure}{-1}
+  \caption{
+    \textbf{~Chemokine receptors that are part of the \textit{CCR5} gene cluster.}
+    \textbf{(E)} CCL3 and CCL4 protein measurements were assessed by Multiplex proximity extension assay and the values were stratified based on rs11574435 genotypes (CC = 148, TC = 41). Data were analysed using Mann-Whitney U-test ($P-value < 0.05$).
+    % FIXME: number of genotypes? 148 + 41 = 189
+  }
+\end{figure}
+
+Among these significant associations with CD4+ and CD8+ T cells subsets of PLHIV, the rs11574435 CC genotype is associated with higher CCR5 MFI expression than individuals with TC genotypes (\ref{tab:chp5tab1}).
+Within the same locus, another rs71327064 ($P-value < 6.22 \times 10^{-9}$) was identified to be associated with MFI expression in CD4+ TEMRA cells (\ref{tab:chp5tab1}).
+Furthermore, these findings of both SNPs were replicated in the HC cohort with the same allelic direction ($P-value < 0.05$). 
+
+Of note, rs11574435 and \textit{CCR5d32} (rs333) are highly in LD ($R^2 = 0.8423$, $D' = 0.9591$, $P-value < 0.0001$, European cohort of the 1000 Genome Project).
+In addition, the rs71327064 SNP, associated with CD4+ TEMRA cells is also moderately linked to \textit{CCR5d32} ($R^2 = 0.3379$, $D' = 0.9062$, $P-value < 0.0001$) (\ref{tab:chp5tab1}).
+\textit{CCR5d32} is a well-known causal variant to affect CCR5 expression, and it is a structural variant that results in deletion of 32 base pairs of \textit{CCR5} gene ORF associated with slow disease progression of HIV positive individuals to acquired immunodeficiency syndrome \cite{Hütter2009Long}.
+The effects of \textit{CCR5d32} in HIV susceptibility have been attributed to reduced expression of a functional CCR5 receptor \cite{Lederman2006Biology}; we therefore assessed the presence of \textit{CCR5d32} in PLHIV and its effect on the CCR5 expression of the various cell subsets.
+A heterozygous (WT/d32) phenotype for \textit{CCR5d32} was found in 18.8\% (n=40) of PLHIV, whereas 81.2\% (n=173) did not have the deletion (WT/WT) (\ref{fig:chp5supfig4}).
+Additionally, a Fisher's exact test shows that the rs11574435-T allele is significantly linked with the \textit{CCR5d32} ($odds~ratio = 0.004$ and $P-value < 2 \times 10^{-16}$).
+As PLHIV carrying the TC genotypes of rs11574435 showed lower CCR5 MFI, we next explored whether the heterozygous \textit{CCR5d32} (i.e. WT/d32) would be associated with lower CP and MFI CCR5 expression in T cell subsets.
+With the exception of nTregs, all T cell subsets and monocytes from WT/d32 PLHIV, expressed significantly lower lower CCR5 MFI than those from WT/WT PLHIV (Wilcoxon Test, $P-value < 0.05$, \ref{fig:chp5supfig5}).
+Moreover, \textit{CCR5d32} was also associated with CCR5 CP as subpopulations of CD4+ and CD8+ cells of WT/d32 PLHIV showed lower CCR5 CP than WT/WT.
+However, no differences in CCR5 CP were observed for nTregs and monocytes (\ref{fig:chp5supfig6}). 
+
+The two variants rs11574435 and \textit{CCR5d32} occur mostly together, but not always.
+To evaluate which genetic variant is causal to decreased CCR5 MFI in PLHIV, we stratified the six individuals carrying only the rs11574435 SNP and not \textit{CCR5d32}.
+We found  no significant differences in CCR5 MFI expression on immune cell subsets between these PLHIV with compared to those carrying both rs11574435 SNP and \textit{CCR5d32} (\ref{fig:chp5supfig7}).
+We applied the same stratification strategy to evaluate the effects of CCR5 MFI in CD4+ TEMRA cells of individuals carrying the rs71327064 SNP only in comparison to individuals with neither rs71327064 SNP nor \textit{CCR5d32}.
+We observed that in the absence of \textit{CCR5d32}, CCR5 MFI expression was significantly lower in individuals carrying the rs71327064 SNP only than in individuals with neither rs71327064 nor \textit{CCR5d32} (Wilcoxon Test, $P-value < 0.05$, \ref{fig:chp5supfig8}).
+Together, these results suggest that \textit{CCR5d32} is playing the major effect in CCR5 MFI expression in relation to rs11574435 in all subsets of immune cells evaluated, However, rs71327064 may modulate CCR5 MFI independently of the presence of \textit{CCR5d32}. 
+
+\subsection*{rs11574435 and \textit{CCR5d32} influence the mRNA expression of other nearby chemokines receptors within the \textit{CCR5} gene cluster}
+The rs11574435 SNP maps to the intronic region of an antisense transcribed sequence called \textit{CCR5AS} that overlaps the \textit{CCR5} gene.
+The \textit{CCR5AS} functions by protecting \textit{CCR5} mRNA from degradation, resulting in increased \textit{CCR5} mRNA and CCR5 MFI surface expression in CD4+ T cells of healthy individuals \cite{Kulkarni2019CCR5AS}.
+We assessed chemokine genes (i.e. \textit{CCR5} gene cluster) whose expressions are associated with rs11574435 SNP in whole blood samples from healthy individuals \cite{Võsa2021Large}, including \textit{CCR1}, \textit{CCR3}, \textit{CCR2} and \textit{CCRL2} ($P-value < 0.05$).
+Three-dimensional chromatin structures, known as topologically associating domain (TAD), show that chromatin in the eukaryotic nucleus is divided into regions enriched in chromosomal contacts \cite{Fanucchi2019Lnc}.
+Within TADs, chromosomal loops bring genes and transcriptional regulatory elements, such as long non-coding RNAs, into close proximity to regulate protein-coding gene expression.
+We sought to map the \textit{CCR5} TAD and test which genes within this genomic neighbourhood may be subjected to co-regulatory mechanisms and hence similar transcriptional patterns with \textit{CCR5}.
+Publicly available chromosome conformation capture (Hi-C) data obtained from K562 cells revealed \textit{CCR1}, \textit{CCR3}, \textit{CCR2}, \textit{CCRL2}, \textit{LTF}, and \textit{CCR5AS} located within the same TAD as \textit{CCR5} (\ref{fig:chp5fig3}A).
+In order to understand the co-regulatory relationship between these genes at the transcriptional level, we next profiled the expression of \textit{CCR1}, \textit{CCR3}, \textit{CCR2}, \textit{CCRL2}, \textit{LTF}, \textit{CCR5}, and \textit{CCR5AS} transcripts by qPCR on whole blood samples of individuals from PLHIV.
+We observed a co-expression pattern between \textit{CCR5} expression, and the nearby genes identified in the TAD (\ref{fig:chp5fig3}B, Spearman’s correlation, $P-value < 0.05$). 
+
+As our results indicate that rs11574435 SNP is associated with CCR5 MFI surface expression on CD4+ and CD8+ T cells, we next tested the correlation of MFI with \textit{CCR5} mRNA levels in whole blood of PLHIV.
+We observed a marginally significant negative correlation of CCR5 MFI levels of both CD4+ and CD8+ T cells with \textit{CCR5} mRNA expression levels in whole blood of PLHIV (Spearman's correlation coefficient = -0.28, $P-value = 0.036$ and Spearman's correlation coefficient = -0.26, $P-value = 0.048$, respectively, \ref{fig:chp5fig3}C).
+Moreover, we assessed the effects of rs11574435 and \textit{CCR5d32} in modulating the expression of \textit{CCR5AS}, \textit{CCR5} and nearby genes in PLHIV carrying the different SNP genotypes.
+Opposite to the CCR5 MFI in which PLHIV carrying the TC genotypes showed lower protein surface expression, a significant increase ($P-value < 0.05$) in \textit{CCR5}, \textit{CCR3}, \textit{CCRL2} and \textit{LTF} mRNA expression was observed in patients carrying the TC genotype in comparison to CC.
+Although no significant differences were observed for \textit{CCR5AS}, \textit{CCR1} and \textit{CCR2}, there was a tendency to higher expression in TC genotypes (\ref{fig:chp5fig3}D).
+Of importance, the same pattern of expression was observed in PLHIV stratified based on the \textit{CCR5d32}, where the individuals heterozygous (WT/d32) showed higher chemokines mRNA expression levels (\ref{fig:chp5supfig9}).
+Together, these findings suggest that the \textit{cis}-genetic regulators of \textit{CCR5} that lead to decreased CCR5 surface expression also modulate mRNA expression of other chemokines receptors within the same locus.  
+
+It has already been shown that HIV-specific lymphocytes trigger the secretion of beta-chemokines C-C Motif Chemokine Ligand 3 (CCL3), CCL4 and CCL5, which are known as anti-CCR5 factors \cite{Abdelwahab2003HIV}.
+These chemokines downregulate or block the receptors CCR5, CCR1 and CCR2 resulting in HIV infection inhibition \cite{Guan2002Natural}.
+We next stratified the CCL3 and CCL4 protein expression levels based on the rs11574435 genotypes.
+There were no significant differences in CCL3 levels among the CC and TC genotypes, however, PLHIV carrying the TC genotypes showed higher levels of CCL4 ($P-value < 0.05$) than CC individuals (\ref{fig:chp5fig3}E).
+Our results indicate that in PLHIV, decreased CCR5 signalling on the surface of CD4+ and CD8+ T cells trigger feedback mechanisms resulting in increased transcription of \textit{CCR5} and other nearby chemokines genes.
+Specifically, the decreased expression of CCR5 MFI on the surface of various T cells subsets seems to be associated with increased levels of CCL4.
+
+\subsection*{The genetic regulation of CCR5 expression influences the cytokine production capacity of circulating immune cells}
+CCR5 expression is known to facilitate the chemotaxis of immune cells to sites of infection or inflammation, a process that results in amplification of the inflammatory responses \cite{Martin2016CCR5}.
+We therefore tested whether the SNPs that are associated with CCR5 surface expression (rs60939770, rs1015164, rs71327064, rs11574435 and \textit{CCR5d32}) were related with the production capacity of inflammatory cytokines and chemokines after \textit{ex vivo} stimulation of PBMCs in our 200HIV cohort \cite{Van2021The}.
+We found that for the rs60939770, lower levels of CCR5 was suggestively associated with decreased production of the innate immune cells-derived soluble mediators, IL-1$\beta$, IL-6, TNF and monocyte chemoattractant protein-1 (MCP-1) in PLHIV (nominal $P-value < 0.05$).
+Of note, despite the fact of rs1015164 being in LD with rs60939770, we demonstrated that in terms of functions these two SNPs differ, as rs1015164 was associated with the production of the immune mediators TNF and IFN$\gamma$ (\ref{fig:chp5fig4}A).
+When we further assessed the SNPs identified to be associated with CCR5 MFI levels, we observed that the rs71327064 was associated with the production of both IL-6 and IFN$\gamma$.
+Moreover, the rs11574435 SNP was significantly associated with the production of both innate and adaptive inflammatory mediators of PBMCs of PLHIV, including MCP-1, IL-1$\beta$, TNF, IL-8, IL-6 and IFN$\gamma$, IL-17 (\ref{fig:chp5fig4}A).
+In the HC cohort, rs11574435 SNP was also associated with the levels of IFN$\gamma$ by PBMCs (\ref{fig:chp5fig4}B).
+Of importance, \textit{CCR5d32} was also shown to modulate the production of MCP-1, IL-1$\beta$, IL-8, IL-6 and IFN$\gamma$ and IL-22.  
+
+Next, we tested the association between the identified SNPs and the concentrations of circulating inflammatory mediators both in PLHIV and in HC.
+The data indicate that besides CCL4, rs11574435 SNP associates in PLHIV with the levels of the chemokines, MCP-3, CCL23, CCL11 as well as the production of SCF and IL-17C (\ref{fig:chp5fig4}A).
+\textit{CCR5d32} was also related to the production of CCL4 and SCF, but not with MCP-3, CCL23, CCL11 or IL-17C, CD8A.
+In addition, \textit{CCR5d32} was associated with the production of caspase 8.
+In the HC cohort, rs11574435 SNP is also associated with circulating CCL4 concentrations (\ref{fig:chp5fig4}B).
+Thus, despite the co-occurrence of \textit{CCR5d32} and rs11574435 as the main genetic factors responsible for the modulation of CCR5 MFI expression, these genetic variants alter the production of soluble mediators in a different manner.
+Our findings indicate that the genetic effects on CCR5 expression on immune cells may also translate into the production of inflammatory mediators associated with effector responses against HIV.
+
+\begin{figure} % Figure 4
+  \centering
+  \includegraphics[width=0.8\textwidth]{Chapter5_figure4.png}
+  \caption{\label{fig:chp5fig4} \textbf{The identified SNPs were correlated with cytokines and protein markers.}
+  \textbf{(A)} and \textbf{(B)} Correlation results between SNPs (associated with CCR5 surface expression) and cytokine production (Cytokine), protein biomarkers (Olink) for PLHIV and HC, respectively.
+    The color represents the correlation P-value transformed by $-Log10$.
+    The correlations were estimated using a linear model with age (at visit) and sex as co-variables.
+  }
+\end{figure}
+
+\section*{Discussion}
+In the present study, we identified three novel common genetic loci that were associated with cell-type-dependent surface expression of CCR5 in two independent cohorts from Western European descent, one consisting of virally suppressed PLHIV, the other cohort including healthy individuals.
+We also show that these genetic variants not only affect CCR5 expression but also other genes that are part of the same topologically associating domain in the \textit{CCR5} locus.
+Finally, our results indicate that these genetic variants are correlated to altered inflammatory responses. 
+
+The strongest genome-wide significant locus was the rs60939770 variant in the \textit{cis}-region of \textit{CCR5} locus, which was found to be specifically associated with the percentage of CCR5+CD4+ mTregs, both in PLHIV and in healthy controls.
+Tregs cells are important to control HIV replication by reducing T-cell activation, which decreases the availability of target cells for HIV \cite{Nilsson2006HIV}.
+Moreover, in agreement with our findings, previous studies have shown that memory T cells express higher CCR5 in comparison to naive T cells \cite{Lee1999Quantification}.
+Memory Tregs may alleviate tissue damage during pro-inflammatory conditions and CCR5 expression on these cells may direct them into inflamed tissues.
+Indeed, CCR5 is known to facilitate the positioning of Tregs near CD8+ T cells in the skin of vitiligo patients, which is required for optimal suppression of CD8-derived effector molecules \cite{Gellatly2021scRNA}.
+The rs60939770 SNP is not correlated with the well-described \textit{CCR5d32} (rs333), but with another common variant, rs1015164, also in the \textit{cis}-region of \textit{CCR5} locus.
+The latter variant is linked with HIV progression parameters such as viral load and CD4+ T cell counts \cite{Kulkarni2019CCR5AS,McLaren2015Polymorphisms}.
+Our data indicate that CCR5 expression of mTregs is also affected by rs1015164, therefore further investigation will be needed to determine which of the two genetic variants from this locus is causal for CCR5 modulation.  
+
+Apart from analyzing whether or not immune cells express CCR5, we also assessed the intensity of CCR5 surface expression.
+Here we found two different genetic variants, rs11574435 and rs71327064, associated with the MFI of surface CCR5 molecules in subpopulations of CD4+, CD8+ T cells and CD4+ TEMRA cells, respectively.
+The rs11574435 is in LD with rs333 and it is located in a transcript called \textit{CCR5AS}.
+CCR5 expression is low in naive cells, as cell differentiation, as well as stimulation, upregulates the expression of CCR5 on immune cells \cite{Lee1999Quantification,Carroll1998The}.
+
+This is in line with our finding that the rs11574435 SNP and rs333 variants associate with CCR5 MFI expression in mostly differentiated CD4+ and CD8+ T cells.
+Interestingly, unlike rs11574435, the rs333 affected CCR5 MFI expression also in naive T cells as well as monocytes.
+Apart from this, epigenetic factors may play a role as the DNA methylation content of CCR5 is different in naive vs differentiated cells  \cite{Gornalusse2015Epigenetic}.
+Of note, among PLHIV we observed that not all subjects carry both rs11574435 and rs333 and we were able to study their effects separately.
+Our results indicate that rs11574435 has no influence in CCR5 surface expression, which we have shown to be attributed to the effects of rs333.
+This differed when we looked into the effects of rs71327064, which was identified associated with CCR5 MFI on CD4+ TEMRA.
+The rs71327064 variant is also in LD with rs333, however, we have shown that its effect was independent of rs333.
+The presence of rs71327064 in CD4+TEMRA led to decreased CCR5 MFI surface expression.
+CD4+TEMRA cells are differentiated effector memory CD4 cells that highly express CCR5, correlate with CD4+ T cells numbers but are resistant to R5-tropic HIV-1 \cite{Oswald2007Identification}.
+CD4+TEMRA may therefore be a resistant subset of T cells to HIV infection, which might have a protective role against HIV infections.  
+
+One may question whether CCR5 expression intensity is as relevant for HIV susceptibility, compared to the presence or absence of CCR5 on the cell surface.
+CD4 and CCR5 should co-localize so HIV can infect the cell.
+It has been shown, however, that CCR5, CXCR4 and CD4 are predominantly present on microvilli in different cell types, including T-cells and macrophages and that these microclusters of CD4 and chemokine receptors were frequently separated by less distance than the diameter of an HIV virion \cite{Singer2001CCR5}, indicating that cells with low CCR5 expression may still be susceptible for HIV infection.
+
+Memory T cells are known to be the main responders to beta-chemokines, and high expression of CCR5 on quiescent cells prompt them to be highly responsive to chemokine gradients at sites of immune and inflammatory responses \cite{Fukada2002Functional,Kohlmeier2008The}.
+Therefore, cells expressing higher levels of CCR5 can amplify inflammation favoring the development of non-AIDS comorbidities such as cardiovascular diseases \cite{Cochain2016Protective}.
+Importantly, we have demonstrated that rs11574435 and rs333 were not only associated with the expression of CCR5 MFI on the surface of memory CD4+ and CD8+ T cells, but also with \textit{CCR5} mRNA levels and the expression of other nearby chemokines receptors (CCR1, CCR2, CCR3) which are part of the same TAD.
+Of note, similar to CCR5, CCR2 has been described to enhance HIV infection \cite{Ansari2007Dichotomous}.
+As the rs11574435 and rs60939770 SNPs are located within non-coding regions of the genome, it is likely that all chemokines within the same TAD share a common regulator which influences their expression in a similar manner.
+We have shown that genetic variants can modulate the expression of these regulators, however further studies are required to explore the relationship of these non-coding transcripts and the expression of CCR5 and other chemokine receptors.  
+
+Remarkably, the same effects observed for rs11574435 were seen for the individuals carrying the rs333.
+The rs333 has been previously associated with differential expression of chemokine receptors coding genes, for example CXCR2, CCRL2, as well as genes involved in T cell activation (CD6) and maturation (CD7) \cite{Hütter2011The}.
+In addition, we have demonstrated that rs11574435 as well as rs333 are related to the production of other soluble factors including chemokines and inflammatory cytokines.
+Previous studies have indeed shown that CCR5 is a cell surface signaling receptor that plays a role in activation of inflammatory genes \cite{Shaheen2019CCR5}.
+The chemokines CCL3, CCL4, and CCL5/RANTES, known as CCR5 ligands, may protect CD4 T cells from HIV infection \cite{Abdelwahab2003HIV}.
+Of note, CCL5 and CCL4 also bind to different chemokine receptors \cite{Blanpain1999CCR5}.
+Here we observed that rs11574435 and rs333 modulate the production of CCL4 in PLHIV.
+Moreover, decreased CCR5 surface expression triggered the increased \textit{CCR5} mRNA expression likely due to feedback mechanisms.
+Altogether, our data suggest that certain genetic variants do not only affect \textit{CCR5} expression levels, but also production of chemokines, which may directly impact viral entry or modulate immune responses associated with HIV pathogenesis including non-AIDS comorbidities.
+
+The current study has several limitations.
+First, despite large sample sizes in two cohorts, there is a limited power in detection of small genetic effects.
+Second, a single monoclonal anti-CCR5 antibody (2D7) was used to detect CCR5 and certain isoforms and CCR5 conformations may have not been recognized by this antibody \cite{Lee1999Epitope}.
+However, compared to other antibodies, 2D7 probably reacts best with conformations of CCR5 that are relevant to HIV-1 entry \cite{Colin2018CCR5}.
+Third, we did not evaluate the transcription factor FOXP3 to phenotype regulatory T cells.
+On the other hand, we have systematically compared the individuals from both PLHIV and HC cohorts in the same manner using other additional marks including CD25 and CD45RA for the assessment of naive and memory status \cite{Rosenblum2015Regulatory}.
+
+In summary, the results presented herein indicate that genetic factors contribute to the inter-individual variability of CCR5 surface expression in different subsets of immune cells of peripheral blood of both PLHIV and healthy controls of European ancestry.
+Furthermore, we show that the expression of certain chemokines (CCL4) chemokines receptors (CCR1, CCR2, CCR3), which are part of the same topologically associating domain, are also affected by these genetic factors.
+
+\section*{Methods}
+\subsection*{Study population}
+The volunteers of this study are part of the HFGP (\url{www.humanfunctionalgenomics.org}) \cite{Netea2016Understanding}.
+Between 14 December 2015 and 6 February 2017, individuals living with HIV were recruited from the HIV clinic of Radboud university medical center, the Netherlands.
+Inclusion criteria were Dutch/Western-European ethnicity, age $\geq$18 years, receiving cART $>$6 months, and latest HIV-RNA levels $\leq$200 copies/ml.
+Exclusion criteria were: signs of acute or opportunistic infections, antibiotic use $<$1 month prior to study visit, and active hepatitis B/C.
+General baseline characteristics of PLHIV including CD4 Nadir and HIV RNA Zenith were described previously \cite{Van2021The}.
+The healthy individuals cohort consisted of adult volunteers (23.30 years old in which 43.34\% were males) of Western-European ancestry included in the 300BCG study between April 2017 and June 2018 in the Radboud university medical center, the Netherlands.
+Exclusion criteria were use of systemic medication other than oral contraceptives or acetaminophen, use of antibiotics 3 months before inclusion, and any febrile illness 4 weeks before participation \cite{Koeken2020BCG}.
+
+\subsection*{Ethics}
+The study protocols of the 200 HIV pilot study and 300BCG were approved by the Medical Research Ethical Committee Oost-Nederland (ref. 42561.091.122 and NL58553.091.16, respectively) and conducted in accordance with the principles of the Declaration of Helsinki.
+All study participants provided written informed consent.
+
+\subsection*{Genotypes, imputation, and quality control}
+For the PLHIV cohort, the genotyping, imputation, and quality control were described previously \cite{Zhang2021IRF7,van2021Chronic}.
+In addition, for the healthy individuals, the genotyping, imputation, and quality control were performed as in the previous study \cite{Moorlag2021An}.
+
+\subsection*{QTL mapping}
+Firstly, the immune phenotypes (cell proportions and CCR5 levels) were transformed using inverse-normal transformation.
+Then, we used the R/MatrixEQTL package \cite{Shabalin2012Matrix} to conduct the QTL mapping for the geometric mean of fluorescence intensity of CCR5 protein and CCR5 positive cell proportion in PLHIV and HC, respectively.
+We used a linear regression model with age and gender as co-variables.
+To evaluate the inflation of the summary statistics, we calculate the genomic inflation factor for each association analysis: lambda values vary between 0.980 and 1.017 (median = 1.0045, mean = 1.0018, stdev = 0.0069).
+Finally, we used $P-value < 5 \times 10^{-8}$ as the genome-wide significant threshold to select SNPs for downstream analysis.
+To visualize the identified association signals, we used circos \cite{Krzywinski2009Circos} (v 0.69, Perl 5.028001) package to show the Manhattan plot of analysis results along with the genome coordination only for chromosome 3.
+The hierarchical tree from the clustering analysis of immune cell proportions is plotted using the R/ggtree \cite{Yu2020Using} (v1.8.2) package powered by BioConductor (v3.10).
+To investigate the genomic context around genome-wide significant associations, summary statistics for each phenotype were uploaded to the LocusZoom \cite{Pruim2010LocusZoom} server to visualize regional QTL mapping scan results, using hg19 and 1000 Genomes Nov 2014 EUR as reference genome and for LD calculation, respectively.
+Manhattan plot and Q-Q plot for each association analysis were generated by package qqman \cite{D2018qqman} using default parameter settings.
+Analysis using MatrixEQTL and qqman were performed using R language (v3.6.0) and the in-house scripts for preprocessing using Python (v3.7.0) language are hosted on GitHub \url{https://github.com/zhenhua-zhang/qtlmpppl}.
+
+\subsection*{Antibodies and flow cytometry}
+Flow cytometry analyses were conducted to assess CCR5 expression levels on several subsets of circulating immune cells.
+Pre-processing stages including cell-processing and staining were similarly performed and by the same personnel in PLHIV and healthy controls.
+
+Venous blood was collected in sterile EDTA tubes.
+Details regarding cell processing and staining were described previously \cite{Aguirre2016Differential}.
+A Sysmex XN-450 automated hematology analyzer (Sysmex Corporation, Kobe, Japan) was used for determination of cell counts and to calculate absolute numbers of CD45+ white blood cell (WBC) counts as measured by flow cytometry.
+\ref{tab:chp5suptab1} shows the fluorochrome conjugates and clone identity of the antibodies.
+Flow cytometry analyses were performed 1-4 hours after sample collection.
+Flow cytometry data were acquired using a 10-color Navios flow cytometer (Beckman Coulter) and the Kaluza Flow Cytometry software (Beckman Coulter, version 2.1).
+
+Different subsets of immune cells were identified by sequential manual gating \ref{fig:chp5supfig10}.
+Live and single cells were selected first.
+Leukocytes were identified using CD45.
+Lymphocytes and monocytes were identified by granularity and size.
+Lymphocytes were further characterized using CD4, CD8, CD45RA and CCR7 to identify CD4+ cells and CD8+ naive (CD45RA+CCR7+), central memory (CM, CD45RA-CCR7+), effector memory cells (EM, CD45RA-CCR7-), effector memory cells expressing CD45RA (TEMRA, CD45RA+CCR7-) and the total pool of effector memory cells (TEM, CD45RA-/+CCR7-).%TODO: reference issue \checkme{(41, 42)}.
+In addition, CD4+ naive regulatory (nTreg, CD45RA+CD25+) and CD4+ memory regulatory (mTreg, CD45RA-CD25++) cell subsets were identified.
+
+Gates for CCR5 were set using an internal negative control (granulocytes) and fluorescence minus one controls.
+The regions that identified CCR5- cell populations in granulocytes were used to distinguish between CCR5- and CCR5+ cell populations in other cell types as well.
+The percentage of CCR5+ cells (\%) and CCR5 geometric mean fluorescence intensity (MFI) were assessed on all identified cell types.
+
+\subsection*{Molecular genotyping of \textit{CCR5d32}}
+Whole blood samples of PLHIV of the 200 HIV pilot study collected in EDTA tubes (BD Vacutainer) were used for genomic DNA extraction.
+The assessment of the region of the \textit{CCR5} gene containing the d32 deletion was adapted from \cite{Fahrioglu2020CCR5}.
+Primer sequences are listed in \ref{tab:chp5suptab3}.
+The PCR reactions were prepared using the 5X Q5 buffer, 10 mM dNTPs, Q5 High-Fidelity DNA Polymerase (New England Biolabs, Inc) and 10 uM forward and reverse primers.
+50 ng of DNA was used as template.
+The PCR protocol consisted of 1 cycle of 98°C for 30s, 35 cycles of 98°C for 10s, 62°C-10s, 72°C-10s and 1 cycle of 72°C for 2min.
+Fragments obtained from PCR were separated in 2\% agarose gel containing ethidium bromide for visualization.
+
+\subsection*{RNA isolation and quantitative real time-PCR}
+RNA was extracted from the whole blood of PLHIV of the 200 HIV pilot study using the QIAGEN PAXgene Blood RNA extraction kit (QIAGEN, Netherlands) according to the instructions of the manufacturer.
+Subsequently, RNA was reversely transcribed into cDNA by using iScript (Bio-Rad, Hercules, CA, USA).
+Diluted cDNA was used for qPCR that was done by using the StepOnePlus sequence detection systems (Applied Biosystems, Foster City, CA, USA) with SYBR Green Mastermix (Applied Biosystems).
+The mRNA and RNA relative expression analysis was done with the 2\textsuperscript{\string^}-dCt method and normalized against the housekeeping gene RPL37A.
+Primer sequences are listed in \ref{tab:chp5suptab3}.
+
+\subsection*{PBMCs stimulation experiments and plasma proteomics}
+Venous blood was collected in EDTA tubes (BD Vacutainer) and PBMCs were obtained by density centrifugation over Ficoll-Paque (VWR, Amsterdam, the Netherlands).
+Freshly isolated PBMCs (0.5 million cells/well) were incubated with different stimuli including bacterial (\textit{Staphylococcus aureus}, \textit{Mycobacterium tuberculosis}, \textit{Streptococcus pneumoniae}, \textit{Coxiella burnetii}, \textit{Salmonella enteritidis}, \textit{Salmonella typhimurium}), fungal (\textit{Cryptococcus gattii}, \textit{Candida albicans} hyphae and yeast) and other relevant antigens (Poly:IC (100 ug/mL - Invivogen; TLR3 ligand), \textit{Escherichia coli} LPS (1 and 100 ng/mL - Sigma; TLR4 ligand) and Pam3Cys, (10 ug/mL - EMC microcollections; TLR2 ligand)), in round-bottom 96-well plates (Greiner Bio-One, Frickenhausen, Germany) at 37°C and 5\% CO2 in the presence of 10\% human pooled serum for lymphocyte-derived cytokines assessment.
+The concentration of the mentioned bacterial and fungal stimuli are described previously \cite{van2021Chronic}.
+Supernatants were stored at -20°C.
+Levels of the monocytes-derived cytokines (TNF, IL-1$\beta$, IL-6) as well as chemokines (MCP-1, IL-8) were measured in the supernatants after 24 hours incubation.
+Levels of lymphocyte-derived cytokines (IFN$\gamma$, IL-17) were determined after 7 days (PeliKine Compact or Duoset ELISA, R\&D Systems).
+
+Baseline inflammatory plasma markers from both cohorts, 200HIV study and 300BCG, were measured by targeted proteomics as applied by the commercially available Olink Proteomics AB (Uppsala Sweden) Inflammation Panel (92 inflammatory proteins), using a Proceek\textsuperscript{\textcopyright} Multiplex Proximity extension assay.
+Expression levels were calculated as described by Koeken et al 2020 \cite{Koeken2020BCG}.
+
+\section*{Acknowledgment}
+The authors thank all volunteers from the Radboud University Medical Centre (Radboudumc) for participation in the study.
+Z.Z. is supported by a joint fellowship from the University Medical Center Groningen and China Scholarship Council (CSC201706350277).
+We thank the UMCG Genomics Coordination center, the UG Center for Information Technology, and their sponsors BBMRI-NL \& TarGet for storage and compute infrastructure.
+Y.L. was supported by an ERC Starting Grant (948207) and the Radboud University Medical Centre Hypatia Grant (2018) for Scientific Research.
+
+\newpage
+\section*{Supplementaries}
+
+\subsection*{Supplementary figures}
+\renewcommand{\thefigure}{\textbf{Figure S\arabic{chapter}.\arabic{figure}}}
+\setcounter{figure}{0}
+
+\begin{figure}[H] % Supplementary figure 1
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure1.png}
+  \caption{\label{fig:chp5supfig1} \textbf{The distribution of MFI and CP measured in PLHIV (200HIV) and HC (300BCG).}}
+\end{figure}
+\vfill~
+
+
+\begin{figure}[H] % Supplementary figure 2
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure2.png}
+  \caption{\label{fig:chp5supfig2} \textbf{The Manhattan plot for the two loci identified for CP in CD4+ cells (A) and for MFI in CD45+ cells (B).}
+    Red lines correspond to a genome-wide significant threshold, whereas blue lines a represent suggestive threshold.
+    Genomic variants are shown on the x-axis and y axis indicate the association between each variant and CD4+ cells (A) and MFI in CD45+ cells (B), respectively.
+  }
+\end{figure}
+
+
+\begin{figure}[H] % Supplementary figure 3
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure3-1.png}
+  \caption{\label{fig:chp5supfig3}
+     \textbf{rs1015164 is associated with CP and MFI of mTreg cells from PLHIV and HC (1).}
+    \textbf{(A)} and \textbf{(C)} are regional plots (LocusZoom) showing rs1015164 associated with CP in CD4+ mTreg of PLHIV and HC, respectively.
+    \textbf{(B)} and \textbf{(D)} are Box-plot of CP in CD4+ mTreg subpopulation stratified by genotypes of rs1015164 in PLHIV and HC, respectively.
+  }
+\end{figure}
+\begin{figure}[H] % Supplementary figure 3
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure3-2.png}
+  \caption{
+    ~\textbf{rs1015164 is associated with CP and MFI of mTreg cells from PLHIV and HC (2).}
+    \textbf{(E)} and \textbf{(G)} are regional plots (LocusZoom) showing rs1015164 associated with MFI in CD4+ mTreg of PLHIV and HC, respectively.
+    \textbf{(F)} and \textbf{(H)} are Box-plot of MFI in CD4+ mTreg subpopulation stratified by genotypes of rs1015164 in PLHIV and HC, respectively.
+  }
+\end{figure}
+
+\begin{figure}[H] % Supplementary figure 4
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure4.jpg}
+  \caption{\label{fig:chp5supfig4} \textbf{Schematic representation of how \textit{CCR5d32} were assessed in individuals part of the 200HIV study.}
+  WT allele is expected at 189bp and the d32 is expected at 157bp.
+  After the ladder in lane 1, lanes 2-16 represents homozygous wild-type genotype (fragment of 189bp), lane 17 represents a heterozygous genotype (fragments of 189bp and 157bp), lane 18 represents homozygous wild-type genotype and lane 19 is the negative control for PCR reaction.
+  Part of a whole plot showing the distribution of WT/WT and WT/d32 in the entire cohort of HIV patients.
+  }
+\end{figure}
+
+\begin{landscape}
+\begin{figure}[H] % Supplementary figure 5
+  \centering
+  \includegraphics[height=0.85\textwidth]{Chapter5_supp_figure5.png}
+  \caption{\label{fig:chp5supfig5}
+    CCR5 geometric mean of fluorescence intensity (MFI) stratified based on \textit{CCR5d32} (WT/WT= green, WT/d32= orange).
+    Data were analysed using Wilcoxon matched pairs signed-rank test ($P-value < 0.05$).
+  }
+\end{figure}
+
+\begin{figure}[H] %Supplementary figure 6
+  \centering
+  \includegraphics[height=0.85\textwidth]{Chapter5_supp_figure6.png}
+  \caption{\label{fig:chp5supfig6}
+    Percentages of CCR5 positive cells (\%, CP) stratified based on \textit{CCR5d32} (WT/WT= green, WT/d32= orange; all PLHIV).
+    Data were analysed using Wilcoxon matched pairs signed-rank test ($P-value < 0.05$).
+  }
+\end{figure}
+
+\begin{figure}[H] % Supplementary figure 7
+  \centering
+  \includegraphics[height=0.85\textwidth]{Chapter5_supp_figure7.png}
+  \caption{\label{fig:chp5supfig7}
+    CCR5 geometric mean of fluorescence intensity (MFI) stratified based on individuals carrying no SNP (green), \textit{CCR5d32} (orange) or rs11574435 (purple) only and both \textit{CCR5d32}/rs11574435 together (pink).
+    Data referred to PLHIV analysed using Wilcoxon matched pairs signed-rank test ($P-value < 0.05$).
+  }
+\end{figure}
+\end{landscape}
+
+\begin{figure}[H] % Supplementary figure 8
+  \centering
+  \includegraphics[width=0.6\textwidth]{Chapter5_supp_figure8.jpg}
+  \caption{\label{fig:chp5supfig8}
+    CCR5 geometric mean of fluorescence intensity (MFI) in CD4+ TEMRA cells stratified based on individuals carrying no SNP (green), \textit{CCR5d32} (orange) or rs71327064 (purple) only and both \textit{CCR5d32}/rs71327064 together (pink).
+    Data referred to PLHIV analysed using Wilcoxon matched pairs signed-rank test ($P-value < 0.05$).
+  }
+\end{figure}
+
+\begin{figure}[H] % Supplementary figure 9
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure9.jpg}
+  \caption{\label{fig:chp5supfig9} \textbf{}
+    mRNA levels of \textit{CCR1}, \textit{CCR3}, \textit{CCR2}, \textit{CCRL2}, \textit{LTF}, \textit{CCR5} and \textit{CCR5AS} were determined by RT-PCR and the values were stratified based on \textit{CCR5d32} (WT/WT=34 WT/d32=24).
+    Data were analysed using Mann-Whitney U-test ($P-value < 0.05$).
+  }
+\end{figure}
+
+\begin{figure}[H] % Supplementary figure 10
+  \centering
+  \includegraphics[width=\textwidth]{Chapter5_supp_figure10.png}
+  \caption{\label{fig:chp5supfig10} \textbf{Example of the gating strategy.}
+    CD45+ cells were identified by gating on live and single cells and subsequently on CD45+ cells.
+    Within the CD45+ cells, lymphocytes and monocytes were identified by granularity (side scatter) and size (forward scatter).
+    Lymphocytes were further classified into different subsets of CD4+(CD8-) T cells and (CD4-)CD8+ T cells.
+    CD4+ cells and CD8+ were classified as being naïve (CD45RA+CCR7+), central memory (CM, CD45RA-CCR7+), effector memory cells (EM, CD45RA-CCR7-), effector memory cells expressing CD45RA (TEMRA, CD45RA+CCR7-) and the total pool of effector memory cells (TEM, CD45RA-/+CCR7-).
+    CD4+ naive regulatory (nTreg, CD45RA+CD25+) and CD4+ memory regulatory (mTreg, CD45RA-CD45++) cell subsets were identified within the subset of CD4+CD8- T cells.
+  }
+\end{figure}
+
+% Supplementary tables
+\newpage
+\subsection*{Supplementary tables}
+\renewcommand{\thetable}{\textbf{Table S\arabic{chapter}.\arabic{table}}}
+\setcounter{table}{0}
+
+\begin{table}[H] % Supplementary table 1.
+  \tiny
+  \begin{tabular}{l|lllllll}
+    \hline
+    \textbf{Fluorochrome} & FITC    & ECD          & APC         & AF700       & APC-Cy7     & BV421     & KO \\
+    \textbf{mAb}          & CD45RA  & CD8          & CD25        & CD4         & CD195(CCR5) & CD197     & CD45 \\
+    \textbf{Clone}        & ALB11   & SFCI21Thy2D3 & 2A3         & RPA-T4      & 2D7         & G043H7    & J33 \\
+    \textbf{Distributor}  & Coulter & Coulter      & BD          & eBioscience & BD          & Biolegend & Coulter \\
+    \hline
+  \end{tabular}
+  \caption{\label{tab:chp5suptab1}
+  \textbf{Summary of the antibody clones and the fluorochrome conjugates used for the fluorescent staining mixes.}}
+  \small
+  mAb = monoclonal antibody.
+\end{table}
+
+
+\begin{table}[H] % Supplementary table 2.
+  \scriptsize
+  \begin{tabular}{llllll}
+    \hline
+    SNP ID                        &  Chr:pos-EffectAllele          &  Trait               & P-value  & Beta   & Cell type \\
+    \hline
+    \multirow{8}{*}{rs113010081}  & \multirow{8}{*}{3:46457412-C}  & \multirow{6}{*}{MFI} & $1.64 \times 10^{-15}$ & -1.039 & CD45+ cells \\
+                                  &                                &                      & $6.96 \times 10^{-19}$ & -1.142 & CD4+ cells \\
+                                  &                                &                      & $2.24 \times 10^{-27}$ & -1.355 & Lymphocytes \\
+                                  &                                &                      & $9.47 \times 10^{-34}$ & -1.474 & EM CD8+ cells  \\
+                                  &                                &                      & $6.45 \times 10^{-20}$ & -1.171 & EM CD4+ cells  \\
+                                  &                                &                      & $1.19 \times 10^{-21}$ & -1.217 & TEM CD4+ cells \\
+    \cline{3-6}
+                                  &                                & \multirow{2}{*}{CP}  & $4.25 \times 10^{-13}$ & -0.949 & Lymphocytes \\
+                                  &                                &                      & $4.85 \times 10^{-08}$ & -0.721 & TEMRA CD4+ cells \\
+    \hline
+    \multirow{13}{*}{rs113341849} & \multirow{13}{*}{3:46384204-A} & \multirow{5}{*}{MFI} & $2.07 \times 10^{-22}$ & -1.217 & CD8+ cells \\
+                                  &                                &                      & $1.49 \times 10^{-29}$ & -1.376 & TEM CD8+ cells \\
+                                  &                                &                      & $2.87 \times 10^{-14}$ & -0.969 & TEMRA CD8+ cells \\
+                                  &                                &                      & $7.21 \times 10^{-15}$ & -1.001 & TEMRA CD4+ cells \\
+                                  &                                &                      & $8.07 \times 10^{-18}$ & -1.088 & mTreg \\
+    \cline{3-6}
+                                  &                                & \multirow{9}{*}{CP}  & $2.68 \times 10^{-14}$ & -0.965 & CD4+ cells \\
+                                  &                                &                      & $2.42 \times 10^{-13}$ & -0.907 & CD8+ cells \\
+                                  &                                &                      & $6.30 \times 10^{-16}$ & -1.036 & TEM CD8+ cells \\
+                                  &                                &                      & $1.41 \times 10^{-15}$ & -1.024 & EM CD8+ cells \\
+                                  &                                &                      & $3.82 \times 10^{-22}$ & -1.202 & EM CD4+ cells \\
+                                  &                                &                      & $1.55 \times 10^{-18}$ & -1.087 & TEMRA CD8+ cells \\
+                                  &                                &                      & $5.45 \times 10^{-22}$ & -1.196 & TEM CD4+ cells \\
+                                  &                                &                      & $7.36 \times 10^{-20}$ & -1.149 & mTreg \\
+    \cline{1-2} \cline{4-6}
+    rs9670662                     & 13:111098701-A                 &                      & $2.60 \times 10^{-08}$ & 0.429 & CM CD4+ cells \\
+    \hline
+  \end{tabular}
+  \caption{\label{tab:chp5suptab2} \textbf{Genomic-wide significant CCR5 QTL SNPs in healthy individuals.}}
+  \textit{Abbreviations}: CM = central memory, EM = effector memory cells (CD45RA-CCR7-), TEMRA = effector memory cells expressing CD45RA (CD45RA+CCR7-), and TEM = total effector memory (i.e. the total pool of effector memory cells).
+\end{table}
+
+
+\newpage
+\begin{table}[H] % Supplementary table 3
+  \begin{tabular}{lll}
+    \hline
+    Gene & Strand & Primer sequence \\
+    \hline
+    CCR5 & Forward & GTCCCTTCTGGGCTCACTAT \\
+    CCR5 & Reverse & CCCTGTCAAGAGTTGACACATTGTA \\
+    CCR5AS & Forward & TCCTGGTCCCCGTATTGAAT \\
+    CCR5AS & Reverse & AGGAAGGTATGTGGTGACCA \\
+    CCR1 & Forward & CACAGGCTTGTACAGCGAGA \\
+    CCR1 & Reverse & CTGCAGGTGTGGTGAGTGAA \\
+    CCR3 & Forward & AGCAGAGCCGGAACTCTCTA \\
+    CCR3 & Reverse & GATGATGAGTACGCTGCCCA \\
+    CCRL2 & Forward & TTGGACTGTACTTCGTGGGC \\
+    CCRL2 & Reverse & TGTTACCCATGCCAGGACAC \\
+    CCR2 & Forward & TACCAACGAGAGCGGTGAAG \\
+    CCR2 & Reverse & TGAACACCAGCGAGTAGAGC \\
+    LTF & Forward & CTATTATGCCGTGGCTGTGG \\
+    LTF & Reverse & TTATCTGCACCGGGAACACA \\
+    \textit{CCR5d32} & Forward & CAAAAAGAAGGTCTTCATTACACC \\
+    \textit{CCR5d32} & Reverse & CCTGTGCCTCTTCTTCTCATTTCG \\
+    \hline
+  \end{tabular}
+  \caption{\label{tab:chp5suptab3} \textbf{Primers sequences used to determine gene expression and \textit{CCR5d32}.}}
+\end{table}
+
+
+% Reference list
+\section*{References}
+\printbibliography[heading=none]
+
+\clearpage
+
+\end{refsection}
+\end{document}
+
+% vim: set tw=2000:

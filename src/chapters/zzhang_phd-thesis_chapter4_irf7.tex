@@ -1,0 +1,536 @@
+\documentclass{book}
+
+\begin{document}
+\marginwatermark{\thechapter}{-220}
+\renewcommand{\thetable}{\textbf{Table \arabic{chapter}.\arabic{table}}}
+\renewcommand{\thefigure}{\textbf{Figure \arabic{chapter}.\arabic{figure}}}
+
+\begin{refsection} % To make a local bibliography
+
+\chapter{\textit{IRF7} and \textit{RNH1} are modifying factors of HIV-1 reservoirs: a genome-wide association analysis}
+\textbf{Zhenhua Zhang}\textsuperscript{*}, Wim Trypsteen\textsuperscript{*}, Marc Blaauw, Xiaojing Chu, Sofie Rutsaert, Linos Vandekerckhove, Wouter van der Heijden, Jéssica Cristina dos Santos, Cheng-Jian Xu, Morris A. Swertz, André J. van der Ven\textsuperscript{+}, Yang Li\textsuperscript{+}
+
+
+\vfill
+\begin{flushright}
+  \textsuperscript{*}These authors contributed equally to this work. \par
+  \textsuperscript{+}Corresponding authors. \par
+  \textit{BMC Med. \url{https://doi.org/10.1186/s12916-021-02156-5}}
+\end{flushright}
+
+
+% Abstract
+\newpage
+\subsection*{Abstract}
+\paragraph*{Background}
+Combination antiretroviral treatment (cART) cannot eradicate HIV-1 from the body due to the establishment of persisting viral reservoirs which are not affected by therapy and reinitiate new rounds of HIV-1 replication after treatment interruption.
+These HIV-1 reservoirs mainly comprise long-lived resting memory CD4+ T cells and are established early after infection.
+There is a high variation in the size of these viral reservoirs among virally suppressed individuals.
+Identification of host factors that contribute to or can explain this observed variation could open avenues for new HIV-1 treatment strategies.
+
+\paragraph*{Methods}
+In this study, we conducted a genome-wide quantitative trait locus (QTL) analysis to probe functionally relevant genetic variants linked to levels of cell-associated (CA) HIV-1 DNA, CA HIV-1 RNA, and RNA:DNA ratio in CD4+ T cells isolated from blood from a cohort of 207 (Caucasian) people living with HIV-1 (PLHIV) on long-term suppressive antiretroviral treatment (median = 6.6 years).
+CA HIV-1 DNA and CA HIV-1 RNA levels were measured with corresponding droplet digital PCR (ddPCR) assays, and genotype information of 522,455 single-nucleotide variants was retrieved via the Infinium Global Screening array platform.
+
+\paragraph*{Results}
+The analysis resulted in one significant association with CA HIV-1 DNA (rs2613996, $P < 5 \times 10^{-8}$) and two suggestive associations with RNA:DNA ratio (rs7113204 and rs7817589, $P < 5 \times 10^{-7}$).
+Then, we prioritized \textit{PTDSS2}, \textit{IRF7}, \textit{RNH1}, and \textit{DEAF1} as potential HIV-1 reservoir modifiers and validated that higher expressions of \textit{IRF7} and \textit{RNH1} were accompanied by rs7113204-G.
+Moreover, RNA:DNA ratio, indicating relative HIV-1 transcription activity, was lower in PLHIV carrying this variant.
+
+\paragraph*{Conclusions}
+The presented data suggests that the amount of CA HIV-1 DNA and RNA:DNA ratio can be influenced through \textit{PTDSS2}, \textit{RNH1}, and \textit{IRF7} that were anchored by our genome-wide association analysis.
+Further, these observations reveal potential host genetic factors affecting the size and transcriptional activity of HIV-1 reservoirs and could indicate new targets for HIV-1 therapeutic strategies.
+
+% Main text
+\clearpage
+\newpage
+\section*{Background}
+The introduction of combination antiretroviral treatment (cART) has substantially reduced mortality and increased the life quality of people living with human immunodeficiency virus (HIV) \cite{Palella1998Declining}.
+However, cART does not eradicate HIV-1 from the body while the establishment of persisting viral reservoirs that are not affected by cART, can reinitiate new rounds of HIV-1 replication after treatment interruption.
+These HIV-1 reservoirs mainly comprise long-lived resting memory CD4+ T cells and are established early after infection \cite{Le2011Rebound}.
+
+Although early treatment initiation is part of current standard care guidelines, there is high variability in the size and transcriptional activity of the viral reservoir among virally suppressed individuals which is associated with several clinical parameters such as pre-ART viral load \cite{Bachmann2019Determinants}, time to viral suppression \cite{Bachmann2019Determinants}, CD4 nadir \cite{Boulassel2012CD4}, cART initiation timing \cite{Ananworanich2015How,Buzon2014Long}, and the number viral blips under cART \cite{Bachmann2019Determinants,Chun2002Relationship}.
+Hence, identifying host (genetic) factors that contribute to or can explain this observed variation could lead to new (personalized) HIV-1 treatment strategies.
+
+Since the mid-1990s, host genes and genetic variants associated with HIV-1-related phenotypes have been extensively explored.
+Firstly, genetic determinants of HIV-1 control in untreated PLHIV were analyzed and genome-wide association studies (GWAS) identified the importance of the human leukocyte antigen (HLA) locus \cite{Kulkarni2011Differential,Thomas2009HLA,Herráiz2017Impact,Limou2009Genomewide,Fellay2009Common}.
+Next, several genome-wide association studies (GWAS) have investigated host genetic associations with HIV-1 reservoir size proxied by total HIV-1 DNA in peripheral blood mononuclear cells (PBMCs) and identified modifying genetic variants in major histocompatibility complex (MHC) regions \cite{Thorball2020Host,Dalmasso2008Distinct}.
+However, limited work was performed on genetic associations with cell-associated HIV-1 RNA (CA HIV-1 RNA) levels and the ratio of CA HIV-1 RNA to CA HIV-1 DNA (RNA:DNA ratio), the latter indicating (relative) HIV-1 reservoir transcription levels \cite{Pasternak2018What}.
+
+In this study, we hypothesized that host genetic factors can influence (relative) viral transcription activity in long-term treated PLHIV.
+To test the hypothesis, we conducted a genome-wide quantitative trait locus (QTL) analysis of CA HIV-1 DNA, CA HIV-1 RNA (transcription activity), and RNA:DNA ratio (relative transcription activity) in CD4+ T cells from a cohort of 207 (Caucasians) PLHIV under long-term suppressive cART (median = 6.6 years) to probe functionally relevant genetic variants.
+
+\section*{Methods}
+\subsection*{Participants}
+A cohort of 207 Caucasian HIV-infected individuals on suppressive cART was included in this study as part of a human functional genomics project (\url{www.humanfunctionalgenomics.org}) \cite{Pappalardo2016The}.
+The subjects were randomly recruited from the HIV clinic at Radboudumc according to in- and exclusion criteria.
+Inclusion criteria were: Caucasian ethnicity, age $\ge$ 18 years, receiving cART $>$ 6 months, and latest HIV-RNA levels $<$ 200 copies/ml.
+Exclusion criteria were as follows: signs of acute or opportunistic infections, antibiotic use $<$ 1 month 48 prior to the study visit, or active hepatitis B/C.
+Subject characteristics are summarized in \ref{tab:cht4tab1}.
+Based on the following criteria: less than 6-month cART (4), HIV-2 infection (1), no suppressed viral load (2), no CA HIV-1 DNA or RNA measurement available (1), we excluded another 8 individuals and finalized a 207 PLHIV cohort for downstream analyses.
+
+\subsection*{Quantification of cell-associated HIV-1 DNA and HIV-1 RNA from CD4+ T cells}
+
+Total CA HIV-1 DNA and CA HIV-1 RNA were measured in 219 samples from patients infected with HIV-1.
+Frozen PBMCs were thawed and CD4+ T cells were isolated using EasySep Human CD4+ T Cell Isolation Kit (Stemcell Technologies, Vancouver, Canada).
+CD4+ T cells were aliquoted in two and genomic DNA and RNA were extracted in parallel using the DNeasy Blood \& Tissue kit (Qiagen, Hilden, Germany), respetively, using the manufacturer's protocol with an additional step of using 75 $\mu l$ elution buffer on the column heated at 56 °C for 10 min, and by Innuprep RNA kit eluting in 30 $\mu l$ buffer (Westburg, Leusden, The Netherlands).
+Total RNA was reverse transcribed to cDNA by qScript cDNA SuperMix according to the manufacturer's protocol (Quantabio, Beverly, MA, USA).
+Subsequently, HIV-1 DNA and CA HIV-1 RNA were measured by ddPCR (Bio-Rad).
+Before PCR amplification, 8.65 $\mu l$ of genomic DNA was restricted by EcoRI (Promega) in a total volume of 10 $\mu l$ restriction digest for a minimum of 1 h at room temperature.
+Total HIV-1 DNA and HIV-1 RNA were measured by adding respectively 2 $\mu l$ and 4 $\mu l$ in triplicates to ddPCR mix containing 10 $\mu l$ 2$\times$ ddPCR Supermix for Probes, 500 nM primers, and 300 nM probe.
+DNA was amplified by PCR with an initial denaturation step of 10 min at 95 °C, followed by a denaturation step for 30 s at 95 °C and an annealing/elongation step for 1 min at 56 °C for 40 cycles and a final step of 10 min at 98 °C.
+Total HIV-1 DNA was normalized by measuring the reference gene RPP30 in duplicate by ddPCR and expressed per million PBMCs.
+Droplets were read by QX200 droplet reader (Bio-Rad) and automatic threshold setting was done using ddpcRquant software \cite{Trypsteen2015ddpcRquant}.
+For HIV-1 RNA normalization, three reference genes per patient, B2M, GAPDH, and ACTB were measured with LightCycler 480 SYBR Green I Master mix.
+Copies HIV-1 RNA was divided by the geometric mean of the reference genes and expressed per million cells by dividing by the theoretical number of cells per $\mu l$ RNA.
+
+\subsection*{Genotype and imputations}
+\subsubsection*{Genotypes and quality control}
+DNA obtained from the study cohort was genotyped using the commercially available Infinium® Global Screening Array.
+Quality controls were applied per sample to exclude zero samples with a call rate $\leq$ 0.90 and sex mismatch, quality control per SNP to exclude variants with a call rate $\leq$ of 0.90 and a MAF $\leq$ 0.001.
+Four ethnic outliers were filtered out by merging multidimensional scaling plots of samples with 1000 Genomes data, and these outliers were excluded from further analysis.
+There were no related individuals with identity by descent higher than 0.185 excluded.
+Between any two related samples, the sample with more missing data was removed.
+The quality control filters resulted in a data set of 215 samples containing genotype information of 522,455 variants for further imputation.
+
+\subsubsection*{Imputation and quality control}
+The strands and variants-identifiers were aligned to HRC 1.1 using HRC-1000G-check-bim.pl provided by Michigan Imputation Server \cite{Das2016Next}.
+The data were phased using Eagle v2.4 using HRC 1.1 2016 hg 2019 reference panel as a reference panel.
+Without $R^2$ filter, using hg19 as array build, Eagle v2.4 as phasing tool, European population, and we performed both quality control and imputation by the Michigan Imputation Server.
+After imputation, variants with $MAF < 0.1$ and imputation quality score of $R^2 < 0.3$ were excluded.
+The final imputed data set consisted of 215 individuals and 4,307,246 variants for downstream analyses.
+
+\subsection*{QTL mapping analysis and function annotation}
+
+\subsubsection*{Data preparation and preprocessing}
+Three traits were either measured or calculated based on measured values.
+Two of them, quantities of CA HIV-1 DNA and CA HIV-1 RNA per $1 \times 10^6$ CD4+ T cells, were measured and log-transformed to smooth the skewness of raw data.
+As the third trait, a ratio of CA HIV-1 RNA to CA HIV-1 DNA was calculated and log-transformed.
+In total, phenotypes were generated from 219 individuals.
+Four covariables were taken into consideration to correct the linear regression models.
+Concretely, sex was encoded as 0 and 1 for males and females, respectively.
+Age was represented by years (months and days were divided into decimal numbers).
+We also obtained each individual's duration of known HIV-1 infection which also transformed into years and CD4 nadir which represents the lowest counts of CD4 T cells.
+The final four-covariable set consisting of 211 individuals was acquired.
+Finally, by intersecting the individuals with genotypes, phenotypes, and covariables, a final data set including 207 individuals was prepared for the QTL mapping analysis.
+
+\subsubsection*{Genome-wide QTL analysis}
+The standard additive linear regression models were constructed by MatrixEQTL (version 2.3) \cite{Shabalin2012Matrix} to investigate the contribution of genome-wide genotypes to the three traits.
+Since there are only three phenotypes and they are highly correlated with each other, $P < 5 \times 10^{-8}$ and $P < 5 \times 10^{-7}$ were used as the genome-wide significance and suggestive thresholds, respectively.
+The models were corrected by age, sex, CD4 nadir, and duration of known HIV-1 infection.
+To investigate genome-wide significant associations, summary statistics for each phenotype were uploaded to the LocusZoom server to visualize regional QTL mapping scan results.
+Genes in 500 K base-pair up- and downstream to the top SNPs were included in the LocusZoom plots \cite{Pruim2010LocusZoom}.
+Manhattan plots and Q-Q plots were drawn by package qqman (version 0.1.4) \cite{D2018qqman}.
+Analysis using MatrixEQTL and qqman were performed by in-house scripts in the R programming language (version 3.5.1).
+
+\subsection*{LD-base estimation and clumping}
+SNPs with $P < 5 \times 10^{-8}$ were pooled then the pair-wise LD were calculated based on the reference population (EUR from 1000 genome project phase 3).
+Any SNP with LD $R^2 < 0.6$ to the lead SNP was taken as an independent suggestive SNP.
+Based on each independent suggestive SNP, blocks of SNP with LD $R^2 \ge 0.6$ were identified as LD blocks.
+The 636 SNPs downloaded from GWAS catalog were clumped by PLINK \cite{Purcell2007PLINK} tool (v1.90b6.18 64-bit) using the following parameters: \textit{--clump-p1 5e-8 --clump-p2 1 --clump-r2 0.6 --clump-kb 500}.
+The command reduced the SNPs from 636 to 41 independent SNPs.
+
+\subsection*{Functional annotations for variants using VEP, HaploReg, RegulomeDB, and SpliceAI}
+The consequence of variants was annotated by Variant Effect Predictor (VEP) \cite{McLaren2016The}, release 90.5, using GRCh37 as a reference and default parameter settings: \textit{--af --appris --biotype --buffer\_size 500 --check\_existing --distance 5000 --mane --polyphen b --pubmed --regulatory --sift b --species homo\_sapiens --symbol --transcript\_version --tsl --cache}.
+To explore the non-coding variants, HaploReg \cite{Ward2011HaploReg} and RegulomeDB \cite{Boyle2012Annotation} were used together by exploiting the LD information of haplotype blocks from the 1000 Genomes Project.
+HaploReg v4.1 (update 2015.11.05) was used to identify genetic loci that are linked to identified QTL SNPs by $R^2 \ge 0.6$ in European populations.
+By assigning protein binding and chromatin state annotations (from Roadmap Epigenomics and ENCODE projects) to linked SNPs and indels, effects of SNPs on regulatory motifs, expression, and sequence conservation were estimated.
+As a complementary, RegulomeDB was used to explore regulatory elements including DNase hypersensitivity, biding sites of transcription factors, and promoter regions in non-coding genome regions.
+SpliceAI \cite{Jaganathan2019Predicting} online version was used to explore the potential role of identified SNPs in alternative splicing using default settings (Genome version “hg19”, Score type “raw”, Max distance “50”).
+
+\subsection*{Functional mapping and annotation by FUMA}
+To understand the identified associations and prioritize gene loci that are potentially causal to the traits, FUMA (v1.3.5e) was used to analyze the summary statistics obtained from the QTL mapping analysis \cite{Watanabe2017Functional}.
+In brief, summary statistics of each QTL mapping analysis were uploaded and first analyzed by the ``snp2gene'' function.
+By this function, independent significant SNPs were identified by p value threshold $5 \times 10^{-7}$ and $R^2 \ge 0.6$ (comparing to index SNPs).
+Then, candidate genes were prioritized for each independent significant SNPs, respectively.
+Correspondingly, using the FUMA tool, we attributed our QTLs to gene based on (1) positional mapping to identify genes that are close to the QTL SNPs; (2) expression QTLs (eQTL) mapping to check whether our QTL SNPs affect the expression of candidate genes; (3) chromatin interaction mapping to estimate whether the SNP involves in modulating gene expression epigenetically.
+Next, mapped genes were filtered and prioritized by default parameters, and further function annotations were conducted by the ``gene2func'' function on selected protein-coding genes.
+
+\subsection*{RNA isolation and qPCR}
+RNA was extracted from the whole blood of patients infected by HIV-1 using the QIAGEN PAXgene Blood RNA extraction kit (QIAGEN, Netherlands) according to the instructions of the manufacturer.
+Subsequently, RNA was reversely transcribed into cDNA by iScript (Bio-Rad, Hercules, CA, USA).
+Diluted cDNA was used for qPCR that was done by using the StepOnePlus sequence detection systems (Applied Biosystems, Foster City, CA, USA) with SYBR Green Mastermix (Applied Biosystems).
+The mRNA relative expression analysis was done with the 2-dCt method and normalized against the housekeeping gene RPL37A.
+Primer sequences are listed in \textbf{Additional file 1: Table S1}.
+
+\subsection*{PBMC stimulation and cytokine assessment}
+Venous blood of patients infected with HIV-1 was collected into 10-mL EDTA tubes (Monoject).
+PBMC isolation was performed by density centrifugation of blood diluted 1:1 in pyrogen-free PBS over Ficoll-Paque (GE healthcare, UK).
+After isolation, the cells were resuspended in RPMI culture medium (Roswell Park Memorial Institute medium, Invitrogen, CA, USA) supplemented with 50 mg/mL gentamicin (Centrafarm), 2 mM glutamax (GIBCO), and 1 mM pyruvate (GIBCO) supplemented with 10% human pooled serum.
+0.5 $\times$ 106 PBMCs in a 100 $\mu l$ volume were added to round-bottom 96-well plates (Greiner Bio-One, Frickenhausen Germany).
+Cells were incubated either 100 $\mu g$/mL of polyinosinic: polycytidylic acid (Poly I:C), a TLR3 agonist and 5 $\mu g$/mL Imiquimod, a TLR7 agonist for 24 h and 7 days, respectively at 37 °C and 5\% CO2.
+Levels of interferon (IFN)-$\alpha$ and -$\gamma$ were measured in the supernatants using Verikine Human IFN Alpha ELISA kit (PBL Assay Science, Piscataway, NJ, USA) and human IFN-Gamma ELISA kit (R\&D Systems), according to the instructions of the manufacturer.
+
+\subsection*{Metabolomics measurement}
+Time-of-flight mass spectrometry was used to perform the untargeted metabolomics by injection electrospray.
+Metabolites of plasma samples from the participants were identified at General Metabolics' labs according to previous methodology \cite{Fuhrer2011High}.
+No restriction (e.g., eating, drinking or smoking) was applied before collecting blood samples from the participants.
+In a fixed time-frame (8-11 AM), venous blood was collected in sterile 10-ml EDTA BD Vacutainer® tubes and the collected samples were frozen and stored before metabolite identification.
+Mass-to-charge ratio (ion m/z) was used to identify metabolites.
+Specifically, the relative ion intensities in counts of interested metabolites (seven types of phosphatidylserines) from 174 participants were selected for downstream analysis.
+
+\subsection*{Statistics}
+The statistical analyses were conducted in the R environment of version 3.5.1 with default settings and function parameters if no more information is mentioned here.
+Subject characteristics were summarized and IRQs of continuous variables were calculated to indicate the variability of the phenotype.
+Spearman's $\rho$ were calculated by cor.test function pair-wisely to estimate the relationships among all subject characteristics included by the current study, and subsequently, the corresponding p values were adjusted by p.adjust using “fdr” method.
+Student's test was performed to estimate the difference of CA HIV-1 DNA, CA HIV-1 RNA, and RNA:DNA ratio between males and females at a significant level of 0.05.
+A linear model was constructed to evaluate the variance of CA HIV-1 RNA using CA HIV-1 DNA, age, sex, duration of known HIV-1 infection, and CD4 nadir as predictors, and coefficients were estimated using default parameters by lm function and default parameters.
+The gene ontology term enrichment was estimated by the hypergeometric test which is implemented in FUMA \cite{Fuhrer2011High}, and the corresponding p values were adjusted using the FDR method which is also implemented internally in FUMA.
+The differential expression analysis for each candidate gene and cytokines was performed using a two-sample Wilcoxon test ($P < 0.05$).
+DESeq2 \cite{Love2014Moderated} were used to estimate the differential expression of prioritized genes in the downloaded gene expression data from GEO GSE127468 \cite{Shytaj2020Alterations}.
+
+\subsection*{Data availability}
+For the analysis of this study, the following tools were used: MatrixEQTL (v2.3), qqman (v0.1.4), DESeq2 (version 1.30.1), PLINK (v1.90b6.18 64-bit), FUMA (v1.3.5e), VEP (release 90.5), HaploReg (v4.1), R (version 3.5.1), Python (version 3.6.3).
+Publicly available in-house scripts for the QTL mapping, statistical analysis, and visualization are publicly available (\url{https://github.com/zhenhua-zhang/zzhang-etal-hiv-reservoir}).
+
+\section*{Results}
+\subsection*{Study cohort and CA HIV-1 DNA/RNA measurements}
+We measured total CA HIV-1 DNA and CA HIV-1 RNA from 219 Dutch PLHIV using chronic cART (Methods) at the Radboudumc (Nijmegen, The Netherlands) \cite{van2021Chronic} and 215 of them were genotyped successfully.
+The overview of the study is depicted in \ref{fig:cht4fig1}A.
+Patient characteristics are summarized in \ref{fig:cht4fig1}B and \ref{tab:cht4tab1}.
+In brief, the PLHIV cohort included 190 males and 17 females with a median age of 52.5 years interquartile range (IQR) of 13.2 and the median duration of known HIV-1 infection is 8.31 years (IQR = 9.5).
+The median CA HIV-1 RNA and DNA was 2.20 log copies (IQR = 0.59) and 3.19 log copies (IQR = 0.63) per million CD4+ T cells, respectively, and the median RNA:DNA ratio was 0.112 (IQR = 0.12).
+
+First, we investigated the correlation among the measured HIV-1 reservoir features.
+Based on Spearman's $\rho$ analysis, CA HIV-1 RNA showed a positive correlation ($\rho = 0.67$, $FDR < 1 \times 10^{-16}$) with CA HIV-1 DNA (\ref{fig:cht4fig1}C and \ref{fig:cht4fig1}D) which is in line with previous work \cite{Pasternak2018What}.
+Then, we found they both showed a significant negative correlation with CD4 nadir ($\rho = -0.50$, $FDR = 2.25 \times 10^{-13}$ and $\rho = -0.53$, $FDR = 1.05 \times 10^{-15}$ for CA HIV-1 DNA and CA HIV-1 RNA, respectively), which is consistent with previous results \cite{Chun2002Relationship,Alidjinou2017The}.
+However, CD4 nadir is not correlated with RNA:DNA ratio ($\rho = - 0.03$, FDR = 0.68), which indicates that the CD4 nadir similarly correlates with both CA HIV-1 DNA and CA HIV-1 RNA levels in CD4+ T cells.
+Of note, CA HIV-1 RNA, CA HIV-1 DNA, and RNA:DNA ratio show consistently positive correlations with duration of known HIV-1 infection (CA HIV-1 DNA, $\rho = 0.33$, $FDR = 1.54 \times 10^{-5}$; CA HIV-1 RNA, $\rho$ = 0.18, FDR = 0.02; RNA:DNA ratio, $\rho$ = 0.19, FDR = 0.012).
+Furthermore, age is moderately related to any of the three HIV-1 reservoir traits, while sex does not have a significant impact (\textbf{Additional file 2: Figure S1}).
+
+Lastly, based on a full model analysis using CA HIV-1 RNA as the response variable, all abovementioned host factors and CA HIV-1 DNA explained 54.45\% of the total inter-individual variation of CA HIV-1 RNA.
+Among all those factors, the level of CA HIV-1 DNA contributes the largest with 47.67\% of explained variance.
+This finding leads to the hypothesis that the rest of the unexplained variation could be due to host genetic factors.
+
+% Table 1
+\begin{table}
+  \begin{tabular}{ll}
+    \hline
+    & N = 207 \\
+    \hline
+    Age, median years (IQR) & 52.50 [13.20] \\
+    Male sex (\%) & 190 (91.8\%) \\
+    HIV diagnosis, median years [IQR] & 8.31 [9.50] \\
+    cART duration, median years [IQR] & 6.60 [7.80] \\
+    Plasma viral load $<$ 40 copies/ml, n (\%) & 201 (97.1\%) \\
+    Abs. CD4 T cell count nadir, median cells/$\mu l$ (IQR) & 250 [230] \\
+    Abs. CD4 T cell count at admission, median cells/$\mu l$ (IQR) & 650 [340] \\
+    CA HIV-1 RNA, median log10 copies/106 CD4 cells (IQR) &  2.20 [0.59] \\
+    CA HIV-1 DNA, median log10 copies/106 CD4 cells (IQR) & 3.19 [0.63] \\
+    CA HIV-1 RNA/ DNA median ratio (IQR) & 0.112 [0.12] \\
+    \hline
+  \end{tabular}
+  \caption{\label{tab:cht4tab1}
+    \textbf{Patient characteristics.}
+  }
+\end{table}
+
+% Figure 1
+\begin{figure}
+  \includegraphics[width=\textwidth]{Chapter4_figure1.png}
+  \caption{
+    \label{fig:cht4fig1} \textbf{Study design and host characteristics.}
+    \textbf{A} Overview of the study design.
+    \textbf{B} Patient characteristics corresponding to \ref{tab:cht4tab1}, including distributions of HIV nucleic acid measurement (CA HIV-1 DNA, CA HIV-1 RNA, and RNA:DNA ratio) and host factors (age, CD4 nadir, and duration of HIV-1 infection).
+    \textbf{C} Spearman’s $\rho$ among CA HIV-1 DNA, CA HIV-1 RNA, RNA:DNA ratio, and other host factors. The top left triangle shows the $\rho$ value, in which the negative and positive correlation values are colored in blue and red, respectively. The bottom right triangle shows the FDR of each correlation analysis.
+    \textbf{D} Correlation between CA HIV-1 RNA and CA HIV-1 DNA. Theoretically, CA HIV-1 RNA is highly correlated to CA HIV-1 DNA, while, in our data, we found they are correlated by a Pearson’s $r = 0.69$ ($P < 2.0 \times 10^{-16}$)
+  }
+\end{figure}
+
+% Figure 2
+\begin{figure}
+  \includegraphics[width=\textwidth]{Chapter4_figure2.png}
+  \caption{
+    \label{fig:cht4fig2} \textbf{Identified loci associated with CA HIV-1 DNA.}
+    \textbf{A} Manhattan plot of QTL mapping analysis for CA HIV-1 DNA with CA HIV-1 RNA as one of the covariables. One genome-wide significant locus was identified on the short arm of chromosome 11 with leading SNP rs2613996 at the threshold of $P < 5 \times 10^{-8}$.
+    \textbf{B} Box plot of CA HIV-1 DNA for each genotype of rs2613996. The association p value is $9.72 \times 10^{-10}$ and the rs2613996-A allele contributes to CA HIV-1 DNA positively.
+    \textbf{C} LocusZooom plot of the top SNP of QTL mapping analysis for CA HIV-1 DNA. Every dot in the figures represents a SNP at a threshold of $P < 0.01$. The top SNP was colored in purple and shaped by a diamond marker. The color of the dots indicates its LD $R^2$ value to the top SNP
+  }
+\end{figure}
+
+\subsection*{Genome-wide mapping of genetic variants associated with HIV-1 reservoir measurements}
+To identify genetic determinants of CA HIV-1 DNA, CA HIV-1 RNA, and RNA:DNA ratio in this PLHIV cohort, we conducted a QTL mapping analysis using a linear model.
+The genotype information of the subjects was measured by the genome-wide Illumina SNPs array followed by imputation.
+We filtered the imputed variants using thresholds of minor allele frequency (MAF) $< 0.1$, imputation quality score $R^2 < 0.3$, resulting in 4,307,246 SNPs in total.
+
+First, for QTL mapping analysis on CA HIV-1 DNA and CA HIV-1 RNA, we applied an additive linear regression model with covariables including age, sex, CD4 nadir, and HIV-1 duration with either CA HIV-1 DNA or CA HIV-1 RNA (\ref{fig:cht4fig2}A and Additional file 2: Figure S2A-C).
+For CA HIV-1 DNA, one genome-wide significant locus with top SNP rs2613996 (Chr11:470331) was identified ($P < 5 \times 10^{-8}$).
+
+Then, for the HIV-1 RNA:DNA ratio, which has been reported to be a proxy for the relative transcription activity of the reservoir \cite{Pasternak2018What,Hong2016Novel}, we applied a similar regression model with age, sex, CD4 nadir, and HIV-1 duration as covariables.
+At a suggestive threshold of $P < 5 \times 10^{-7}$, we identified two loci (\ref{fig:cht4fig3}A and \ref{tab:cht4tab2}) that are associated with the RNA:DNA ratio at top SNP rs7817589 (Chr8:82154232) and rs7113204 (Chr11:500248), respectively.
+We also noticed that at the locus by rs7113204, two additional genetic variants, rs2613996 (Chr11:470331) and rs12366210 (Chr11:650994), both show a $P < 5 \times 10^{-7}$ but they are independent from the top SNP and each other ($R^2 < 0.6$).
+
+\subsection*{Functional annotation of genetic variants associated with CA HIV-1 DNA and RNA:DNA ratio}
+To explore the functional relevance and biological effects of these three QTLs, we firstly assessed the genetic consequence (e.g., missense mutation) of the identified QTL SNPs using VEP \cite{McLaren2016The}.
+The CA HIV-1 DNA-associated SNP rs2613996, located in the \textit{PTDSS2} gene, was predicted as a \enquote{regulatory region variant}, while the rest of the SNPs were annotated as either ``intron variants'' or ``upstream gene variants'' (\ref{tab:cht4tab2}).
+None of the intron variants were identified to be associated with alternative splicing events, according to the SpliceAI online database \cite{Jaganathan2019Predicting}.
+
+We also discovered two synonymous variants by applying HaploReg \cite{Ward2011HaploReg} to explore linked SNPs in haplotype blocks of the identified QTL SNPs.
+One of the variants, rs10615, which is in strong linkage disequilibrium (LD, $R^2 = 0.96$, $D' = 1$) with the RNA:DNA ratio associated QTL SNP rs12366210, is located at the \textit{DEAF1} gene.
+This gene encodes a transcription factor affecting HNRPA2B1 that subsequently involves the transport of HIV-1 genomic RNA out of the nucleus \cite{Michelson1999Nuclear,Lévesque2006Trafficking,Bériault2004A}.
+The other variant, rs17584, which is in strong LD with rs7113204 ($R^2 = 0.81$, $D' = 1.0$), is located within the \textit{RNH1} gene.
+
+Next to these approaches, we applied the FUMA tool \cite{Watanabe2017Functional} to interpret the functional effect of identified QTLs.
+We identified a list of 66 candidate genes (\textbf{Additional file 1: Table S2}) which showed enrichment for pathways involved in the immune system, lipid metabolism, and regulation of viral entry into host cells (hypergeometric tests, adjusted $P < 0.05$, \textbf{Additional file 2: Figure S3}).
+The candidate genes were further prioritized based on literature and potential involvement in HIV-1 processes, resulting in the following four genes for follow-up analysis: \textit{PTDSS2}, \textit{RNH1}, \textit{IRF7}, and \textit{DEAF1} (\ref{tab:cht4tab2}).
+
+% Figure 3
+\begin{figure}
+  \includegraphics[width=\textwidth]{Chapter4_figure3.png}
+  \caption{
+    \label{fig:cht4fig3} \textbf{Identified loci associated with RNA:DNA ratio.}
+    \textbf{A} Manhattan plot of QTL mapping analysis for the RNA:DNA ratio. No genome-wide significant locus was identified at the threshold of $P < 5 \times 10^{-8}$; however, we identified two suggestive associations with the RNA:DNA ratio at the threshold of $P < 5 \times 10^{-7}$.
+    \textbf{B} Box plot for each genotype of rs2613996 from QTL mapping analysis for the RNA:DNA ratio. The top SNP, rs2613996 is suggestively associated with the trait ($P = 2.19 \times 10^{-7}$). This SNP is also the top SNP of the locus identified as genome-wide significant association with CA HIV-1 DNA.
+    \textbf{C} LocusZoom plot of the independent SNP of QTL mapping analysis for CA HIV-1 DNA on chromosome 11 (rs2613996).
+  }
+\end{figure}
+
+% Figure 4
+\begin{figure}
+  \includegraphics[width=\textwidth]{Chapter4_figure4.png}
+  \caption{
+    \label{fig:cht4fig4} \textbf{}
+    \textbf{A} Boxplot for each genotype of rs7113204 from QTL mapping analysis for the RNA:DNA ratio. The estimated association is suggestive at a p value of $1.72 \times 10^{-7}$. The estimated allele is rs7113204-G and is negatively associated with the RNA:DNA ratio.
+    \textbf{B} LocusZoom plot of the top SNP of QTL mapping analysis for the RNA:DNA ratio on chromosome 11 (rs7113204).
+    \textbf{C} Boxplot for each genotype of rs12366210 from QTL mapping analysis for the RNA:DNA ratio. The rs12366210-G allele of this independent SNP is negatively associated with the RNA:DNA ratio and the SNP is independent of the top SNP of the locus (i.e., rs7113204).
+    \textbf{D} LocusZoom plot of the top SNP of QTL mapping analysis for the RNA:DNA ratio on chromosome 11 (rs12366210).
+  }
+\end{figure}
+
+\subsection*{CA HIV-1 DNA-associated rs2613996 is correlated with the expression of the \textit{PTDSS2} gene}
+The genome-wide QTL mapping analysis identified rs2613996 at \textit{PTDSS2} to be associative with CA HIV-1 DNA ($P = 9.72 \times 10^{-10}$, \ref{tab:cht4tab2}, \ref{fig:cht4fig2}A and \ref{fig:cht4fig2}C) and RNA:DNA ratio ($P = 2.19 \times 10^{-7}$, \ref{tab:cht4tab2}, \ref{fig:cht4fig3}A and \ref{fig:cht4fig3}C).
+Since the SNP was also implicated as a potential regulatory region variant of \textit{PTDSS2}, we further assessed its association with the expression level of the \textit{PTDSS2}.
+By probing whole blood eQTL data from healthy donors (eQTLGen Consortium) \cite{Võsa2018Unraveling}, we found that rs2613996 is an eQTL SNP to \textit{PTDSS2} ($P = 3.1 \times 10^{-50}$, \textbf{Additional file 1: Table S3}) and importantly the estimated allele (rs2613996-A) was positively correlated with the upregulation of this gene and CA HIV-1 DNA levels simultaneously.
+
+To validate the function of \textit{PTDSS2} in HIV-1 reservoir scenario, the intensity of PS was measured using TOF-MS system method for the same cohort.
+As shown in \textbf{Additional file 2: Figure S4A}, we estimated the correlation between PS and RNA:DNA ratio using Spearman's rank-order correlation test, and as expected, RNA:DNA ratio was significantly correlated with two types of PS: HMDB0061555 ($P = 5.66 \times 10^{-3}$, $\rho$ = 0.220) and HMDB0012417 (P = 0.014, $\rho$ = 0.196).
+Then, we also tested the difference of PS intensity between individuals grouped by alleles from both rs2613996 and rs7113204.
+However, for the tested PS, no significant difference across the estimated genotypes was observed (\textbf{Additional file 2: Figure S4B and S4C}), which is consistent with the RNA expression results of \textit{PTDSS2} in current study.
+These results suggest the potential function of PS in the activity of HIV-1 reservoir, while the intensity of PS was modulated not only by \textit{PTDSS2} but other mechanisms.
+
+\subsection*{Identified variants at \textit{RNH1} and \textit{IRF7} are correlated with loci expression and RNA:DNA ratio}
+From the QTL mapping, two loci were identified associated with RNA:DNA ratio at a p value threshold of $5 \times 10^{-7}$ (\ref{tab:cht4tab2}).
+One of the QTLs was indexed by SNP rs7817589 ($P = 2.17 \times 10^{-7}$, \ref{tab:cht4tab2}, \ref{fig:cht4fig3}A, \textbf{Additional file 2: Figure S5A and S5B}) which is also an eQTL SNP associated with the long non-coding RNA (lncRNA) RP11-1149 M10.2 ($P = 3.84 \times 10-14$) by eQTLGen Consortium \cite{Võsa2018Unraveling}.
+As limited information is available for this lncRNA, we performed a co-expression network analysis to identify co-regulated genes using GeneNetwork \cite{Deelen2019Improving}.
+Here, we ascertained \textit{PAG1} as a gene co-expressing with the identified lncRNA (co-regulation $P = 5.3 \times 10^{-18}$, \ref{tab:cht4tab2}).
+
+The other locus associated with the RNA:DNA ratio was pinpointed by rs7113204 ($P = 1.72 \times 10^{-7}$, \ref{tab:cht4tab2}, \ref{fig:cht4fig4}A and \ref{fig:cht4fig4}B).
+This SNP is located at the intronic region of \textit{RNH1} which belongs to the family of proteinaceous cytoplasmic RNase inhibitors, and we found that the SNP significantly correlated with the expression of \textit{RNH1} (\textbf{Additional file 1: Table S3}) \cite{Võsa2018Unraveling}.
+We also observed an \textit{IRF7} association with RNA:DNA ratio based on our prioritization methods and knowledge from published work \cite{Sirois2011TRAF6}.
+We found rs7113204-A allele simultaneously suppresses the expression of \textit{IRF7} (\textbf{Additional file 1: Table S3}) and RNA:DNA ratio (\ref{fig:cht4fig4}A) but accompanies by a higher \textit{RNH1} expression.
+
+% Table 2
+\begin{landscape}
+  \begin{table}
+    \small
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{p{1.6cm}p{2cm}p{2.5cm}p{1.9cm}p{1.5cm}p{2.3cm}p{1.6cm}p{1cm}}
+      \hline
+      SNP rsID                         & Chr:Pos-EffectAllele           & Candidate genes                 & Variant Type                                            & Index SNP & Trait         & P-value                & Beta \\
+      \hline
+      \multirow{2}{*}{rs2613996$^{A,E}$} & \multirow{2}{*}{11:470331-A} & \multirow{2}{*}{$PTDSS2^{B,C}$} & \multirow{2}{2.5cm}{Regulatory, intronic} & rs2613996 & CA HIV-1 DNA  & $9.72 \times 10^{-10}$ & 0.18 \\
+      \cline{5-8}
+                                       &                                &                                 &                                           & rs7113204 & RNA:DNA ratio & $2.19 \times 10^{-7}$  & -0.284 \\
+      \hline
+      rs7113204                        & 11:500248-G                    & $RNH1^B$, $PTDSS2^C$, $IRF7^C$  & Intronic                                  & rs7113204 & RNA:DNA ratio & $1.72 \times 10^{-7}$  & -0.199 \\
+      \hline
+      rs12366210                       & 11:650994-G                    & $DEAF1^B$                       & Intronic                                  & rs7113204 & RNA:DNA ratio & $3.26 \times 10^{-7}$  & -0.165 \\
+      \hline
+      rs7817589                        & 8:82154232-C                   & RP11-1149M10.2, $PAG1^D$        & Intergenic                                & rs7817589 & RNA:DNA ratio & $2.17 \times 10^{-7}$  & 0.252 \\
+      \hline
+    \end{tabular}
+    \caption{
+      \label{tab:cht4tab2} \textbf{Identified genetic variants associated with HIV-1 reservoir features.} \\
+      $^A$ rs2613996 is the top QTL SNP to CA HIV-1 DNA and also an independent QTL SNP to the RNA:DNA ratio. Also, the SNP is located on the second intron of \textit{PTDSS2}. \\
+      $^B$ The gene where the SNP is located. \\
+      $^C$ Genes that are identified as AIDS-related by hands (e.g., from literature). \\
+      $^D$ Co-regulated with lncRNA gene \textit{RP11-1149M10.2}.
+    }
+  \end{table}
+\end{landscape}
+
+Additionally, as shown in \ref{fig:cht4fig4}C and \ref{fig:cht4fig4}D, there is another QTL SNP (rs12366210, $R^2 = 0.162$ with rs7113204) that is suggestively associated with RNA:DNA ratio ($P = 3.26 \times 10^{-7}$) and is located in the intron region of \textit{DEAF1} gene.
+Importantly, the expression of \textit{DEAF1} is associated with this QTL SNP and especially promoted by rs12366210-A allele according to eQTL analysis \cite{Võsa2018Unraveling}.
+
+\subsection*{\textit{IRF7} and \textit{RNH1} expression in PBMCs of PLHIV increase with allele rs7113204-G presence}
+To validate candidate genes pinpointed by SNPs associated with CA HIV-1 DNA and RNA:DNA ratio, the RNA expression of \textit{PTDSS2}, \textit{IRF7}, and \textit{RNH1} genes were measured in PBMCs by qPCR.
+The relative expression of \textit{IRF7} was significantly higher in subjects with rs7113204-G compared with ones carrying rs7113204-A (median [IQR], 0.011 [0.014] vs 0.004 [0.007], $P < 0.005$; \ref{fig:cht4fig5}A).
+Moreover, the relative expression of \textit{RNH1} was also significantly higher in subjects with rs7113204-G ($1.13 \times 10^{-5}$ [$1.139 \times 10^{-4}$] vs $2.22 \times 10^{-6}$ [$5.48 \times 10^{-5}$], $P < 0.05$; \ref{fig:cht4fig5}B).
+However, we did not observe a significant divergence of relative expression at \textit{PTDSS2} regarding the estimated alleles (\textbf{Additional file 2: Figure S6}).
+
+% Figure 5
+\begin{figure}[!hbt]
+  \includegraphics[width=\textwidth]{Chapter4_figure5.png}
+  \caption{
+    \label{fig:cht4fig5} \textbf{Relative expression of \textit{IRF7} and \textit{RNH1} measured for PLHIV carrying different variants (rs7113204).}
+    \textbf{A} Boxplot of relative expression of \textit{IRF7} compared in a subset of subjects with SNP rs7113204-A (n = 14) compared to subjects with SNP rs7113204-G (n = 19).
+    \textbf{B} Boxplot of relative expression of \textit{RNH1} in subjects with SNP rs7113204-A compared to subjects with SNP rs7113204-G. Data in both box plots are visualized in log transformation. Both groups are compared by using the two-sample Wilcoxon test because of the non-normal distribution.
+  }
+\end{figure}
+
+% Figure 6
+\begin{figure}[!hbt]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Chapter4_figure6.png}
+  \caption{
+    \label{fig:cht4fig6} \textbf{The difference of interferon-gamma production among individuals carrying different alleles of rs7113204.}
+    Boxplot of interferon-gamma (IFN-$\gamma$) production 7 days after imiquimod (TLR7 agonist) stimulation in PBMCs in subjects with SNP rs7113204-A (n = 16) and with rs7113204-G (n = 122). Groups are compared with two samples Wilcoxon test because of the non-normal distribution.
+  }
+\end{figure}
+
+\subsection*{Publicly available gene expression data validated potential functions of prioritized genes}
+To further estimate the function of prioritized genes in this study, we downloaded RNA-seq read counts for isolated CD4+ T cells which were either infected by the HIV-1 virus or not \cite{Shytaj2020Alterations}.
+Then, we checked if the \textit{DEAF1}, \textit{IRF7}, \textit{PTDSS2}, and \textit{RNH1} were differentially expressed in CD4+ T cells at four time-points: day 3, day 7, day 9, and day 14.
+As shown in \textbf{Additional file 2: Figure S7}, \textit{DEAF1} was significantly highly expressed in uninfected samples at day 14 (FDR < 0.05), which indicates an impaired activity of HIV-1 RNA transport and consequently a latent reservoir.
+This is in line with our findings: rs12366210-A is associated with both higher \textit{DEAF1} expression (eQTL) and higher RNA:DNA ratio.
+Also, \textit{IRF7} was highly expressed in each time point at a $P < 0.05$ (nominal p value), which indicates that it is involved in the whole early infection stages.
+Similar to \textit{DEAF1}, we observed significant differential expression of \textit{PTDSS2} at day 14, which indicates the potential role of \textit{PTDSS2} after the establishment of the HIV-1 viral reservoir.
+The \textit{RNH1} displayed a divergence between infected and non-infected CD4+ T cells.
+In brief, \textit{RNH1} is upregulated at the early stage of infection but downregulated after 2 weeks when comparing its expression in infected CD4+ T cells to non-infected ones.
+This result indicates \textit{RNH1} functions in the initial infection stage but drops back after the establishment of HIV-1 reservoir.
+
+\subsection*{Interferon-$\gamma$ production in PBMCs stimulated with Imiquimod is significantly diverged by the RNA:DNA ratio associated variant}
+\textit{IRF7} is an essential regulator of type I Interferons (IFN).
+Pathogen recognition receptors, such as Toll-like receptors (TLR) 3, 7, and 9 \cite{Ning2011IRF7}, may trigger \textit{IRF7} translocalization to the nucleus where, together with other co-activators, it forms a transcriptional complex that activates transcription of targeted genes.
+Polyinosinic:polycytidylic acid (Poly I:C) is a synthetic analog of double-stranded RNA that is recognized by TLR3.
+To further validate the role of \textit{IRF7}, PBMCs were stimulated with Poly I:C and the level of interferon-$\alpha$ (IFN-$\alpha$) was subsequently measured in rs7113204-A (n = 16) and rs7113204-G (n = 121) carriers.
+No difference was found in IFN-$\alpha$ production between rs7113204-A and rs7113204-G carriers (163.52 pg/mL [159.27] vs 207.00 pg/mL [333.1], p = 0.49; \textbf{Additional file 2: Figure S8}).
+There is evidence that \textit{IRF7} also plays a role in interferon-gamma (IFN-$\gamma$) production \cite{Johnson2020Interferon,Steinberg2009The}.
+In PBMCs stimulated with Imiquimod (TLR7 agonist), we observed a significant difference in IFN-$\gamma$ production between rs7113204-A (n = 16) and rs7113204-G (n = 122) bearers after 7 days (108.56 pg/ml [141.92] vs 51.11 pg/mL [82.59], p = 0.011; \ref{fig:cht4fig6}).
+
+\subsection*{Shared genetic associations between previous HIV-1 related GWAS and current study}
+To explore the common host genetic traits among HIV-1 reservoirs and other HIV-1 related phenotypes, summary statistics of publicly available HIV-1 GWAS results (European cohorts) were downloaded from the GWAS catalog \cite{Buniello2018The} and subsequently compared with results from the present study (\textbf{Additional file 1: Table S4}).
+We clumped 636 SNPs from the downloaded summary statistics by PLINK \cite{Purcell2007PLINK} (Methods) and produced 41 independent SNPs with $P < 5 \times 10^{-8}$.
+By probing the acquired independent SNPs in our summary statistics, we found six shared SNPs at a nominal P value threshold of 0.05 in our study cohort (\textbf{Additional file 1: Table S4}).
+Among all the shared SNPs, one SNP, rs9264942 (P = 0.022, Chr6:31274380) that presented in our association analysis was reported as one of the genome-wide significant SNPs in a GWAS study of HIV-1 viral load \cite{Herráiz2017Impact}.
+Notably, the variant pinpoints the HLA-C that is broadly reported as an important locus associated with HIV-1 disease progression \cite{Kulpa2011The}.
+Another shared SNP in CA HIV-1 DNA analysis is rs1015164 (P = 0.03, Chr3:46451680), and the SNP was reported in an across-ethic cohort of HIV-1 controllers and progressors \cite{Author2010The}.
+Importantly, the CCR5 that is highlighted by the SNP is well known as an HIV-1 co-receptor that is crucial for the CCR5-tropic virus to infect T cells.
+Moreover, the rs7568498 SNP in our QTL analysis for RNA:DNA ratio (P = 0.024, Chr2:162029113, \textit{TANK}) was also reported as a genome-wide significant SNP in a Hispanic patient cohort by Leger and colleagues \cite{Leger2014Genome}.
+More information could be found for the three SNPs in \textbf{Additional file 1: Table S4}.
+
+To confirm our findings in published QTL studies, we requested the summary statistics of a comprehensive meta-analysis on HIV-1 viral load by McLaren et al. \cite{Murray2016The}.
+By probing independent SNPs ($P < 5 \times 10^{-7}$) from our results in the meta-analysis results, we were able to replicate one QTL SNP (rs2613996, $P = 6.5 \times 10^{-3}$), which is significantly associated with viral loads after Bonferroni correction ($P < 0.01$), associated with CA HIV-1 DNA and RNA:DNA ratio (\ref{tab:cht4tab2}).
+
+\section*{Discussion}
+
+In this study, CA HIV-1 DNA and RNA levels were determined in a PLHIV cohort on long-term cART and used as a starting point for evaluating host genetic variants that could be linked to the size and transcriptional activity of the HIV-1 reservoirs.
+In short, we performed genome-wide QTL mapping analyses for these HIV-1 reservoir features and included functional evaluation of the identified genetic variants to assess their correlation with the expression of identified genes.
+Overall, we identified one genome-wide significant genetic locus that is associated with CA HIV-1 DNA corrected by CA HIV-1 RNA ($P < 5 \times 10^{-8}$) and two loci that are suggestively related to RNA:DNA ratio ($P < 5 \times 10^{-7}$).
+
+Both CA HIV-1 DNA-associated QTL SNP (rs2613996) and RNA:DNA ratio-related SNP (rs7113204) highlighted \textit{PTDSS2}.
+This gene encodes phosphatidylserine synthase 2, an enzyme that catalyzes the conversion of phosphatidylethanolamine to phosphatidylserine (PS).
+PS is a phospholipid that normally resides in the inner leaf of the cell membrane.
+Cells undergoing programmed cell death (or apoptosis) redistribute PS, which functions as an “eat-me” signal, to the outer leaf of the cell membrane.
+Subsequently, the signal can be recognized by phagocytes, for instance, macrophages, which clear the dead cells by phagocytosis to circumvent inflammation and autoimmune reactions \cite{Chua2019Roles}.
+PS also acts as an important cofactor that facilitates viral entry in the fusion stage of the HIV-1 life cycle \cite{Zaitseva2017Fusion}.
+It is also thought that PS exposed to the infected cell inhibits or facilitates multiple steps in HIV replication \cite{Chua2019Roles}.
+Moreover, the exposure of PS on the outer leaf of the cell membrane broadcasts an eat-me signal and plays a crucial role in the HIV-1 pathogenesis.
+For instance, macrophages selectively recognize and engulf CD4+ T cells that are infected by HIV-1 or dead or dying.
+Subsequently, the macrophages could eliminate the virus or be infected by HIV-1 after the endocytosis, where the later contributes to the establishment of latent viral reservoir \cite{Baxter2014Macrophage}.
+Meanwhile, the HIV-1-infected macrophages introduce difficulties to suppress HIV-1 efficiently as the CD8+ cytotoxic T cells are less capable of eliminating HIV-1-infected macrophages comparing to eliminating HIV-1-infected CD4+ T cells, which promotes chronic inflammation and introduces barriers to cure patients \cite{Clayton2018Resistance}.
+Based on the biological function, it is conceivable that \textit{PTDSS2} can play a role in establishing and maintaining the HIV-1 reservoir.
+However, we could not validate this by studying the RNA expression of \textit{PTDSS2} via qPCR in subjects with different variants.
+The relative expression was not statistically different in whole blood samples of these subjects with different variants, which could be due to the small sample sizes.
+However, for SNP rs7113204, there is a trend of higher relative expression of rs7113204-G compared to rs7113204-A, which corresponds with the results of gene expression levels in eQTL studies \cite{Võsa2018Unraveling}.
+
+The gene identified by QTL SNP rs7113204 for RNA:DNA ratio is \textit{RNH1} which encodes ribonuclease inhibitor 1.
+The biological role of ribonuclease inhibitor 1 is not known in its entirety but it is known that it binds diverse proteins in the pancreatic RNase superfamily with high avidity \cite{Shapiro2001Cytoplasmic}.
+One of these ligands is the eosinophil-derived neurotoxin (EDN), also known as RNase 2.
+EDN can inhibit HIV-1 replication in HIV-1-infected cells \cite{Lee1999Lysozyme,Rugeles2003Ribonuclease}.
+EDN can maturate and activate human dendritic cells and enhance innate and antigen-specific immune responses \cite{Yang2004Human}.
+Theoretically, inhibiting EDN by \textit{RNH1} could lead to more HIV-1 replication and dampens the activation of human dendritic cells with less immune activation, and could influence the RNA:DNA ratio.
+We observed that rs7113204-A correlates with a higher RNA:RNA ratio and thus a higher relative transcription activity of CA HIV-1 DNA.
+It is reported that rs7113204-G has a suppressive effect on the expression of the \textit{RNH1} gene in healthy populations \cite{Võsa2018Unraveling} (\textbf{Additional file 1: Table S3}).
+In contrast, we found in our cohort that \textit{RNH1} expression in whole blood is significantly higher in PLHIV with rs7113204-G compared to ones with rs7113204-A.
+Of note, our study is the first to report \textit{RNH1} expression levels in PLHIV with or without this specific genetic variant.
+
+Another candidate by SNP rs7113204 is \textit{IRF7} (Interferon regulating factor 7) that is known to play a key role in the production of IFN-$\alpha$ in response to viral infections \cite{Ning2011IRF7}.
+We observed that the relative expression of \textit{IRF7} was significantly higher in subjects with the rs7113204-G compared to those carrying rs7113204-A, a finding in agreement with eQTL results in healthy populations \cite{Võsa2018Unraveling}.
+Furthermore, our data indicated that subjects carrying the rs7113204-G variant had less relative HIV-1 transcription activity as indicated by lower RNA:DNA ratios.
+We hypothesized that this lower HIV-1 replication activity may be due to increased type 1 interferon production capacity but we found no difference in \textit{ex vivo} IFN-$\alpha$ production when stimulation PBMCs of subjects with different variants with the TLR3 ligand poly I:C.
+However, TLR3 binding can induce both \textit{IRF3} and \textit{IRF7} \cite{Savitsky2010Regulation}, and the altered IFN-$\alpha$ production could thus be circumvented via \textit{IRF3}.
+We therefore also stimulated PBMCs \textit{ex vivo} with imiquimod, a TLR7 agonist, and found IFN-$\alpha$ concentration below the limit of detection in the supernatants in both groups.
+This is in contrast to a study that reported detectable IFN-$\alpha$ levels after PBMCs of healthy subjects were stimulated with the same imiquimod concentration \cite{WEEKS1994Induction}.
+Diminished IFN-$\alpha$ production in plasmacytoid dendritic cells after stimulation with a TLR7 agonist has been reported previously in PLHIV \cite{Kaushik2013Plasmacytoid,Patamawenu2019Toll}, which might explain the undetectable IFN-$\alpha$ levels in both groups.
+The importance of \textit{IRF7} and type 1 interferon signaling pathways was recently also shown in studies exploring the role of RNA deadenylase complex, CNOT, in HIV infection.
+CNOT knock-outs suppressed HIV replication, by upregulating and type 1 interferon signaling pathways, a phenotype that was rescued by deletion of \textit{IRF7} \cite{Gordon2020A}.
+Further evidence that \textit{IRF7} restricts the establishment of viral latency and viral reactivation was recently confirmed in a study that compared chronic gammaherpesvirus infections in \textit{IRF7}-deficient mice and wild-type mice \cite{Johnson2020Interferon}.
+This study also showed higher IFN-$\gamma$ levels in \textit{IRF7}-deficient mice, the data from our study point in the same direction as we found higher IFN-$\gamma$ levels in the supernatant of PBMC of subjects with rs7113204-A variant after stimulation with imiquimod.
+Also in a murine cytomegalovirus infection model, \textit{IRF7}-deficient mice had a higher IFN-$\gamma$ production during acute infection compared to wild-type mice \cite{Steinberg2009The}.
+Previous studies have indeed shown that IFN-$\gamma$ may play an important role as an inducer of HIV expression \cite{Biswas1992Interferon}.
+More research is needed to explore the role of \textit{IRF7} in HIV latency.
+
+The gene identified by QTL SNP rs12366210 for RNA:DNA ratio is \textit{DEAF1}.
+Deformed epidermal autoregulatory factor 1 (encoded by \textit{DEAF1}) is a transcription factor that regulates the expression of hnRNP A2/B1 (heterogeneous nuclear ribonucleoprotein A2/B1).
+The hnRNP A2/B1 plays a role in HIV genomic RNA trafficking out of the nucleus to the cytoplasm \cite{Lévesque2006Trafficking}.
+Accumulation of unspliced HIV-1 RNA in the nucleus will be presumably degraded, which could lead to a lower RNA:DNA ratio.
+Further research is needed to elucidate the role of \textit{DEAF1} in affecting the viral reservoir.
+We also included the \textit{PAG1} gene as a candidate that is related to the RNA:DNA ratio as it was reported to play an important role in the regulation of T cell activation \cite{Franck2015Phosphoproteome}.
+Other candidate genes are listed in Supplementary \ref{tab:cht4tab2}.
+
+Regarding host genetic effects on HIV-1 reservoir traits, to our knowledge, two similar studies have been conducted to explore the relationship between host genetic traits and the size of HIV-1 reservoirs in the past decades \cite{Thorball2020Host,Dalmasso2008Distinct}.
+However, both of them measured CA HIV-1 DNA in PBMCs only, while we determined both CA HIV-1 DNA and RNA from CD4+ T cells, which intensively avoided the confounding of cell proportions.
+Additionally, the relative transcription activity that is represented by the RNA:DNA ratio gives additional weight to our study by stretching study aspects from static (size of HIV-1 reservoir) to dynamic (relative transcription activity).
+Of note, in the analysis that linked non-genetic host factors to CA HIV-1 RNA with CA HIV-1 DNA as covariable, the model can explain 54.45\% variation of CA HIV-1 RNA exclusively, which indicates that other factors also affect the variations.
+The unexplained variance could be attributed to (1) the amount of integrated defective proviral DNA, (2) the various transcription rates of the loci in which the HIV-1 genome is integrated, and (3) various decay rates between different patients.
+
+The strength of our study includes the following: (1) we isolated CD4+ T cells, which circumvent the bias introduced by cell proportion when using PBMCs; (2) we estimated the effects of genetic variants not only on CA HIV-1 DNA and CA HIV-1 RNA, but also their corresponding ratio that indicate the relative transcriptional activity; (3) the genetic background was homogeneous as all recruited individuals were Caucasian adults.
+However, one of the major limitations is the sample size which restrains the power to identify weak or moderate genetic associations with the HIV-1 reservoir features evaluated in this study.
+Moreover, in the regression analysis, limited covariates were included in the linear model, which could overlook important host and environmental factors that affect HIV-1 reservoir traits.
+Finally, only Caucasian individuals were included in the analysis and consequently the identified association could be specific in the studied race.
+Therefore, larger trans-ethic cohorts are desired to capture more associations.
+
+The methods used in the current study are generalizable.
+For example, CD4+ T cells were isolated by a commercially available isolation kit.
+Then, the CA HIV-1 DNA and RNA were measured using the well-developed and widely used ddPCR method.
+For the genome-wide genotyping, the commercially available Infinium® Global Screening Array were used.
+As to the genome-wide association analysis, the QLT mapping methods and association analysis can be equally applied to any other quantitative trait or disease phenotype, respectively.
+Finally, the integration with eQTL data and public available RNA-seq data for the prioritization of candidate genes can be applied in future genetic studies.
+There are also several limitations in this study.
+The findings from the current study need to be further replicated in a larger independent cohort.
+As our cohort consists of western European descent, future studies in a different genetic background will be desired.
+
+Altogether our data indicate that \textit{PTDSS2}, \textit{RNH1}, \textit{IRF7}, and \textit{DEAF1} are potential HIV-1 reservoir modifiers.
+Of note, we showed higher expressions of \textit{IRF7} and \textit{RNH1} in PLHIV carrying the rs7113204-G variant while these subjects also had evidence of lower relative HIV-1 transcription activity.
+
+\section*{Conclusions}
+This genome-wide QTL analysis identified one significant genetic locus associated with CA HIV-1 DNA ($P < 5 \times 10^{-8}$), and four suggestive associations were found for the RNA:DNA ratio ($P < 5 \times 10^{-7}$).
+These associations highlighted four genes that potentially affect the CA HIV-1 DNA and RNA:DNA ratio: \textit{PTDSS2}, \textit{RNH1}, \textit{IRF7}, and \textit{DEAF1}.
+We found that the expressions of \textit{IRF7} and \textit{RNH1} were significantly correlated with one of the identified variants (rs7113204) using qPCR.
+Our results suggest \textit{IRF7} and \textit{RNH1} are potential modifying factors of HIV-1 reservoirs and these observations could indicate targets for future therapeutic strategies to lower HIV-1 reservoir size or activity in PLHIV and HIV-1 patients.
+
+\section*{Abbreviations}
+\textbf{CA}: Cell-associated \\
+\textbf{cART}: Combination of antiretroviral therapy \\
+\textbf{ddPCR}: Droplet digital PCR \\
+\textbf{ED}: Eosinophil-derived neurotoxin \\
+\textbf{eQTL}: Expression quantitative trait locus \\
+\textbf{FDR}: False discovery rate \\
+\textbf{GWAS}: Genome-wide association study \\
+\textbf{IFN}: Interferon \\
+\textbf{IQR}: Interquartile range \\
+\textbf{LD}: Linkage disequilibrium \\
+\textbf{lncRNA}: Long non-coding RNA \\
+\textbf{MAF}: Minor allele frequency \\
+\textbf{PBMC}: Peripheral blood mononuclear cell \\
+\textbf{PLHIV}: People living with HIV \\
+\textbf{Poly I:C}: Polyinosinic:polycytidylic acid \\
+\textbf{PS}: Phosphatidylserine \\
+\textbf{QTL}: Quantitative trait locus \\
+\textbf{TLR}: Toll-like receptors \\
+\textbf{VEP}: Variant effect predictor
+
+\section*{Supplementary Information}
+Supplementary tables and figures are available online by following \url{https://doi.org/10.1186/s12916-021-02156-5}
+
+% Reference list
+\section*{References}
+\printbibliography[heading=none]
+
+\clearpage
+
+\end{refsection}
+\end{document}
+
+% vim: set tw=1000:

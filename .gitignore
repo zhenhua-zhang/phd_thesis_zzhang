@@ -1,6 +1,9 @@
 # Others
 .env
 docs/
+src/revised
+src/archived
+**/.DS_Store
 
 ## Figures
 figure/

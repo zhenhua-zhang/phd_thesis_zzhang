@@ -1,0 +1,222 @@
+\documentclass{book}
+
+\begin{document}
+\marginwatermark{\thechapter}{-400}
+\renewcommand{\thetable}{\textbf{Table \arabic{chapter}.\arabic{table}}}
+\renewcommand{\thefigure}{\textbf{Figure \arabic{chapter}.\arabic{figure}}}
+
+\begin{refsection} % To make a local bibliography
+
+\chapter{Discussion and future perspectives}
+
+\newpage
+This thesis has contributed to a better understanding of the genetic determinants of complex human traits (e.g., infectious diseases) using computational biology approaches of integrating multiple molecular phenotypic measurements.
+Computational biology approaches exploit quantitative measurements, computational models, and high-throughput screening approaches to decipher the relationships among molecular components within a biological system, such as cells and tissues \cite{Tavassoly2018Systems}.
+
+Thanks to improvements in next-generation sequencing (NGS) technologies, we can now profile various molecular traits in patients and healthy individuals cost-effectively at a large scale \cite{Levy2016Advancements}.
+These advances have brought biology and medical researches into the era of multiple omics (multi-omics), including genomics, epigenomics, transcriptomics, proteomics, metabolomics, and microbiomics.
+Of note, the integration of multi-omics data bridges the gap between genotypes and phenotypes \cite{Hasin2017Multi}.
+For instance, by combining multi-omics data from one individual who was followed for seven years, researchers revealed molecular component and pathway dynamics between healthy and disease conditions \cite{Chen2012Personal}, highlighting the value of longitudinal multi-omics integration.
+
+Omics studies started with genomics, in which the whole genome is examined to understand the structure, function, and evolution of the genome \cite{Oudelaar2020The,Giallourakis2005DISEASE,Cañestro2007Evolutionary}.
+By combining genomics with other omics, such as transcriptomics and epigenomics, we can estimate allelic imbalances in order to study the regulatory networks involving human phenotypes \cite{Cleary2021Perspectives}.
+This led me to study genetic regulatory relationships in health and diseases by identifying the effect of allelic imbalance, including allele-specific expression (ASE) and allele-specific open chromatin (ASoC), in \textbf{Chapter 2}, \textbf{Chapter 3}, and \textbf{Chapter 6}.
+
+Advances in omics studies also offer opportunities to identify and study phenotype- or disease-associated genetic variants using methods like genome-wide association studies (GWAS).
+Over the past several decades, GWAS has blossomed and generated a large set of genetic associations with many phenotypes and diseases \cite{Buniello2018The}.
+However, it is not yet possible to interpret most of these findings due to our limited biological knowledge, for instance, to understand the regulatory function of non-coding variants identified by GWAS \cite{Manolio2013Bringing,Cooper2011Needles}.
+Therefore, dissecting the molecular functions of GWAS variants is important in the coming years of the “post-GWAS” era.
+My work in this direction is presented in \textbf{Chapter 4} and \textbf{Chapter 5}.
+
+Additionally, integrating multi-omics data empowers researchers to answer one of the key questions in biology studies: How does information flow in complex biological systems? The integration is biologically informative because it represents the flow of biological signals underlying the phenotypes of interest or disease conditions \cite{Tavassoly2018Systems}.
+Moreover, single-cell sequencing methods deepen our biological knowledge by capturing the broad spectrum of diversity of cell characteristics and functions \cite{Macaulay2017Single,Packer2018Single}.
+Based on findings in \textbf{Chapter 6}, I will discuss how (single-cell) multi-omics integration is helpful in extending our understanding of human infectious diseases continuously.
+
+In the current thesis, I explored genetic determinants of human molecular traits - allelic imbalance and host responses to pathogenic viruses - using computational biology approaches.
+In this final chapter, I discussed our conclusions and future directions from the perspective of computational biology, based on results from the current thesis and other recent studies elsewhere using multi-omics data.
+
+\section*{Discussion}
+
+\subsection*{ASE and genetic variants}
+As diploid organisms, humans derive genetic and epigenetic characteristics from their parents, which introduces allelic differences between the two sets of haplotypes.
+These differences can result in distinct behaviors between alleles, for instance, ASE.
+One of the well-known mechanisms underlying ASE is epigenetic regulation, where allelic openness of the chromatin plays crucial roles, such as genomic imprinting \cite{Monk2019Genomic} and X-chromosome inactivation \cite{Galupa2018X}.
+Of note, researchers have revealed that genetic loci (e.g., disease-associated variants identified by GWAS) usually affect allelic states of chromatins \cite{Zhang2020Allele,Hoffman2019Functional,Skelly2020Mapping} and disrupt the sequence of transcription factor binding sites (TFBSs) \cite{Deplancke2016The}, which consequently modulates the phenotypes through the formed regulatory networks.
+
+Apart from the canonical mechanisms mentioned above, we hypothesize that the ASE of a single nucleotide variant (SNV) can be explained by its genomic context, i.e., the genomic features around the SNV.
+To test this hypothesis, in \textbf{Chapter 2}, we built a gradient boosting tree model to predict the ASE of exonic SNVs using the genomic annotations of the SNV.
+The model performs fairly well (testing ROC AUC ~0.8), suggesting the ASE of a SNV is related to its genomic annotations.
+For instance, we observed that low GerpN values \cite{Davydov2010Identifying}, which have high feature importance influencing the model outcomes, drove the model outcomes for ASE.
+This is expected because GerpN values close to 0 represent high heterology at the locus.
+
+However, our model has two main limitations.
+First of all, we built the model exclusively using variants from exonic regions.
+Consequently, it has no capacity to evaluate regulation from non-coding variants in intergenic and intronic sequences or the ASE effects of a transcript.
+Secondly, the model was trained using only whole blood samples, in which only a subset of genes was under active expression.
+However, ASE is tissue-specific and cell-type-specific \cite{Castel2020A}, thus, including tissue-specific and single-cell sequencing results will further improve the performance of ASE predictors.
+The Genotype-Tissue Expression (GTEx) project \cite{Lonsdale2013The} offers us opportunities to estimate the transcriptional ASE and identify non-coding variants that regulate the allelic imbalance.
+
+To overcome the mentioned limitations above,  we next developed a new method, ASDeep, in \textbf{Chapter 3}.
+ASDeep is a deep learning (DL) tool that predicts the ASE for the canonical transcript of a gene using the DNA sequence that potentially regulates the expression of the studied gene.
+Recent studies have revealed the ability of DL approaches to discover the functions of non-coding DNA sequences \cite{Angermueller2017DeepCpG,Alipanahi2015Predicting,Jaganathan2019Predicting,Dai2017Sequence2Vec}, and this encouraged us to construct DL models to predict ASE using the DNA sequence.
+
+However, the model does not perform as expected due to many limitations.
+In concrete, first of all, only ~3500 samples were available which resulted in a high risk of over-fitting.
+Next, these samples were grouped into three classes (ASE prone to the paternal allele, non-ASE, and ASE prone to the maternal alleles) but the number of samples from each class was highly unbalanced.
+Lastly, due to the limitation of imputation algorithms for genotypes, the DNA sequences used for the model training resembled each other, which hampered the model to discriminate the identified classes.
+
+In addition, both of our models considered only DNA sequences \textit{per se}, neglecting other factors that affect gene expressions, such as DNA methylation and histone modifications in the context of epigenetics \cite{Onuchic2018Allele}.
+
+\subsection*{Host (epi)genetic determinants of infectious diseases}
+The human genomic architecture determines the distinct immune responses to microbes among individuals \cite{Li2016A,Li2016Inter}.
+Specifically, lethal infections caused by pathogenic viruses usually trigger strong immune responses during disease progressions.
+Therefore, studying the genetic determinants of human infectious diseases will provide us insights into the underlying mechanisms of microbe-human interactions and ultimately guide prognosis and treatment strategies.
+In addition, human immune responses to viruses are also under active epigenetic regulation, resulting from microbe-human interactions \cite{Lange2020Epigenetic}.
+These facts led us to investigate the genetic and epigenetic factors that affect the manifestation of infections by pathogenic viruses, including HIV-1 and coronavirus SARS-CoV-2.
+
+One of the obstacles to curing people living with HIV-1 (PLHIV) is the latent HIV-1 reservoir, i.e., immune cells in the body that are infected with HIV but not actively producing new HIV \cite{Pierson2000Reservoirs}.
+The combination of antiretroviral treatment (cART) substantially increases the life quality of PLHIV by suppressing HIV-1 viral loads in the human body.
+Recent studies have also revealed viral and host characteristics that correlate to the HIV-1 reservoir size and long-term dynamics in PLHIV \cite{Bachmann2019Determinants,Cohn2020The,Buzon2014Long,Wan2020Heritability,Thorball2020Host,Dalmasso2008Distinct}.
+In \textbf{Chapter 4}, we identified \textit{PTDSS2}, \textit{IRF7}, \textit{RNH1}, and \textit{DEAF1} as potential modifying factors of HIV-1 reservoirs by associating host genetic factors with HIV-1 reservoir traits, represented by cell-associated (CA) HIV-1 DNA, CA HIV-1 RNA, and their ratio (RNA:DNA).
+
+Compared to previous studies \cite{Thorball2020Host,Dalmasso2008Distinct}, we focused on the CA HIV-1 DNA and RNA isolated from CD4+ T cells, a choice that avoids the influence of cell proportion.
+Of note, our studies suggested that \textit{IRF7} plays a potential role to regulate HIV-1 latency and recent studies revealed that \textit{IRF7} mediated the HIV suppression resulting from the knockout of CNOT (the RNA deadenylase complex) \cite{Gordon2020A}.
+In addition, there is evidence for \textit{IRF7} being involved in viral latency initialization and reactivation from a study comparing chronic gammaherpesvirus infections in \textit{Irf7}-deficient and wild-type mice \cite{Johnson2020Interferon}.
+However, our study had several limitations: 1) the sample size of the discovery cohort was relatively small (~200), 2) limited covariates were included in the association analysis even though many viral and host characteristics are associated with the HIV-1 reservoir traits \cite{Bachmann2019Determinants}, 3) our results were limited to Caucasian people, and 4) our findings would be further replicated using an independent cohort, which is currently unavailable.
+
+Individuals infected by SARS-CoV-2 display a wide range of clinical manifestations \cite{Eythorsson2020Clinical,Guan2020Clinical,Rodriguez2020Clinical,Wu2020Characteristics} and these inter-individual variations could be due to the differences in (epi)genetic architecture among and across the populations \cite{Mercer2021Testing,Niemi2021Mapping,Author2020Genomewide,Pairo2020Genetic,Chlamydas2020Epigenetic}.
+This encouraged us to evaluate the (epi)genetic regulations in COVID-19 patients under different disease conditions.
+
+In \textbf{Chapter 6}, our single-cell multi-omics integration results revealed transcriptomic and epigenomic (chromatin accessibility) profiles among COVID-19 conditions.
+The scRNA-seq results showed a number of cell proportion changes by the pair-wised comparisons among the COVID-19 disease conditions, which agrees with previous studies \cite{Zhang2020Single,Schulte2020Severe,Stephenson2021Single}.
+In addition, based on our scATAC-seq results, we observed that C/EBPs, JUN/FOS, and SPI1 motifs were overrepresented in classical monocytes the patients.
+Additionally, our peak-to-gene linkage analysis suggested the long non-coding RNA, \textit{LUCAT1}, was modulated by both SPI1 and C/EBPs transcription factors (TFs).
+These results led us to hypothesize a dysregulated cascade, in which increased C/EBP regulation enhanced \textit{LUCAT1} expression and further suppressed interferon responses to SARS-CoV-2 infection, leading to severe COVID-19.
+
+% \colorbox{red}{UPDATES REQUIRES}
+We also identified ASoC SNPs and found that they were enriched in regulatory regions (i.e., promoters, enhancers and TFBSs).
+Further, our results revealed the potential role of \textit{CCR2} in COVID-19 in the context of genetics and epigenetics.
+\textit{CCR2} encodes the chemokine receptor for monocyte chemoattractant protein-1 (MCP-1/CCL2), which promotes the migration of monocytes to sites of inflammation \cite{Serbina2006Monocyte}.
+The overrepresentation of MCP-1/CCL2 in bronchoalveolar fluid in severe COVID-19 patients suggests inflammation in lung and active recruitment of CCR2+ monocytes \cite{Zhou2020Heightened}.
+
+However, the mentioned study above has several limitations.
+First of all, only limited symptom categories were included in the study, namely severe, mild and convalescent individuals whereas, COVID-19 patients have a wide symptomatic spectrum ranging from asymptome to deadly severe \cite{Eythorsson2020Clinical,Guan2020Clinical,Rodriguez2020Clinical,Wu2020Characteristics}.
+Next, we only included whole blood samples which could be less representative compared to primary lung tissues, such as epithelium \cite{Mulay2021SARS}.
+In addition, limited by the sample size and sequencing depth, our study only validated a few COVID-19 GWAS loci, namely \textit{CCR2} and \textit{DPP9} \cite{Pairo2020Genetic}.
+Last but not least, our analyses exclusively focused on genetic, epigenetic, and transcriptomic aspects of the diseases at single-cell resolution, while proteomics, metabolomics, and metagenomics \cite{McArdle2021Discovery,Hasan2021Metabolomics,Ma2021Metagenomic} analyses revealed prognosis and diagnosis markers.
+Therefore, we expect further evidence from other omics data to gain more insight into the disease mechanisms and to validate our results in the future.
+
+
+\subsection*{Cell-type-specific quantitative trait loci (QTL) of the cell-surface CCR5 abundance}
+The CCR5 locus is a well-established association between host genetic architectures and HIV-1 infections, where \textit{CCR5d32} exists in HIV-1 controllers \cite{Brelot2018CCR5,Gervaix2002Response}.
+This genetic locus has been consistently associated with primary resistance to HIV-1 diseases, which has boosted AIDS treatment approaches such as transplantation of \textit{CCR5} gene-edited CD4+ T cells in which \textit{CCR5} genes are made permanently dysfunctional \cite{Hütter2009Long,Tebas2021CCR5}.
+Apart from \textit{CCR5d32}, recent studies have suggested that additional genetic loci affect the expression of \textit{CCR5} \cite{Kulkarni2019CCR5AS,Mangano2001Concordance}.
+In addition, beyond CD4+ T cells, other immune cells such as CD8+ T cells and dendritic cells are also potentially involved in the response to the HIV infection \cite{McBrien2018Mechanisms,Walker2013Unravelling,Martin2018A}.
+However, less is known about whether specific genetic loci differentially regulate cell-surface CCR5 abundance in subsets of immune cells (e.g., lymphocytes) from PLHIV.
+We estimated the cell-type-specific associations between genetic variants (SNPs) and CCR5 levels in lymphocyte subsets in \textbf{Chapter 5}, where we used the mean fluorescence intensity (MFI) of cell-surface CCR5 or CCR5+ cell proportion (CP) to represent CCR5 abundance.
+Our results revealed genetic loci associated with the cell-surface abundance of CCR5 in 11 lymphocyte subsets identified from PLHIV.
+
+Specifically, we found QTLs associated with both MFI and CP in CD4+ memory regulatory T (mTreg) cells, which suggests that the CCR5 abundance in mTregs is regulated by genetic factors.
+On the one hand, the mTregs derive from pathogen-specific Tregs that are activated and expand upon acute viral infections \textit{in vivo} \cite{Sanchez2012The,Lu2019Memory}.
+In response to secondary infections and inflammations, mTregs superseded naive Tregs (nTregs) in migration to tissues and activation toward immunosuppression \cite{Sanchez2012The}, suggesting that they can be the inducing target cell populations for vaccinations \cite{Lu2019Memory}.
+On the other hand, our results identified independent genetic loci associated with MFI and CP in mTregs.
+The leading SNP (rs11574435) for MFI is a proxy for the \textit{CCR5d32}, while the leading SNP (rs60939770) for CP is a proxy for SNP rs1015164, which plays a role in protecting the CCR5 mRNA by affecting the expression of \textit{CCR5AS} \cite{Kulkarni2019CCR5AS}.
+These results suggest different genetic architectures between cell-surface CCR5 intensities and proportions of CCR5+ proportions in mTregs.
+However, in-depth work is required to further dissect the underlying regulatory programs in HIV-1 infections.
+
+However, several limitations hampered us to understand the hosts' genetic factors impacting CCR5 surface expression in subpopulations of immune cells from PLHIV.
+First of all, only a limited number (~200) of PLHIV was included in the association analysis, which lacks the power to detect loci of small effect size, expecting a larger cohort in the near future.
+Next, the other major limitation was that no other independent PLHIV cohort was included for the purpose of replication, which is expected to be solved by collaboration with other institutions and efforts to recruit more PLHIV participants in the coming years.
+Moreover, the use of a single monoclonal anti-CCR5 antibody might underestimate CCR5 that was not recognized by the antibody.
+In a study that evaluated the antiviral activity of different CCR5 antibodies, the monoclonal antibody 2D7, which we also used in this study, was found to be most effective against HIV compared to two other anti-CCR5 antibodies (45531 and CTC5) \cite{Colin2018CCR5}.
+
+\section*{Future perspectives}
+\subsection*{Allelic-specific analyses prioritize causal variants for GWAS}
+The aim of GWAS is to identify the genetic determinants for human traits.
+However, the majority of identified associations are located in non-coding regions, which frequently contribute to the phenotypes by regulating gene expressions \cite{Tam2019Benefits,Manolio2013Bringing}.
+To address this problem, allele-specific analysis, including ASoC, ASM (allele-specific methylation), ASTFB (allele-specific TF binding), and ASE, can be powerful tools to discover genetic variants and to underpin epigenetic markers depicting regulatory networks in disease scenarios.
+In diploid or polyploid organisms, the allelic analysis estimates differences between alleles at a genetic variant (e.g SNP).
+The difference includes chromatin accessibility, methylation state, TF binding affinity, mRNA level, and protein abundance.
+At the transcriptional level, genetic variants result in ASE by (i) modifying epigenetic markers, including histone modification and DNA methylation \cite{Zhang2020Allele,Do2020Allele}, and (ii) affecting the allelic affinities for the transcription factor binding at the locus \cite{Cleary2021Perspectives}.
+In \textbf{Chapter 3} and \textbf{Chapter 4}, we studied the relationship between genetic variants and ASE that commonly exists in the human body.
+Our findings demonstrate that ASE is under active genetic and epigenetic regulations.
+They also provide chances to trace the causal genetic variants by modeling ASE and other allelic differences.
+
+After obtaining GWAS summary statistics, the next step is to determine the causal variants for the studied traits.
+However, this process can be challenging because of the complex linkage disequilibrium (LD) patterns between causal variants and their proxies \cite{Schaid2018From}.
+Therefore, many statistical methods have been developed to identify causal variants, the so-called fine-mapping processes.
+Fine-mapping can identify one or more causal variants for the traits or diseases and quantify the supporting evidence for the casualty.
+The resulting set of high-confident causal variants is further functionally analyzed to prioritize candidate genes based on publicly available genomic annotations.
+However, these genomic annotations may be less informative or incomplete, and follow-up for confirmation may require expensive and time-consuming laboratory-based functional analyses.
+Hence, further evidence, such as allelic analysis of multi-omics studies, is required to prioritize causal variants with high confidence.
+
+Genetic variants identified by GWAS are significantly enriched in non-coding regions \cite{Tam2019Benefits,Manolio2013Bringing}.
+These regions usually contain regulatory sequences (e.g. enhancers and suppressors) and potentially affect the studied traits or diseases by altering the expression of distal or proximal genes.
+For example, non-coding genetic variants can modulate gene expression by perturbing chromatin accessibility, DNA methylation, and TF binding affinity, which results in ASE \cite{Cleary2021Perspectives}.
+Researchers can validate causal variants and dissect the underlying regulatory network by analyzing allelic differences in integrated multi-omics data.
+In \textbf{Chapter 6}, we identified ASoC SNPs using scATAC-seq results from COVID-19 patients.
+By combining with other publicly available omics and GWAS results, we prioritize \textit{CCR2} as a candidate gene in modulating the severity of COVID-19.
+Our findings offered an example in which allele-specific analysis validated GWAS associations in the context of human infectious diseases.
+
+\subsection*{Multi-omics integration to decipher complex information flow in biological systems}
+Multi-omics integration supplies a tool to understand complex biological systems by comprehensively considering the information flow from different perspectives within the system.
+A biological system modulates its information flow depending on its architecture which can be profiled by multiple molecular traits generated by different omics approaches \cite{Hasin2017Multi}.
+Hence, multi-omics data integration enables researchers to discover the driving factors for complex phenotypes like human infectious diseases because this integration combines several snapshots of the biological information flow (BIF) from different perspectives.
+Additionally, single-cell multi-omics provide another layer of information that exhibits cell-type-specific characteristics and functions \cite{Perkel2021Single}.
+
+According to the ways of depicting the information flow, integrative strategies can be grouped into two classes: multi-stage and multi-dimensional \cite{Ritchie2015Methods}.
+The multi-stage approaches are often performed into two steps: correlation between two types of omics data followed by validation of the identified correlation.
+For instance, researchers can underpin and validate causal genetic variants for a disease by combining multiple types of (publicly available) QTLs.
+Obviously, the multi-stage method hypothesizes a relatively straightforward approach in which the BIF propagates linearly or hierarchically, even though we know BIF could be a more complicated network.
+Consequently, the multi-stage strategy may overlook latent BIFs that play crucial roles in modulating phenotypes.
+In contrast, the multi-dimensional strategy hypothesizes that the BIF moves along the edge between two nodes that present the omics profiles of the phenotype.
+Multi-dimensional approaches require more advanced statistical frameworks to fuse the information, capture the latent BIF, and abstract the key driving factors for the phenotypes or diseases.
+Frameworks like machine learning/deep learning (ML/DL) methods are often designed to simulate complex relationships among multiple layers of data and are, thus, promising for the integration of multi-omics data in a multi-dimensional context.
+
+Genetic and epigenetic regulation, which are massive but methodical, result in the cellular heterogeneity of a biological system (e.g., the human body) \cite{Komin2017How,Carter2020The}.
+Genetically, every cell in the human body carries an identical copy of heritable information from the same zygote, at least as long as no somatic mutations happen during the body's growth and development.
+However, after division and differentiation, these cells can display diverse characteristics and distinct functions, which is due to the time- and space-specific regulation.
+These divergences or heterogeneities bring about inter-cell-type variability in response to pathogenic microbes like viruses \cite{Wilk2020A,Cai2020Single}.
+A subset of crucial cells could play essential roles in defending the human body \cite{Cai2020Single}.
+Therefore, studying the regulation programs in a specific cell type in the scenario of infectious diseases can demonstrate how these cells handle external stimulations and invasions.
+This knowledge may ultimately improve medical practices by providing such as personalized medicine and vaccination methods.
+
+Single-cell methods zoom into the cell-type-specific functions and characteristics.
+The integration of single-cell multi-omics data is becoming popular in routine biology and medical studies as it bridges various biological features at individual-cell resolution.
+Single-cell multi-omics methods break the barriers of cell heterogeneity by functioning at a higher resolution than traditional single-cell methods (e.g., cell imaging and flow cytometry).
+\textbf{Chapter 6} shows how our single-cell multi-omics results reveal the epigenetic and genetic regulatory mechanisms underlying the severity of COVID-19 diseases.
+These findings prove the value of applying single-cell multi-omics integration in infectious diseases studies and these approaches are also applicable in other biological and medical studies.
+
+\subsection*{ML/DL promotes computational biology}
+The successful interpretation of integrative multi-omics data depends on attentive and close cooperation by experts or specialists from different disciplines, which is considered to be the bottleneck of computational biology studies in the multi-omics era.
+Many statistical methods were developed to combine multi-omics data efficiently and consistently in order to break the bottleneck.
+ML/DL can mine information from the data of multiple sources by building a model that acquires experience and knowledge from the data during the mining.
+Subsequently, after its performance meets predefined criteria, the model makes predictions or decisions for forthcoming data.
+The application of ML/DL methods is spreading widely in biology and medical research thanks to improvements in computational and NGS technologies \cite{Whalen2021Navigating}.
+These recent ML/DL applications can be roughly grouped into (i) analyzing nucleotide/protein sequence \cite{Yang2020Review,Jurtz2017An}, (ii) predicting the properties, functions, and interactions of proteins and RNAs \cite{Sun2017Sequence}, (iii) processing biomedical images \cite{Gröhl2021Deep}, and (iv) constructing causal networks for diseases \cite{Elmarakeby2021Biologically}.
+These results suggest that a well-tuned ML/DL model can perform as professionally as experts and specialists from a specific field.
+
+However, due to the complexity and diversity of parameters, ML/DL models are deemed black boxes because of their lack of interpretability compared to simple models like linear/logistic regression, and this is one of the main barriers to the use of ML/DL approaches in medical and clinical applications \cite{Miotto2017Deep,Vollmer2020Machine}.
+In fact, ML/DL models can be interpreted and explained by dissecting the model, e.g., visualizing the information flow and customizing the model based on prior knowledge \cite{Zhou2021Feature,Elmarakeby2021Biologically,Spinner2019explAIner}.
+These feature-attribution methods provide convenient and robust tools to recognize the data patterns that drive the outcome \cite{Zhou2021Feature}.
+For instance, researchers can identify genetic variants that affect the binding affinity in TF motifs based on the feature-attribute methods \cite{Avsec2021Base}.
+The other way to achieve high interpretability for ML/DL models is to use custom model architecture using prior knowledge, which heavily depends on expertises.
+For instance, in a recent study, a biologically informed model (BIM) was constructed according to the hierarchical structure of biological pathways \cite{Elmarakeby2021Biologically}.
+In the model, each neuron node in every hidden layer is biologically meaningful, for instance, a gene or biological processing.
+The well-informed design of the model enables researchers to visualize the BIF in the network and prioritize neuron nodes based on their ability to drive the prediction outcomes.
+These examples open up the field of interpretable ML/DL models in biological and medical studies, which is expected to benefit disease treatment and prevention by dissecting the biological systems (i.e., the human body).
+
+\section*{Concluding remarks}
+In the current thesis, I explored the genetic determinants of human phenotypes from allelic expression and infectious diseases.
+These studies inspire and encourage me to interpret disease associated genetic variants, especially non-coding variants through application of ML/DL integration of multi-omics data in my future research.
+
+% Reference list
+\section*{Reference}
+\printbibliography[heading=none]
+
+\clearpage
+
+\end{refsection}
+\end{document}
+
+% vim: set tw=500:

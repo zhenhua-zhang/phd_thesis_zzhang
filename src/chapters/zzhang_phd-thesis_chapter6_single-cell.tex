@@ -1,0 +1,925 @@
+\documentclass{book}
+
+\begin{document}
+\marginwatermark{\thechapter}{-340}
+\renewcommand{\thetable}{\textbf{Table \arabic{chapter}.\arabic{table}}}
+\renewcommand{\thefigure}{\textbf{Figure \arabic{chapter}.\arabic{figure}}}
+
+\begin{refsection} % To make a local bibliography
+
+\chapter{Altered and allele-specific open chromatin landscape reveals epigenetic and genetic regulators of innate immunity in COVID-19 \\~~}
+Bowen Zhang\textsuperscript{*}, \textbf{Zhenhua Zhang}\textsuperscript{*}, Valerie A. C. M. Koeken\textsuperscript{*}, Saumya Kumar, Michelle Aillaud, Hsin-Chieh Tsay, Zhaoli Liu, Anke R.M. Kraft, Chai Fen Soon, Ivan Odak, Berislav Bošnjak, Anna Vlot, Deutsche COVID-19 OMICS Initiative (DeCOI), Morris A. Swertz, Uwe Ohler, Robert Geffers, Thomas Illig, Reinhold Förster, Cheng-Jian Xu, Markus Cornberg, Leon N. Schulte, Yang Li
+
+\vfill
+\begin{flushright}
+  \textsuperscript{*} These authors contributed equally to this work. \par
+  \textit{Submitted}
+\end{flushright}
+
+\clearpage
+\newpage
+\section*{Abstract}
+While SARS-CoV-2 infection causes mild respiratory disease in the majority of individuals, a small group of patients develops severe COVID-19.
+Dysfunctional innate immune responses have been identified to contribute to differences in COVID-19 outcomes, but the key regulators are still unknown.
+Here, we present an integrative genetics, epigenetics, and transcriptomics analysis of peripheral blood mononuclear cells from hospitalized and convalescent COVID-19 patients.
+We identified a large number of transcriptional alterations in hospitalized COVID-19 patients induced by differential chromatin accessibility enriched in motif-binding regions in monocytes.
+Sub-clustering of monocytes reveals disease condition-specific regulation by transcription factors, such as C/EBPs and SPI1, and their targets, including \textit{LUCAT1}, which further regulates interferon responses and is associated with the need for oxygen supply of hospitalized COVID-19 patients.
+The interaction between C/EBPs and \textit{LUCAT1} was validated through loss-of-function experiments.
+Finally, we investigated genetic risk variants that exhibit allele-specific open chromatin (ASoC) in promoters/enhancers of COVID-19 patients.
+Integrating our data with publicly available expression quantitative trait loci and chromosomal interactions indicates that ASoC SNP rs6800484-C is associated with lower expression of \textit{CCR2}, which may contribute to higher viral loads in lung and higher risk of COVID-19 hospitalization.
+Altogether, our study highlights the diverse genetic and epigenetic regulators that contribute to the innate immune responses of different COVID-19 patients.
+
+\clearpage
+\newpage
+\section*{Introduction}
+COVID-19 is caused by the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) \cite{Wu2020A}, and clinical symptoms of patients with SARS-CoV-2 infection range from asymptomatic to severe pneumonia and acute respiratory distress syndrome \cite{Verity2020Estimates}.
+Although vaccines reduce the risk of major illness and mortality, the molecular mechanisms underlying the heterogeneous outcome in disease presentation remain unclear \cite{Polack2020Safety}.
+ 
+A number of studies have examined the complex interplay between peripheral blood leukocytes in COVID-19 and linked immune activation and specific cell subsets to disease severity \cite{Schulte2020Severe,Ren2021COVID}.
+The adaptive immune system is clearly linked to disease presentation, as prominent lymphopenia is a hallmark of severe disease \cite{Chen2020Clinical}.
+Alterations in T cell function have also been observed, with T cells from severe patients showing increased signs of migration and apoptosis \cite{Zhang2020Single} and excessive or suboptimal CD4+ and CD8+ T cell responses detected in severe disease \cite{Chen2020T}.
+The innate immune system has also been reported to be dysregulated in severe disease, which is characterized by high neutrophil counts \cite{Reusch2021Neutrophils}, likely contributing to tissue damage and hyperinflammation, dysfunctional monocytes with low expression of HLA-DR and interferon-stimulated genes (ISGs) \cite{Schulte2020Severe}, and functionally impaired NK cells \cite{Krämer2021Early}.
+Additionally, long noncoding RNAs are reported to be involved in the regulation of antiviral immune responses in COVID-19 and subsequent disease states \cite{Yang2021Long}.
+These studies have shed light on the detrimental immune responses that contribute to immunopathology in severe COVID-19.
+
+In addition to studies of molecular signatures, several genome-wide association studies (GWAS) of severe COVID-19 have been performed \cite{Author2020Genomewide,Pairo2020Genetic,Niemi2021Mapping}.
+These revealed the impact of genetic variations on disease severity, improving our understanding of COVID-19 pathology.
+Moreover, an epigenetic study on individuals convalescing from COVID-19 revealed remodeling of the chromatin accessibility landscape that established immunological memory \cite{You2021Single}.
+More importantly, since the majority of these risk factors were identified in noncoding regions, they are predicted to have functional effects on gene expression via transcription factor (TF) binding and their interaction with regulatory elements in noncoding regions \cite{Gallagher2018The}.
+These regulatory effects are highly cell type-specific \cite{Nott2019Brain,Corces2020Single}, and are not yet understood in relation to COVID-19 risk factors.
+Bridging the existing gaps requires an integrative approach that connects genetic variations, epigenetic factors, and immune responses at the cellular level \cite{Chu2021Multi}.
+
+For this reason, we captured both the transcriptome and epigenome of individual peripheral blood mononuclear cells (PBMC), as well as genome-wide genotypes from hospitalized and convalescent COVID-19 samples.
+We identified C/EBP-motifs-enriched open chromatin profiles in classical monocytes and illustrated their interaction with the immune-regulatory \textit{LUCAT1} RNA locus using single-cell omics and loss-of-function experiments.
+Sub-clustering revealed the association of COVID-19 conditions with distinct classical monocyte subpopulations, including a C/EBP motif enriched subpopulation which is associated with the need for oxygen supply of COVID-19 patients.
+Finally, we demonstrate that COVID-19 GWAS risk variants contribute to the disease by regulating chromatin accessibility through allele-specific open chromatin (ASoC) effects.
+Of note, our ASoC analysis reveals that the COVID-19 GWAS risk SNP rs6800484 is associated with the expression of \textit{CCR2} via chromatin accessibility of an enhancer in monocytes, suggesting that this variant plays a cell type-specific epigenetic regulatory role.
+Together, these data indicate that altered chromatin accessibility and ASoC both resulte in impaired epigenetic regulation that contributes to COVID-19 pathogenesis, while the complex co-action of these factors could lead to heterogeneous and individualized disease outcomes.
+Our study further provides a broad resource for exploring cell type-specific genetic and epigenetic regulatory effects that contribute to COVID-19.
+
+\section*{Results}
+\subsection*{Study overview and patient population}
+Using single-cell RNA sequencing (scRNA-seq), single-cell Assay for Transposase-Accessible Chromatin using sequencing (scATAC-seq), and genotype array, we examined the transcriptomics and epigenomics of PBMC, as well as individual genotypes across 46 hospitalized COVID-19 and 32 convalescent samples from 48 individuals, including 20 individuals from whom we have samples from multiple time points (\ref{fig:chp6fig1}A and \ref{fig:chp6fig1}B; \ref{fig:chp6supfig1}).
+Hospitalized COVID-19 patients were further allocated to \textit{mild} or \textit{severe} patient categories based on WHO scores (severe: 5-7, mild: 2-4).
+Clinical characteristics of all study participants are summarized in \ref{tab:chp6suptab1}. %Table S1.
+
+In total, after quality control we had scRNA-seq data for 165,054 cells from 64 samples (N = 37 hospitalized, N = 27 convalescent samples) taken from 41 individuals and scATAC-seq for 46,690 cells from 49 samples (N = 25 hospitalized, N = 24 convalescent samples) taken from 39 individuals (\ref{fig:chp6supfig2}).
+We characterized these cells with unsupervised clustering and, based on the marker genes or gene activity scores in each cluster (\ref{tab:chp6suptab2}), identified 10 major cell types in the scRNA-seq dataset and 8 major cell types in the scATAC-seq dataset (\ref{fig:chp6fig1}C and \ref{fig:chp6fig1}D; \ref{fig:chp6supfig3}).
+The relative percentage of cell types in the PBMC fractions of each sample reveals a higher abundance of classical monocytes and a lower abundance of non-classical monocytes and T cells in hospitalized COVID-19 compared to convalescent patients in both datasets (\ref{fig:chp6fig1}E, \ref{fig:chp6supfig4}A, Dirichlet regression test, false discovery rate (FDR) adjusted $P < 0.05$), in line with a recent publication \cite{Patterson2021Persistence}.
+Additionally, a high proportion of CD163+ classical monocytes was found in five hospitalized COVID-19 patients (four severe and one mild) exclusively in the scRNA-seq dataset (\ref{fig:chp6fig1}C and \ref{fig:chp6fig1}E).
+
+\subsection*{Severe and mild COVID-19 patients show different magnitude transcriptional responses}
+Gene expression comparisons per cell type between hospitalized and convalescent samples revealed that the highest number of differentially expressed genes (DEGs) were in NK cells, classical monocytes, and non-classical monocytes (\ref{tab:chp6suptab3}, \ref{fig:chp6supfig4}B), suggesting that these cell types respond most prominently during COVID-19 disease.
+Within these cell types, a large proportion of DEGs were shared between the mild vs convalescent and the severe vs convalescent comparison, especially in the classical monocytes (\ref{fig:chp6fig1}F).
+This suggests that similar transcriptional changes occur in mild and severe COVID-19 and that the difference between mild and severe COVID-19 is due to a difference in the magnitude of the response, rather than to different transcriptional programs.
+For example, we observed several ISG, such as \textit{IFI6}, \textit{IFI27}, \textit{IFI30}, and \textit{IFI44L}, to be significantly upregulated in both severe and mild samples compared to convalescent samples, while a significantly higher expression of \textit{IFI27} and \textit{IFITM3} was detected in mild patients compared to severe patients, reminiscent of the results of a previous study \cite{Schulte2020Severe}.
+Gene-enrichment analysis using the KEGG pathway database showed a clear upregulation of oxidative phosphorylation, across different immune cells, in both mild and severe COVID-19 and an enrichment of immune-related pathways such as antigen processing and presentation and phagosome (\ref{fig:chp6supfig4}C).
+\vfill
+
+\subsection*{Differential open chromatin accessibility contributes to transcriptional differences between hospitalized and convalescent COVID-19 patients}
+To reveal epigenetic alterations at the level of chromatin accessibility in COVID-19, we explored open chromatin signatures of PBMCs across the different disease conditions.
+Among all 49 samples, 15\% of the 157,330 reproducible peaks are in promoter regions, while 32\% and 45\% are located in intergenic and intronic enhancer regions, respectively.
+When comparing across cell types and conditions, we observed no general enrichment of cell type or condition-specific peaks in the promoter or enhancer region (\ref{fig:chp6supfig5}A).
+We noticed that among all cell types, the number of open chromatin peaks is highest in classical monocytes, where it is significantly higher in samples from COVID-19 patients compared to samples from convalescent patients (Chi-square test, $P < 2.22 \times 10^{-16}$).
+When comparing peaks from one cell type to all other cell types, a large number of cell type-specific peaks were identified.
+This includes 17,105 peaks specific for classical and/or non-classical monocytes ($FDR-adjusted~P < 0.05$ and $log2FC > 0.5$, compared to other cell types), which comprise 10.9\% of all peaks in our data.
+We investigated the condition-specific peaks by comparing open chromatin peaks between disease conditions (hospitalized vs convalescent, mild vs convalescent, and severe vs convalescent) within each cell type.
+The lack of genome-wide significant condition-specific peaks ($FDR-adjusted~P < 0.05$) suggests that cell types contribute more to variation of open chromatin peaks than disease conditions.
+
+To test the regulatory impact of open chromatin marks on transcriptional responses, we integrated the significant DEGs ($adjusted~P < 0.05$) described above with the nominal differential peaks ($P < 0.05$) through peak-to-gene linkages, i.e. correlating the gene expression from scRNA-seq and peak accessibility from scATAC-seq (\ref{tab:chp6suptab4}, for details, see Methods section).
+Interestingly, we observed an enrichment of open chromatin peaks where the associated genes are upregulated in classical monocytes in both severe and mild patients (Fisher’s exact test, $FDR-adjusted~P = 6.03 \times 10^{-4}$ and $4.08 \times 10^{-4}$, respectively), (\ref{fig:chp6fig1}G and \ref{fig:chp6supfig5}B).
+These results illustrate that there is a large overlap of changes in chromatin accessibility and gene expression in the monocyte compartment during COVID-19, suggesting the underlying epigenetic regulation upon transcriptional responses.
+
+% Figure 1
+\begin{figure}%[ht!]
+  \centering
+  \includegraphics[height=\textwidth,angle=90]{Chapter6_figure1-1.png}
+  \caption{\label{fig:chp6fig1}
+    \textbf{Study overview and single cell multi-omics analysis strategy (1).}
+    \textbf{A}. Workflow of the study. Sample numbers in each data layer and disease condition are indicated.
+    \textbf{B}. Schematic overview of all patients enrolled in the study. Sampling dataset, disease conditions, and convalescent days are indicated.
+  }
+\end{figure}
+\begin{figure}%[ht!]
+  \centering
+  \includegraphics[height=0.9\textwidth,angle=90]{Chapter6_figure1-2.png}
+  \addtocounter{figure}{-1}
+  \caption{
+    ~\textbf{Study overview and single cell multi-omics analysis strategy (2).}
+    \textbf{C}. UMAP showing the cell distribution of hospitalized and convalescent conditions in scRNA-seq.
+    \textbf{D}. UMAP showing the cell distribution of severe, mild and convalescent conditions in scATAC-seq.
+    \textbf{E}. Boxplots showing cell proportion of hospitalized and convalescent samples in main cell types of scRNA-seq and scATAC-seq.
+  }
+\end{figure}
+\begin{figure}%[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_figure1-3.png}
+  \addtocounter{figure}{-1}
+  \caption{
+    ~\textbf{Study overview and single cell multi-omics analysis strategy (3).}
+    \textbf{F}. Scatter plots showing the log-fold-change (log2FC) of DEGs identified in monocytes between the comparison of severe vs. convalescent and the comparison of mild vs. convalescent.
+    \textbf{G}. Scatter plots showing the log-fold-change (log2FC) of DEGs and log-fold-change (log2FC) of DAPs identified in classical monocytes between comparison of severe vs. convalescent and comparison of mild vs. convalescent.
+  }
+\end{figure}
+
+% Figure 2
+\begin{figure}%[ht!]
+  \centering
+  \includegraphics[width=1.05\textwidth]{Chapter6_figure2-1.png}
+  \caption{\label{fig:chp6fig2}
+    \textbf{TF regulation via motifs in the open chromatin peaks (1).}
+    \textbf{A}. Heatmap showing the significantly enriched TF motifs in the open chromatin peaks of each cell type and condition. Colors represent -log10P value of enrichment. Rows are significantly enriched TF motifs.
+    \textbf{B}. Track plots showing the peaks around \textit{LUCAT1} gene. Blue lines indicate inferred linkages between peaks and \textit{LUCAT1} expression.
+    \textbf{C}. Heatmap showing the expression correlation of \textit{LUCAT1}, IFI27, IFI30 and TF genes in classical monocytes of hospitalized patients with a dot plot showing the expression of these genes in different conditions.
+  }
+\end{figure}
+
+\begin{figure}%[ht!]
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[width=\textwidth]{Chapter6_figure2-2.png}
+  \caption{
+    ~\textbf{TF regulation via motifs in the open chromatin peaks (2).}
+    \textbf{D}. Boxplots showing the molecular responses after knockdown of SPI1 and \textit{LUCAT1} or inhibition of C/EBP proteins.
+    \textbf{E}. Schematic plot summarizing the potential regulating program in \textit{LUCAT1}, SPI1, C/EBP, as well as ISGs and COVID-19 severity.
+  }
+\end{figure}
+
+\subsection*{Motif-enrichment reveals different transcriptional regulation between hospitalized and convalescent COVID-19 in classical monocytes}
+To further characterize the epigenetic regulation upon gene expression in COVID-19, we performed TF motif enrichment analysis for the open chromatin peaks identified in each cell type and condition.
+In total, we found 60 TFs with significantly enriched motifs among the identified peaks.
+This included SPI1 (PU.1), JUN/FOS, and C/EBP motifs, which were enriched in classical monocytes in both hospitalized and convalescent COVID-19 patients.
+Of note, C/EBP motifs (CEBPA, CEBPB, CEBPD, CEBPE, and CEBPG) are even more significantly enriched in hospitalized patients than in convalescent patients (\ref{fig:chp6fig2}A and \ref{fig:chp6fig2}E).
+Given their important role in monocyte differentiation and pro-inflammatory activation \cite{Rosenbauer2007Transcription}, we further investigated the interaction between these TFs and their targets, which were identified based on the genes with motif-binding peaks in classical monocytes.
+In total, 4,681 genes were associated with peaks harboring either SPI1, JUN/FOS, or C/EBP motifs, of which 1,514 were also DEGs between hospitalized and convalescent COVID-19 in classical monocytes (\ref{tab:chp6suptab5}).
+
+Interestingly, we found that the \textit{LUCAT1} long noncoding RNA was associated with monocyte-specific accessible peaks harboring SPI1, JUN/FOS, and C/EBP motifs (\ref{fig:chp6fig2}B), suggesting a monocyte-specific influence of the SPI1, JUN/FOS, and C/EBP TFs on \textit{LUCAT1}.
+Since \textit{LUCAT1} has previously been reported as a negative regulator of interferon responses \cite{Agarwal2020A}, we determined the co-expression patterns of \textit{LUCAT1}, the TFs, and the two highly expressed ISGs, \textit{IFI27} and \textit{IFI30}, in classical monocytes.
+As shown in \ref{fig:chp6fig2}C, the expression of \textit{LUCAT1} is positively correlated with the expression of \textit{SPI1}, \textit{JUN/FOS}, and \textit{CEBPD/CEBPE} TFs, but negatively correlated with \textit{IFI27} and \textit{IFI30} expression in hospitalized COVID-19 patients.
+A similar co-expression correlation was observed in convalescent individuals, although the correlations between \textit{LUCAT1} and \textit{CEBPE} or \textit{IFI30} were non longer significant (\ref{fig:chp6supfig5}C).
+Furthermore, in the differential expression comparison between disease conditions, \textit{SPI1} and \textit{LUCAT1} showed significantly higher expression in severe and mild samples compared to convalescent samples in classical monocytes ($adjusted~P < 0.05$, \ref{fig:chp6fig2}C and \ref{tab:chp6suptab3}), whereas \textit{CEBPD} showed significantly higher expression in severe samples compared to both mild and convalescent ones ($adjusted~P = 3.64 \times 10^{-10}$ [severe vs mild] and $4.15 \times 10^{-43}$ [severe vs convalescent]).
+\textit{IFI27} and \textit{IFI30}, as mentioned above, were significantly upregulated in mild samples compared to severe samples ($adjusted~P = 9.23 \times 10^{-71}$ [\textit{IFI27}] and $3.00 \times 10^{-15}$ [\textit{IFI30}], \ref{fig:chp6fig2}C and \ref{tab:chp6suptab3}).
+Together, these findings indicate a complex interaction of these genes at the expression level through epigenetic regulation that results in their altered expression under different disease conditions.
+
+% Figure 3
+\begin{figure}%[!ht]
+  \centering
+  \includegraphics[height=0.8\textwidth,angle=90]{Chapter6_figure3-1.png}
+  \caption{\label{fig:chp6fig3}
+    \textbf{RNA and ATAC profiles in monocyte sub-clusters in hospitalized and convalescent COVID-19 patients (1).}
+    \textbf{A}. UMAP showing the cell distribution of hospitalized and convalescent conditions in monocytes sub-clusters of scRNA-seq.
+    \textbf{B}. Expression of marker genes in monocytes sub-clusters.
+    \textbf{C}. Violin plots showing the AUCell-based gene signature scores for each sub-clusters from infiltrating monocytes (FCN1-Mono) and profibrotic pulmonary macrophages (CD163/LGMN-M$\phi$) in bronchoalveolar lavage (BAL) fluid (Wendisch et al., 2021).
+  }
+\end{figure}
+\begin{figure}%[!ht]
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[width=0.75\textwidth]{Chapter6_figure3-2.png}
+  \caption{
+    ~\textbf{RNA and ATAC profiles in monocyte sub-clusters in hospitalized and convalescent COVID-19 patients (2).}
+    \textbf{D}. UMAP showing the monocytes sub-clusters of scATAC-seq.
+    \textbf{E}. Dotplots and heatmap showing the expression and imputed activity scores of shared marker genes identified in monocyte sub-clusters of scRNA-seq and scATAC-seq, respectively.
+  }
+\end{figure}
+\begin{figure}%[!ht]
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[width=0.8\textwidth]{Chapter6_figure3-3.png}
+  \caption{
+    ~\textbf{RNA and ATAC profiles in monocyte sub-clusters in hospitalized and convalescent COVID-19 patients (3).}
+    \textbf{F}. Boxplots showing the cell proportion of severe, mild, and convalescent patients, as well as oxygen supply needed, not needed, and convalescent patients in each monocytes sub-cluster of scRNA-seq.
+    \textbf{G}. Heatmap showing the significantly enriched TF motifs in the open chromatin peaks of each monocytes sub-cluster.
+  }
+\end{figure}
+
+% Figure 4
+\begin{landscape}
+\begin{figure}%[!ht]
+  \centering
+  \includegraphics[height=0.85\textwidth]{Chapter6_figure4.png}
+  \caption{\label{fig:chp6fig4}
+    \textbf{GWAS risk variants associated with peaks and genes.}
+    \textbf{A}. Schematic plot showing the potential regulatory role of a GWAS risk variant located in an open chromatin peak that is bound by the TF motif and associated with gene expression.
+    \textbf{B}. Heatmap showing chromatin accessibility of peaks detected with hospitalized COVID-19 risk variants.
+    \textbf{C}. Dot plots showing the expression of DEGs associated with peaks from panel B.
+  }
+\end{figure}
+\end{landscape}
+
+To validate the interactions between \textit{LUCAT1} and C/EBPs in monocytes of COVID-19 patients, we measured the expression of \textit{LUCAT1} in isolated monocytes after inhibiting C/EBPs using celastrol and betulinic acid (\ref{fig:chp6fig2}D).
+In unstimulated monocytes, the C/EBP inhibitors enhanced \textit{LUCAT1} expression at lower doses but suppressed \textit{LUCAT1} expression at higher doses.
+In monocytes activated with a cocktail of IL1$\alpha$, IFN$\alpha$, and 3p-hairpin-RNA (viral mimic), both inhibitors suppressed \textit{LUCAT1} expression.
+In addition, in a stable \textit{LUCAT1} knockdown monocyte cell line, we observed increased \textit{CEBPE} expression (fold change = 81.5), but a slight reduction of \textit{SPI1} expression (fold change = 0.384) (\ref{fig:chp6fig2}D), which indicates strong negative feedback of \textit{LUCAT1} to upstream regulatory C/EBP TFs, but positive feedback to TF SPI1.
+As \textit{LUCAT1} was previously reported to suppress inflammatory and ISGs \cite{Agarwal2020A}, and ISGs are suppressed in severe COVID-19 patients \cite{Schulte2020Severe}, we speculate that the interaction of \textit{LUCAT1}, \textit{SPI1} and \textit{C/EBP}s inhibits ISG responses, resulting in a more severe condition in COVID-19 patients (\ref{fig:chp6fig2}E).
+
+\subsection*{Altered C/EBP accessibility in a classical monocytes subset is associated with oxygen supply}
+To further investigate the heterogeneity of gene regulation in the monocyte compartment of COVID-19 patients, we explored disease condition-specific subsets.
+Sub-sampling the monocytes and sub-clustering of the cells revealed eight transcriptionally distinct cell clusters (R1-R8, \ref{fig:chp6fig3}A), in which R3, R4, and R8 were largely contributed by hospitalized COVID-19 patients.
+By visualizing the marker gene expression in each cluster (\ref{tab:chp6suptab6}), we identified R1 as CD14-CD16+ non-classical monocytes and R2-R8 as CD14+CD16- classical monocytes.
+In the classical monocytes, \textit{CEBPD} and \textit{SPI1} were expressed similarly among all clusters.
+However, a more distinctive expression pattern was observed for the previously mentioned TF target genes.
+\textit{LUCAT1} significantly higher expressed in R2 and R8 compared to other clusters ($adjusted~P < 2.22 \times 10^{-16}$), whereas ISGs such as \textit{IFI27}, \textit{IFI30}, and \textit{IFITM3} showed expression predominantly in the R3 cluster ($adjusted~P < 2.22 \times 10^{-16}$) (\ref{fig:chp6fig3}B).
+
+
+In responding to SARS-CoV-2 infection, circulating monocytes could be recruited to the lung tissue and participate in tissue immune responses by further differentiating into macrophages \cite{Charo2006The}.
+We therefore assessed the transcriptional similarity between our monocyte sub-clusters and the monocytes/macrophages reported in bronchoalveolar lavage (BAL) fluid samples from COVID-19 patients \cite{Wendisch2021SARS}.
+By applying AUCell scores based on the top-30 marker genes from the BAL datasets, we identified that the three hospitalized COVID-19-specific sub-clusters (R3, R4, and R8) were similar to FCN1-Mono in BAL, which was reported by Wendisch et al as infiltrating monocytes that would later differentiate toward macrophages, while the macrophages themselves were not identified in any of our clusters (\ref{fig:chp6fig3}C).
+This suggests the hospitalized COVID-19-specific monocyte sub-clusters could be recruited to tissue and play an important role in the tissue immune responses.
+
+Next, we performed sub-clustering on the monocytes from the scATAC-seq data.
+Unsupervised clustering revealed six epigenetically distinct cell clusters (C1-C6, \ref{fig:chp6fig3}D).
+Of these, the C4 cluster is specific to hospitalized COVID-19 patients and the C2 cluster is specific to convalescent patients.
+Through a multi-omics alignment of the transcriptomic and epigenomic profiles across monocyte subclusters (see Methods section for details), we confidently matched R1, R2, and R4 to C1, C2, and C4 (with $>$90\% of aligned cells matched).
+This can be confirmed by the shared pattern between gene expression levels of marker genes and estimated gene activity scores of the same marker genes based on peak data (\ref{fig:chp6fig3}E and \ref{tab:chp6suptab6}).
+When comparing the cell proportions across different disease conditions, the C1 (R1) non-classical monocytes had a higher abundance in convalescent COVID-19 patients (\ref{fig:chp6fig3}F) that could be seen even before sub-clustering (\ref{fig:chp6fig1}F).
+More interestingly, the remaining CD14+CD16- classical monocytes displayed high heterogeneity of cell proportions, with the C2 (R2) and C4 (R4) sub-clusters varying dramatically across disease conditions.
+C2 (R2), which expresses \textit{LUCAT1} and harbors a strong antigen-presentation capacity with high expression of MHC class II components (including HLA-DQA and HLA-DPA), was largely contributed by convalescent patients (\ref{fig:chp6fig3}F).
+In contrast, the C4 (R4) cluster, which shows a reverse expression pattern of MHC class II components and suppressed expression of ISGs, is mainly contributed by hospitalized COVID-19 patients (both mild and severe) and has a a higher proportion in patients requiring oxygen supply than in those without (\ref{fig:chp6fig3}F), suggesting a potential correlation between these monocytes and impaired lung function in patients.
+
+To disclose the epigenetic regulation that underpins the transcriptional differences of these monocyte subsets, especially the condition-specific ones, we performed TF motif enrichment for marker peaks identified in each monocyte subset.
+The results demonstrate a distinct pattern of enriched motifs in different subsets.
+SPI1 motifs are enriched in the convalescent-specific R2/C2 subset, together with RUNX1/2, IRF4, STAT2, and BCL11A/B motifs, whereas C/EBP (CEBPA, CEBPB, CEBPD, CEBPG, and CEBPE) motifs are enriched in the hospitalized disease-specific R4/C4 subset, together with an ATF4 motif (\ref{fig:chp6fig3}G).
+This result indicates a shift of the regulatory elements between convalescent and hospitalized COVID-19 patients.
+Additionally, the suppressed expression of \textit{IFI27} and \textit{IFITM3} in R4 in comparison to R3, corresponds to its matched C4 cluster, which was enriched with C/EBP motifs.
+These results again suggest that altered C/EBP and SPI1 motif accessibility may contribute to the dysregulation of interferon responses in COVID-19, and further indicate a potential correlation with the need for oxygen supply of COVID-19 patients. % FIXME: \checkme{Evidence?}
+
+\subsection*{COVID-19 GWAS variants are overrepresented in open chromatin regions of classical monocytes}
+Previous GWAS have revealed a number of genome regions associated with COVID-19 disease conditions.
+Therefore, we tested if the identified GWAS hospitalization risk variants (\enquote{Hospitalized covid vs. population}, release 6) \cite{Niemi2021Mapping} have an impact on open chromatin peaks in specific immune cell types.
+Our data reveal that these variants are significantly enriched in open chromatin peaks of classical monocytes from hospitalized COVID-19 patients (Fisher’s exact test, $P = 2.98 \times 10^{-12}$) and of CD4+ T cells from convalescent individuals (Fisher’s exact test, $P = 2.68 \times 10^{-6}$) compared with the other conditions and cell types.
+In classical monocytes, risk variants on chr3, 12, 17, and 21 were found to be located in several open chromatin peaks that were highly accessible in hospitalized patients (\ref{fig:chp6fig4}A and \ref{fig:chp6fig4}B; \ref{fig:chp6supfig7}).
+When looking at the genes linked to the risk variant peaks mapped using the aforementioned method of peak-to-gene linkage (See Methods), we identified significantly elevated expression (Wilcoxon ranked-sum test, $adjusted~P < 0.05$) of CCR1 and \textit{CCR2} (chr3), OAS3 (chr12), and IFNAR1 and IFNGR2 (chr21) in hospitalized patients compared to convalescent individuals in classical monocytes (\ref{fig:chp6fig4}C).
+These results suggest that several GWAS risk variants may impact the expression of linked immune response genes through epigenetic regulation.
+
+\subsection*{ASoC analysis reveals epigenetic effects of genetic variants}
+To further investigate the epigenetic effects of genetic variants, we evaluated the ASoC, which represents the imbalance of chromatin accessibility between alleles, at heterozygous SNPs by integrating scATAC-seq and SNP data from the same individuals.
+In total, 292 and 86 ASoC SNPs were identified in hospitalized and convalescent COVID-19 individuals, respectively ($FDR-adjusted~P < 0.05$, \ref{fig:chp6fig5}A; \ref{fig:chp6supfig8}B-C).
+Of these identified ASoC SNPs, about 5\% were shared by hospitalized and convalescent conditions, which is in contrast with the fact that the majority of heterozygous SNPs (89.18\%) available for testing the ASoC effect were shared by participants between conditions.
+This result suggests there is distinct allele-specific regulation in open chromatin regions between hospitalized and convalescent COVID-19 patients.
+
+As shown in \ref{fig:chp6fig5}B, the majority of ASoC SNPs were located in enhancer ($>$25\%) or promoter ($>$65\%) regions, suggesting that epigenetic regulations occurs in regulatory DNA sequences.
+More than 55\% of ASoC SNPs were also associated with the expression of nearby genes in whole blood samples (eQTL) \cite{Author2017Genetic}, which indicates that these ASoC SNPs potentially affect gene expression by controlling allele-specific chromatin accessibility.
+In addition, for about 10\% of ASoC SNPs, the nearby genes (of which promoters overlap with at least one ASoC SNP) were identified to be differentially expressed in our scRNA-seq analysis in at least one cell type? (i.e. cell-type-dependent DEGs identified by comparisons between conditions).
+Further enrichment analysis revealed an overrepresentation of ASoC SNPs assigned to DEGs in COVID-19 patients, suggesting that infection response genes are regulated by chromatin accessibilities of genetic variants (Fisher’s exact test, $FDR-adjusted~P < 0.05$, \ref{fig:chp6fig5}C).
+Of note, we also observed that the ASoC SNPs were enriched in enhancer regions in hospitalized participants (Fisher’s exact test, $P = 0.047$), but not in the convalescent ones, showing the alteration of transcriptional profiles/activities in hospitalized COVID-19 patients compared to convalescent ones.
+
+When zooming in on cell subsets, the ASoC SNPs we identified show significant overrepresentation in open chromatin regions (\ref{fig:chp6supfig8}D) and transcription factor binding sites (TFBS) (\ref{fig:chp6supfig8}E).
+Given that the genetic variants can perturb TF binding affinities by breaking the corresponding TF motifs, resulting in dysregulation of target genes \cite{Abramov2021Landscape}, we calculated motif disruption scores (MDS) for each ASoC SNP \cite{Coetzee2015motifbreakR}.
+We found that the allelic chromatin accessibilities were significantly correlated with MDS for several TF motifs in classical monocytes from hospitalized COVID-19 patients (\ref{fig:chp6fig5}D, Spearman’s rank rho, $FDR-adjusted~P < 0.05$), suggesting that ASoC SNPs can play regulatory roles by disrupting TF motifs (i.e. affecting TF binding affinities).
+
+% Figure 5
+\begin{landscape}
+\begin{figure}%[!ht]
+  \centering
+  \includegraphics[height=0.725\textwidth]{Chapter6_figure5-1.png}
+  \caption{\label{fig:chp6fig5}
+    \textbf{ASoC analysis reveals the epigenetic effect of COVID-19 GWAS variants (1).}
+    \scriptsize
+    \textbf{A}. Venn diagram of ASoC SNPs identified in six cell types from hospitalized and convalescent participants. ASoC SNPs were merged per disease condition. ASoC SNPs identified in more than one cell type were counted once.
+    \textbf{B}. Upset plot showing functional annotation of identified ASoC SNPs. Numbers at the top of each bar indicate the exact number of ASoC SNPs belonging to the annotation or the gene group. Regulatory element annotations were determined based on 25-state models from the Roadmap Epigenomics Project. ASoC SNPs were assigned to eQTL genes and DE genes based on significant variant-gene pairs (GTEx V8) and positions (25kbp up/downstream to ASoC SNPs), respectively.
+    \textbf{C}. Bar plot showing the enrichment of ASoCs assigned to our DEGs. The X-axis represents cell types and Y-axis represents odds ratio. Color indicates disease conditions: red for hospitalized COVID-19 while blue for convalescent COVID-19. The numbers on the bar are FDR-adjusted P values and number of ASoC SNPs assigned to DEG out of the number of ASoC SNPs identified for the cell type. $<NA>$ indicates no valid estimation available.
+    \textbf{D}. Heatmap of correlations between allelic imbalance and TF motif disruption score. For each ASoC SNP, the allelic imbalance was represented by log2(reference-read-counts / alternative-read-counts), while the motif disruption was the difference between altScore and refScore by motifbreaR. Colors of the heatmap are Spearman’s rho and multiplication marks indicate significant correlations ($FDR-adjusted~P < 0.05$).
+  }
+\end{figure}
+\end{landscape}
+\begin{figure}%[!ht]
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[height=0.8\textwidth,angle=90]{Chapter6_figure5-2.png}
+  \caption{
+    ~\textbf{ASoC analysis reveals the epigenetic effect of COVID-19 GWAS variants (2).}
+    \textbf{E}. Q-Q plot of COVID-19 GWAS P values for identified ASoC SNPs. Y-axis represents observed GWAS P values (converted by -log10) of ASoC SNPs in cMono of hospitalized (red), convalescent COVID-19 (green) participants, and random selected SNPs (blue) with matched MAF.
+    \textbf{F}. Allelic reads depth of ASoC SNP rs6800484 at the COVID-19 related CCR locus.
+    \textbf{G}. Integration of gene-to-peak link, single-cell ATAC-seq, promoter capture Hi-C, eQTL SNPs, and COVID-19 GWAS SNPs around ASoC SNP rs6800484.
+  }
+\end{figure}
+\begin{figure}%[!ht]
+  \centering
+  \addtocounter{figure}{-1}
+  \includegraphics[width=0.75\textwidth]{Chapter6_figure5-3.png}
+  \caption{
+    ~\textbf{ASoC analysis reveals the epigenetic effect of COVID-19 GWAS variants (3).}
+    \textbf{H}. Schematic plot showing the potential epigenetic and genetic regulating program at \textit{CCR2} locus under COVID-19 scenario.
+    \textbf{I}. \textit{CCR2} expression in the differentiation trajectory of monocytes and macrophages of BAL fluid samples of COVID-19 patients (Wendisch et al., 2021).
+  }
+\end{figure}
+
+% Figure 6
+\begin{landscape}
+\begin{figure}
+  \centering
+  \includegraphics[height=0.9\textwidth]{Chapter6_figure6.png}
+  \caption{\label{fig:chp6fig6}
+    \textbf{Schematic plot summarizing the genetic and epigenetic dysregulation of innate immunity in COVID-19.}
+  }
+\end{figure}
+\end{landscape}
+
+\subsection*{ASoC of COVID-19 GWAS variants}
+Next, we intersected our ASoC SNPs with the above-mentioned COVID-19 GWAS hospitalization risk variants \cite{Niemi2021Mapping}.
+We found that ASoC SNPs identified in classical monocytes from hospitalized COVID-19 patients were also associated with COVID-19, compared to randomly selected SNPs with matched minor allele frequency (\ref{fig:chp6fig5}E and \ref{fig:chp6supfig8}G).
+Among them, rs6800484 (COVID-19 GWAS $P = 6.58 \times 10^{-9}$), showed an imbalance of chromatin accessibility in classical monocytes in hospitalized COVID-19 patients (Binomial test, $P < 0.05$) but not in convalescent individuals (\ref{fig:chp6fig5}F).
+Of note, this SNP is located in a classical monocyte-specific open chromatin peak that was annotated as an EnhA1 enhancer (Roadmap Epigenomics Project) \cite{Bernstein2010The} close to the CCR gene family.
+
+This observation led us to further explore the locus by combining our results (ASoC SNPs, scRNA-seq, and scATAC-seq) with publicly available data, including promoter capture Hi-C of monocytes (PCHiC) \cite{Javierre2016Lineage}, eQTL of whole blood samples \cite{Võsa2021Large}, and COVID-19 GWAS summary statistics \cite{Niemi2021Mapping}.
+As shown in \ref{fig:chp6fig5}G, we illustrated a potential regulatory program showing the effect of this variant underlying the COVID-19 context.
+Specifically, the publicly available monocyte PCHiC data and our peak-to-gene linkage analysis (See Method) suggest that the expression of \textit{CCR2} is correlated with the regulatory elements pinpointed by rs6800484 in classical monocytes from hospitalized COVID-19 patients.
+In addition, rs6800484-C is significantly associated with both COVID-19 ($P = 6.58 \times 10^{-9}$) and decreased \textit{CCR2} expression ($P = 4.29 \times 10^{-13}$).
+Meanwhile, in classical monocytes, homozygous risk allele (C/C) carriers show significantly lower \textit{CCR2} levels compared to other COVID-19 patients (Wilcoxon test, $adjusted~P = 3.2 \times 10^{-3}$, \ref{fig:chp6supfig8}H), validating the inhibiting role of the risk allele on \textit{CCR2} expression.
+
+As summarized in \ref{fig:chp6fig5}H, the COVID-19 risk allele rs6800484-C identified in hospitalized patients is associated with decreased chromatin accessibility of an enhancer at the locus, which further inhibits the \textit{CCR2} expression.
+Of note, a previous study showed that mice lacking Ccr2 demonstrate higher viral loads and increased lung viral dissemination \cite{Vanderheiden2021CCR2}.
+In addition, our scRNA-seq data of classical monocytes confirms the importance of \textit{CCR2} because it was significantly upregulated in classical monocytes both in hospitalized COVID-19 patients (compared with convalescent ones, $adjusted~P < 2.22 \times 10^{-16}$) and the disease-related R4 sub-cluster (compared with other monocyte sub-clusters, $adjusted~P < 2.22 \times 10^{-16}$).
+In the public BAL fluid samples from COVID-19 patients \cite{Wendisch2021SARS}, \textit{CCR2} was also highly expressed in the infiltrating monocytes that would later differentiate toward macrophages (\ref{fig:chp6fig5}I).
+
+These results illustrate an example that ties a risk variant to function by depicting a regulation program from the epigenetic regulation effect of the risk allele.
+Another interesting example of potential regulation programs for DPP9, a candidate gene for COVID-19 severity \cite{Pairo2020Genetic}, is depicted in \ref{fig:chp6supfig8}I-K.
+
+\section*{Discussion}
+Both host response and genetic predisposition affect the course and outcome of COVID-19, although the interplay between the two is not yet fully understood.
+Our single-cell multi-omics study has revealed numerous insights into the (epi)genetic mechanisms that regulate immune cells in COVID-19.
+Firstly, we observed that COVID-19 has a pronounced effect on the transcriptional signature of classical monocytes, which was shown to be epigenetically regulated, and that the difference between mild and severe COVID-19 is due to a difference in the magnitude of response rather than differing transcriptional programs.
+Secondly, we depicted the regulatory properties of the long noncoding RNA \textit{LUCAT1} on the C/EBPs TFs, linking it to COVID-19 severity and we experimentally validated the regulatory relationships.
+Finally, we identified a number of ASoC SNPs with potential regulatory effects in hospitalized COVID-19 patients.
+Interestingly, among these ASoC SNPs, rs6800484-C was associated with COVID-19 risk and was linked to decreased chromatin accessibility and reduced expression of \textit{CCR2}, specifically in classical monocytes from hospitalized COVID-19 patients.
+Together, these findings shed light on the genetic and transcriptional regulation of immune cells in COVID-19 (\ref{fig:chp6fig6}).
+
+In our study, we observed a number of changes in cell proportions between hospitalized and convalescent COVID-19 patients, but fewer between severe and mild patients.
+Lymphopenia has been linked to COVID-19, as is also observed in our data, with hospitalized COVID-19 patients having a lower percentage of CD4+ T cells.
+We also saw an increased proportion of classical monocytes in hospitalized COVID-19 patients, as also observed earlier \cite{Zhang2020Single}.
+In addition, we observed an upregulation of type I interferon signaling, which is crucial for viral immunity, in various monocyte subsets in COVID-19 patients compared to recovered individuals, e.g. IFI27, ISG15, and IFI6, which was also observed earlier in monocytes from COVID-19 patients compared to healthy controls \cite{Zhang2020Single}.
+Interestingly, most of the observed differences were shared between mild and severe COVID-19 patients compared to convalescent individuals.
+This suggests that the difference in immunity between mild and severe COVID-19 is a matter of degree rather than reflecting distinct transcriptional profiles.
+This is in line with a previous observation that there are no immunological endotypes within the spectrum of COVID-19 \cite{Janssen2021Dysregulated} like those seen, for example, in sepsis \cite{Reyes2021Plasma}.
+
+With open chromatin profiles, we observed enrichment of C/EBP, JUN, FOS, and SPI1 motifs in classical monocytes, which are also reported as critical transcription factors to monocyte development in sepsis \cite{Reyes2020An}.
+As a subgroup of severe COVID-19 patients also develop a sepsis-like syndrome \cite{Reyes2021Plasma,Adams2020Single,Webb2020Clinical}, there could be some overlapping immune-regulatory mechanisms at play.
+Examining co-expression of genes and peak-to-gene linkages, we found that the long noncoding RNA \textit{LUCAT1} interacts with all these SPI1, JUN, FOS, CEBPD, and CEBPE transcription factors.
+We applied knock-out and inhibitor experiments to decode the regulatory and feedback mechanism among these molecules.
+The sub-clustering of monocytes further illustrated a C/EBP-motif-enriched classical monocyte subsets specific to hospitalized COVID-19 patients.
+These results together lead us to envision a dysregulated cascade where increased C/EBP regulation enhanced \textit{LUCAT1} expression and further suppressed interferon responses to SARS-CoV-2 infection, which finally led to dysfunctional immune responses of COVID-19.
+Activation of C/EBP transcription factors was also reported to license the differentiation of profibrotic macrophages and trigger lung fibrosis in COVID-19 \cite{Wendisch2021SARS}.
+We observed the enrichment of open chromatin regions with C/EBP motifs in an oxygen-supply-associated monocyte sub-cluster, suggesting the activation of C/EBP regulation programs in circulating monocytes may also be associated with lung fibrosis and contribute to the need for oxygen in COVID-19 patients.
+
+Finally, we identified ASoC SNPs in regulatory elements that potentially disrupt regulation and consequently affect gene expression \cite{Zhang2020Allele,Atak2021Interpretation}.
+Of note, we observed that the COVID-19 risk allele rs6800484-C corresponds to lower chromatin accessibility and lower expression of \textit{CCR2} in classical monocytes \cite{Pairo2020Genetic}, suggesting the potential genetic and epigenetic regulatory function of rs6800484 in COVID-19 patients.
+The \textit{CCR2} gene encodes the chemokine receptor for monocyte chemoattractant protein-1 (MCP-1/CCL2), which promotes the migration of monocytes to sites of inflammation \cite{Ginhoux2014Monocytes,Serbina2006Monocyte}.
+MCP-1/CCL2 was reported to be enriched in bronchoalveolar fluid collected from severe COVID-19 patients, indicating active recruitment of CCR2+ monocytes and high inflammation in lung tissues \cite{Zhou2020Heightened}.
+This suggests that the ASoC in the observed variant may impact monocyte recruitment to tissue by blockading \textit{CCR2} expression and thereby further influence the innate immune responses in COVID-19 patients.
+Although the down-regulation of \textit{CCR2} corresponds to higher viral loads and increased viral dissemination in lung \cite{Vanderheiden2021CCR2}, we did not observe a significant down-regulation of \textit{CCR2} expression in all hospitalized or severe COVID-19 patients, just in five patients with C/C allele.
+This suggests that the risk allele, which corresponds to dysregulation of \textit{CCR2}, contributes to the disease outcome of a subgroup of COVID-19 patients.
+
+In summary, our data have improved the understanding of the genetic and transcriptional regulation of dysregulated immune responses in COVID-19 and identified \textit{LUCAT1} and \textit{CCR2} as key regulators of detrimental immunity.
+Both factors contribute to COVID-19 pathogenesis in a subset of patients, while the co-action of these factors could bring heterogeneous responses to the SARS-CoV-2 infection.
+These leads can be used as a starting point for the development of personalized host-directed therapy to treat COVID-19.
+
+\section*{Acknowledgment}
+The authors thank all volunteers from the Medical School Hannover (MHH) for participation in the study.
+Z.Z. was supported by a joint scholarship by the University of Groningen and China Scholarship Consortium (CSC201706350277) and Singh-Chhatwal-Postdoctoral Fellowship at the Helmholtz Centre for Infection Research.
+This study was supported by the COFONI (COVID-19 Research Network Lower Saxony) Flex fund to Y.L., the Network Universities of Medicine (NUM) CODEX+ fund from the Federal Ministry of Education and Research (BMBF) to Y.L., and partly by the Helmholtz Centre for Infection Research Network fund (NASAVIR) to Y.L..
+Y.L. was also supported by an ERC Starting Grant (948207) and the Radboud University Medical Centre Hypatia Grant (2018) for Scientific Research.
+A.-E.S. acknowledges FOR-COVID (Bayerisches Staatsministerium für Wissenschaft und Kunst) and the Helmholtz Association for support.
+The Genotype-Tissue Expression (GTEx) Project was supported by the Common Fund of the Office of the Director of the National Institutes of Health, and by NCI, NHGRI, NHLBI, NIDA, NIMH, and NINDS.
+The data used for the analyses described in this manuscript were obtained from: the GTEx Portal on May/28th/2021.
+% Thomas Illig
+ 
+\section*{Author Contribution}
+Conceptualization and study design: Y.L.;
+Data analysis and investigation: B.Z., Z.Z., V.K., S.K., A.V., R.G.;
+Loss-of-function experiments: L.S.;
+Discussion and interpretation: B.Z., Z.Z., V.K., Y.L., C-J.X., S.K., M.C., L.S., A.V., U.O.;
+Sample collection and biospecimen resources: M.C., L.S., R.F., T.I., U.O., H-C.T, Z.L., C.F.S., B.B., R.G.;
+Writing original manuscript: B.Z., Z.Z., V.K.;
+Review and editing manuscript: All authors.
+
+\section*{Methods}
+\subsection*{Patients recruitment and description}
+We collected DNA and PBMCs from blood samples of COVID-19 patients.
+Samples taken on days when patients were hospitalized were considered hospitalized samples and samples taken from discharged patients were considered convalescent samples.
+Clinical information on age, sex, medication, active days, O2 supply, etc. is recorded for each sample and listed in \ref{tab:chp6suptab1}.
+WHO scores were used to allocate the samples to mild (WHO 2-4) or severe (5-7) conditions according to the WHO clinical ordinal scale.
+
+\subsection*{Single-cell RNA-seq library preparation and sequencing}
+Cells were counted, and an equal number of cells from five or six different individuals were pooled together.
+In total, 16,000 cells in total were loaded into the 10X ChromiumTM Controller, and libraries were prepared based on the manufacturer's instructions (Chromium Next GEM Single Cell 3’ Reagent Kits v3.1 (Dual Index) User Guide, Rev A, CG000315 Rev A).
+Library quality per pool was examined using the Agilent Bioanalyzer High Sensitivity DNA kit.
+Sequencing was carried out on NovaSeq 6000, with a depth of 50,000 reads per cell.
+
+\subsection*{Single-cell ATAC-seq library preparation and sequencing}
+Nuclei isolation was performed based on manufacturer's instructions from 10X (CG000169 • Rev D).
+Briefly, cells were washed and lysed for 3 minutes on ice.
+After discarding the supernatant, lysed cells were diluted within 1× diluted nuclei buffer (10x Genomics) and counted using a Countess II FL Automated Cell Counter to validate lysis.
+An equal number of nuclei from five or six individuals were pooled and then loaded into the Chromium Next GEM Chip H based on the user guides from 10X genomics (Chromium Next GEM Single Cell ATAC Reagent Kits v1.1 User Guide, CG000209 Rev D).
+After breaking the emulsion, the barcoded tagmented DNA was purified and amplified for sample indexing and generation of scATAC-seq libraries.
+The final libraries was quantified using the Agilent Bioanalyzer High Sensitivity DNA kit.
+Sequencing was performed on NovaSeq 6000 with a depth of 25,000 reads per nuclei.
+
+\subsection*{Genotyping and imputation}
+Genotyping of DNA samples isolated from subjects in the current study were performed using the GSA-MDv3 array (Infinium, Illumina) following the manufacturer's instructions.
+In total, 725,875 variants of 48 individuals were called by Optical 7.0 with default settings.
+
+Quality control (QC) for raw variants was performed using PLINK \cite{Purcell2007PLINK}.
+In brief, no sample was excluded initially due to failure in sex-check (--check-sex).
+Then, low-quality variants and individuals were excluded by parameters --geno 0.1 --mind 0.1.
+Next, missingness of genetic information and rates of heterozygosity were filtered by --missing and --het, respectively.
+After QC, 719,942 variants from 48 individuals were retained for the imputation procedure.
+The clean raw variants were uploaded to the TOPMed Imputation Server and imputed against the TOPMed (Version R2 on GRC38) reference panel \cite{Das2016Next}.
+The imputed variants ($n = 290,971,705$) were downloaded and filtered by BCFtools \cite{Danecek2021Twelve}, excluding variants with $R^2 < 0.5$, with 14,232,029 variants retained for the downstream analysis.
+
+Of note, additional QC and annotation was performed to obtain the genotypes that were used in the ASoC analysis.
+The variants were assigned reference SNP id (rs) by BCFtools against common variants (b151 GRCh38) downloaded from dbSNP.
+Subsequently, only variants that have rs numbers and that were heterozygous in at least three individuals were retained for the ASoC analysis.
+
+\subsection*{Data pre-processing and demultiplex of 10x Genomics Chromium scRNA-seq data}
+BCL files from each library were converted to FASTQ files using bcl2fastq Conversion Software (Illumina) using the respective sample sheet with the 10x barcodes utilized.
+The proprietary 10x Genomics CellRanger pipeline (v4.0.0) was used with default parameters.
+CellRanger was used to align read data to the reference genome provided by 10x Genomics (Human reference dataset refdata-cellranger-GRCh38-3.0.0) using the aligner STAR, and a digital gene expression matrix was generated to record the number of UMIs for each gene in each cell.
+
+The single-cell transcriptome in each library was further demultiplexed by assigning cell barcodes to their donor.
+The pre-mapped bam files of each library were loaded to Souporcell (v1.3gb) \cite{Heaton2020Souporcell} for a genotype-free SNP-based demultiplex with default settings, where candidate variants were called for each library and cells from each library were clustered into different samples based on their allele patterns.
+SNPs called from each sample were then matched with known genotypes of donors to assign a donor ID to each sample.
+The demultiplex assignments were double-checked using the expression of Y-chromosome genes (ZFY, RPS4Y1, EIF1AY, KDM5D, NLGN4Y, TMSB4Y, UTY, DDX3Y, and USP9Y) in male samples.
+
+ 
+\subsection*{Data pre-processing and demultiplex of 10x Genomics Chromium scATAC-seq data}
+BCL files from each library were converted to FASTQ files using bcl2fastq Conversion Software (Illumina) using the respective sample sheet with the 10x barcodes utilized.
+The proprietary 10x Genomics CellRanger-ATAC pipeline (v1.2.0) was used with default parameters.
+CellRanger-ATAC was used to align read data to the reference genome provided by 10x Genomics (Human reference dataset refdata-cellranger-atac-GRCh38-1.2.0) and a fragments matrix was generated to record the number of reads for each open chromatin region in each cell.
+
+The cells in each library were further demultiplexed by assigning cell barcodes to their donor.
+The pre-mapped bam files of each library were loaded to Souporcell (v1.3gb) \cite{Heaton2020Souporcell} for genotype-free SNP-based demultiplexing.
+To call robust SNPs from the ATAC-seq samples, candidate variants were first called by freebayes with minimal mapping quality = 20, minimal base quality = 20, minimal coverage = 6, and minimal alternative allele = 2.
+Next, cell allele matrices from each library were generated with vartrix with minimal mapping quality = 20, and cells were clustered based on their allele patterns to identify different samples in one library.
+SNPs called from each sample were matched with known genotypes of donors to assign the donor IDs.
+
+\subsection*{Independent sample set}
+In our cohort, some samples with different disease statuses came from the same donor.
+To obtain independent samples for pair-wise comparison across conditions, we manually selected an independent sample set after QC for both scRNA-seq and scATAC-seq based on the following criteria: one sample per donor, early-stage for multiple stages, with samples shared by scRNA-seq and scATAC-seq data are preferred.
+The selected samples are marked in \ref{tab:chp6suptab1}.
+ 
+
+\subsection*{QC for scRNA-seq data}
+After the demultiplex, the expression matrix from PBMC was loaded to R/Seurat package (v3.2.2) \cite{Stuart2019Comprehensive} for downstream analysis.
+To control the data quality, we first excluded cells with ambiguous assignments from Souporcell demultiplex.
+Next, we further excluded low-quality cells with $>$15\% mitochondrial reads, $<$100 or $>$3,000 expressed genes, or $<$500 UMI counts (criteria were chosen according to the overall distribution of samples).
+In addition, genes expressed in less than three cells were also excluded from further analysis.
+
+\subsection*{Dimensionality reduction and clustering for scRNA-seq data}
+After QC, we applied LogNormalization (Seurat function) to each cell, where original gene counts were normalized by total UMI counts, multiplied by 10,000 (TP10K), and then log-transformed by log10(TP10k+1).
+We then scaled the data, regressing for total UMI counts, and performed principal component analysis (PCA) based on the 2,000 most-variable features identified using the vst method implemented in Seurat.
+Subsequently, data from each sequencing batch was integrated, using the \enquote{harmony} algorithm, based on the first 20 principal components to correct technical differences in the gene expression counts of different libraries.
+Cells were then clustered using the Louvain algorithm based on the first 20 \enquote{harmony} dimensions with a resolution of 0.4.
+For visualization, we applied UMAP based on the first 20 dimensions of the \enquote{harmony} reduction.
+
+\subsection*{Annotation of scRNA-seq clusters}
+Clusters were annotated based on a double-checking strategy: 1) checking by automatic annotation with R/SingleR package \cite{Aran2019Reference} and 2) manually checking the expression of cluster markers or known marker genes.
+Specifically, automatic annotation was applied with five pre-installed reference datasets in SingleR: HumanPrimaryCellAtlas data (HPCA) \cite{Mabbott2013An}, BlueprintEncode data \cite{Martens2013BLUEPRINT,Epigenomics2012An}, ImmuneCellExpression Data \cite{Schmiedel2018Impact}, NovershternHematopoietic data \cite{Novershtern2011Densely}, and MonacoImmune data \cite{Monaco2019RNA}.
+Cluster marker genes were identified by comparing gene expression of each cluster to all other clusters of the tested dataset using the FindAllMarkers function in Seurat with the Wilcoxon rank-sum test.
+Only upregulated genes with a $log-fold change > 0.25$ and a $Bonferroni-corrected~P < 0.05$, and were expressed in at least 25\% of cells were calculated for each cluster, and genes from each cluster of interest were ranked by their log-fold changes.
+
+In addition, T and NK cell clusters were further characterized by expression of marker genes related to memory T cells (\textit{IL7R}), naive/central memory (\textit{SELL}, CCR7), cell cytotoxic (CD8A, CD8B, NKG7, GZMB), interferon responses (IFI6, ISG15), and other data-derived cluster markers (\ref{tab:chp6suptab2}).
+Monocyte clusters were then characterized by classical and non-classical monocyte markers (CD14, FCGR3A) and pro-inflammatory cytokines (TNF, IL1B), and the data-derived cluster markers, such as CD163 (\ref{tab:chp6suptab2}).
+
+\subsection*{DEGs across Covid-19 conditions}
+For pair-wise comparison between Covid-19 conditions, differential expression (DE) tests were performed using the FindMarkers functions in Seurat with the Wilcoxon rank-sum test.
+The non-parameter Wilcoxon rank-sum test is distribution-free, but the results may still be biased by age effects.
+We therefore also performed DE tests using MAST \cite{Finak2015MAST}, where we fit a hurdle model to the expression of each gene consisting of a linear regression for age as supplementary results.
+In both tests, genes with a $log-fold change > 0.05$ and a $Bonferroni-corrected~P < 0.05$, and were expressed in at least 10\% of tested groups were regarded as significantly differentially expressed.
+
+\subsection*{QC for scATAC-seq data}
+After alignment and demultiplex, we used ArchR \cite{Granja2021ArchR}, a full-featured scATAC-seq analysis package, with minor adaptation to analyze our scATAC-seq data.
+Briefly, we created an Arrow file for the CellRanger mapped fragments file from each single-cell library and annotated the cells with the Souporcell demultiplex assignments.
+For QC, we filtered out cells that had fewer than 1,000 unique fragments, a transcription start site enrichment $<$ 4, or potential doublets recognized by the ArchR package.
+We also excluded cells with ambiguous assignments from Souporcell demultiplex.
+Finally, an ArchRProject combining all of the Arrow files was created for downstream analysis.
+
+\subsection*{Dimensionality reduction and clustering for scATAC-seq data}
+After QCl, we used the ArchR function ‘addIterativeLSI’ to process iterative latent semantic indexing using the top 25,000 variable features and top 30 dimensions.
+We then used the harmony algorithm to correct batch effects from different libraries and clustered cells based on the results with a resolution of 0.8.
+For visualization, we applied UMAP based on the dimensions of the ‘harmony’ reduction with nNeighbors = 30 and minDist = 0.5.
+
+\subsection*{Annotation of scATAC-seq clusters}
+To annotate the scATAC-seq clusters, gene scores were calculated and imputed for each cell, and marker genes from each cluster were detected with functions in ArchR package.
+Briefly, we firstly use ‘addGeneScoreMatrix’ function to independently compute gene activity scores per cell, then applied ‘addImputeWeights’ to impute gene scores by smoothing the signal across nearby cells using the MAGIC algorithm.
+Next, we compared independent gene scores between cells from one cluster and all the other clusters using the Wilcoxon rank-sum test to detect cluster-specific genes.
+The ‘bias’ parameter in ‘getMarkerFeatures’ from ArchR was used to account for transcription start site enrichment scores and the number of unique fragments per cell during the comparison.
+Finally, we visualized these genes and other cell-type-specific marker genes used for our scRNA-seq data to assign an identity to each cluster.
+ 
+\subsection*{Peaks calling and marker peaks detection}
+To generate a comparable peak matrix for cross-sample comparison of differential open chromatin accessibility, reproducible peaks were called based on the pseudo-bulk replicates for each condition and clustered using the ‘addReproduciblePeakSet’ functions with Macs2 algorithm \cite{Zhang2008Model}.
+After adding a peak matrix based on the called reproducible peaks, we applied differential peak detection with the Wilcoxon rank-sum test, again accounting for transcription start site enrichment scores and the number of unique fragments per cell during the comparison.
+For marker peaks per cell type and disease conditions, peaks were compared between cells from the tested group and cells from all other groups, and peaks with $FDR-adjusted~P < 0.05$ were considered as significant cell type- and/or condition-specific peaks.
+For pair-wise comparison between conditions within a cell population, peaks with $P < 0.05$ were considered as nominal differential accessible peaks and used for integrative analysis with DEGs.
+
+\subsection*{TF motif annotation and enrichment}
+After calling peaks, we looked for the motifs that are enriched in peaks that are openly accessible in different cell types and conditions.
+To do this, we first added motif annotation based on the “CIS-BP” database \cite{Weirauch2014Determination}, then, we applied the ‘peakAnnoEnrichment’ function in ArchR to obtain overrepresented motifs in test peak sets.
+ 
+\subsection*{Cross-platform linkage of scATAC-seq data with scRNA-seq data}
+To do an integrative analysis of scATAC-seq and scRNA-seq data, we performed a preliminary integration by aligning all cells from scATAC-seq with cells from scRNA-seq by comparing the above-mentioned scATAC-seq cell-independent gene score matrix with the scRNA-seq expression matrix using the ‘FindTransferAnchors’ function from the Seurat package and the ‘addGeneIntegrationMatrix’ function from the ArchR package.
+Based on the result of this initial integration and the cell type annotation, we filtered out undefined scATAC-seq clusters and clusters with $<$100 cells aligned to annotated scRNA-seq clusters.
+We then annotated remaining scATAC-seq clusters based on the aligned scRNA-seq clusters.
+Finally, we re-ran the integration process by aligning remaining scATAC-seq cells to cells from the aligned scRNA-seq clusters and created a gene-integration matrix by adding gene integration scores to each cell.
+
+\subsection*{Peak-to-gene linkage}
+To find potential regulation from peaks to genes, we inferred a peak-to-gene linkage by calculating the correlation between peak accessibility and gene expression within the above-mentioned integrated scRNA-seq and scATAC-seq cells.
+A $correlation > 0.45$ and $FDR-adjusted~P < 0.05$ were regarded as regulatory links.
+
+\subsection*{TF footprinting with scATAC-seq data}
+To calculate the TF footprint for each motif, we first obtained all the positions from one TF motif.
+To profile the footprint, cells were grouped again by each condition and each cell type to create pseudo-bulk ATAC-seq profiles.
+To account for the insertion sequence bias of the Tn5 transposase, which can lead to misclassification of TF footprints, we used the “Substract” normalization method to subtract the Tn5 bias from the footprinting signal.
+
+\subsection*{Sub-clustering of monocyte compartments in scRNA-seq}
+In the scRNA-seq dataset, the monocyte subpopulations were investigated by applying sub-clustering on the three monocyte clusters (cMono, CD163+ cMono, and ncMono) identified in PBMC.
+We first identified the 1,000 most-variable features again in monocytes using the vst method implemented in Seurat.
+Next, we scaled the data and performed PCA based on these 1,000 most-variable features.
+Subsequently, the cells were clustered using the Louvain algorithm based on the top-10 PCs with a resolution of 0.3.
+For visualization, we applied UMAP based on the top-10 PCs.
+The marker genes for each sub-cluster were calculated by the FindAllMarkers function in Seurat and a contaminated lymphocyte cluster with CD3 gene expression was identified and removed from further analyses.
+
+AUCell-based gene signature scores were calculated using the AUCell method \cite{Aibar2017SCENIC}.
+We set the threshold for the calculation of the AUC to the top 3\% of ranked genes and normalized the maximum possible AUC to 1.
+Top-30 marker genes reported from infiltrating monocytes (FCN1-Mono) and profibrotic pulmonary macrophages (CD163/LGMN-M$\phi$) in BAL fluid \cite{Wendisch2021SARS} were used to calculate AUC scores for each monocyte sub-clusters respectively.
+The resulting AUC values were subsequently visualized in violin plots.
+
+\subsection*{Sub-clustering of monocyte compartments in scATAC-seq}
+In the scATAC-seq dataset, the two monocyte clusters (cMono and ncMono) identified in PBMC were extracted and investigated for sub-clustering analyses.
+Again, we used ArchR function ‘addIterativeLSI’ to process iterative latent semantic indexing using the top-25,000 variable features and top-30 dimensions.
+We then clustered cells based on the IterativeLSI reduced dimensions with a resolution of 0.8 and calculated UMAP with nNeighbors = 30 and minDist = 0.5.
+The resulting sub-clusters were aligned to scRNA-seq monocyte sub-clusters using the Cross-platform linkage method described above.
+Cells with a predicted $linkage~score > 0.6$ were regarded as aligned cells, and a scATAC-seq sub-cluster with a percentage of aligned cells $>$90\% matched to the same scRNA-seq sub-cluster was regarded as the confidently matched sub-cluster.
+
+\subsection*{Identification of ASoC SNPs}
+To estimate the allelic open chromatin for each identified cell type, the ATAC-seq reads of each subject were first split into individual BAM files per cell type using an in-house Python script according to the CB barcode which was added by CellRanger pipeline and error-corrected.
+The resulting BAM files were then calibrated using the WASP pipeline \cite{van2015WASP} with Bowtie2 \cite{Langmead2012Fast} as aligner (-X 2000) to remove the mapping bias to reference allele at heterozygous sites.
+Afterward, the GATK/ASEReadCounter \cite{Castel2015Tools} tool was used to count allelic reads at each heterozygous site with the default parameters.
+To detect the maximum allelic imbalance, the read counts from each subject were allelicly summed for each cell type at each heterozygous SNP, a pool approach that was justified in the previous study \cite{Zhang2020Allele}.
+Finally, only biallelic SNP sites with at least 20 read counts and at least 2 read counts for either allele were retained for downstream statistical analyses.
+To alleviate possible mapping bias to the reference allele, the WASP pipeline was applied, but no apparent bias effect was observed (\ref{fig:chp6supfig8}A).
+
+Binomial P-values were calculated for the allelic read counts per SNP per cell-type by the R function \enquote{binom.test}, with the alternative read counts as success trials and all read counts as total trials.
+Next, the R function \enquote{p.adjust} was exploited to perform a multiple testing correction using the “fdr” method, and an $FDR-adjusted~P < 0.05$ was considered the significant threshold.
+No obvious mapping bias to reference alleles was observed by visualizing the volcano plot of -log10(P-values) and allelic read counts ratio.
+
+\subsection*{Annotation and function enrichment of ASoC SNPs}
+To understand the function of the identified allelic imbalances, the ASoC SNPs were annotated against the GRCh38 reference genome using the online version of vep \cite{McLaren2016The}.
+Next, epigenomic annotations from RoadMap epigenomics projects \cite{Kundaje2015Integrative} were assigned to each identified ASoC SNPs based on their physical position and cell type.
+These epigenomic annotations were further grouped into promoters (including \enquote{TssA}, \enquote{PromU}, \enquote{PromD1}, and \enquote{PromD2}) and enhancers (including \enquote{TxReg}, \enquote{TxEnh5}, \enquote{TxEnh3}, \enquote{TxEnhW}, \enquote{EnhA1}, \enquote{EnhA2}, \enquote{EnhAF}, \enquote{EnhW1}, \enquote{EnhW2}, \enquote{EnhAc}, and \enquote{DNase}).
+To evaluate the effects of the identified ASoC SNPs, significant variant-gene pairs of whole blood tissue were downloaded from the GTEx Portal (V8) and allocated to the corresponding ASoC SNPs.
+Further, the DE genes identified by scRNA-seq between each pair of conditions in the current study were also attached to ASoC SNPs if the transcription start site of the gene is located in a 50Kbp-window of the ASoC SNPs.
+In addition, ASoC SNPs were allocated to TFs if the corresponding TF motifs were identified by chromVAR in scATAC-seq analysis of the current study.
+Finally, all the enrichment estimations were performed by R function \enquote{fisher.test} while the adjustment of P-values from multiple tests were done by \enquote{p.adjust} using the \enquote{fdr} method except for those indicated in the context.
+ 
+\subsection*{Correlation between allelic imbalance and motif disruptions}
+To test the effects of ASoC SNPs, i.e. a genetic perturbation, on TF binding motifs, we calulated motif break scores at each ASoC SNP using R package motifbreakR \cite{Coetzee2015motifbreakR}.
+Concretely, for each cell type, we first compiled a set of ASoC SNPs that are in the TF binding footprints identified in the TF binding footprints analysis.
+Subsequently, the disruptiveness of ASoC SNPs on TFBS were evaluated using \enquote{motifbreakR} function with parameters: threshold = 1e-4, method = \enquote{log}, bkg = c(A = 0.25, C = 0.25, G = 0.25, T = 0.25).
+Next, only SNPs with a “strong” effect were retained, and motif break scores were represented by alleleDiff which is calculated by the difference between the scoreAlt and scoreRef in the motifbreakR results.
+Then, for each cell type of each condition, we estimated the correlation between motif break scores and allelic imbalance for each TF motif using Spearman’s rank correlation using \enquote{cor.test} R function.
+The allelic imbalance was evaluated by the log2-transform ratio between alternative and reference ATAC-seq read counts per ASoC SNP.
+Finally, the correlations measured by Spearman’s rho were plotted as a heatmap using the ggplot2 package.
+
+\subsection*{Multi-omics integration from the public resource and the current study}
+The functions of ASoC SNPs were also evaluated in scenarios of multi-omics integration.
+We downloaded publicly available GWAS/omics data, including COVID-19 GWAS summary statistics by HGI \cite{Niemi2021Mapping}, whole blood eQTL summary statistics from the meta-analysis by eQTLGen \cite{Võsa2021Large}, and promoter capture Hi-C data from Javierre and colleagues’ study \cite{Javierre2016Lineage}.
+After integrating with scATAC-seq read depth, peak-to-gene links, and ASoC SNPs from the current study, the cross-omics results were visualized by the R/Gviz package \cite{Hahne2016Visualizing} along the genomic coordinates to show the ASoC SNP examples.
+Specifically, the track for promoter capture Hi-C and peak-to-gene links were visualized by R/GenomicInteractions package \cite{Harmston2015GenomicInteractions}.
+
+\subsection*{CRISPR- and inhibitor-experiments}
+Cells deficient in \textit{LUCAT1} were generated using a lentiviral CRISPR interference vector (Addgene \string#71237).
+A gRNA insert targeting the transcriptional start site of \textit{LUCAT1} was cloned into the vector followed by lentiviral particle production.
+To this end, HEK293T cells were transfected with the lentiviral vector, a VSVG pseudotyping plasmid (pVSVG) and a helper-plasmid (psPAX2), using lipofectamine 2000 reagent.
+Viral particles were collected by passing transfected cell supernatants through a 0.45 µm filter, followed by ultracentrifugation.
+For transduction, the viral pellet was resuspended in PBS and transferred to THP1 cells, followed by centrifugation at 37°C and 800g for 2h.
+Transduced cells were enriched using an Aria III cell sorter (BD), based on GFP-expression from the lentiviral backbone.
+THP1 and Hek293T cells were cultivated in RPMI 1640 medium (Thermo Fisher), supplemented with 10\% FCS (Biochrom) and 1\% penicillin/streptomycin solution (Thermo Fisher).
+Primary monocytes were isolated from Buffy coats (deidentified prior to use) using Lymphoprep gradient centrifugation and CD14-micoboeads (Miltenyi) and cultivated in X-vivo 15 medium (Lonza).
+All cells were kept in a 37 °C incubator with a humidified atmosphere containing 5\% CO2.
+For inhibitor experiments, cells were pre-incubated with the respective inhibitor for 2 hours, followed by further stimulations.
+IL1$\alpha$, IFN$\alpha$ were purchased from Preprotech and 3p-hairpin-RNA from Invivogen.
+Stimulations were carried out for 4h (100 ng of each factor).
+RNA was extracted with Trizol reagent and qRT-PCR was done using the High Capacity cDNA Reverse Transcription kit (Thermo Fisher), LUNA Universal qPCR master mix (NEB) and a Quantstudio 3 instrument.
+Fold-changes based on CT values were calculated using the 2\string^-DDCT method.
+
+\clearpage
+\newpage
+~
+\clearpage
+\newpage
+\section*{Supplementaries}
+\renewcommand{\thefigure}{\textbf{Figure S\arabic{chapter}.\arabic{figure}}}
+\setcounter{figure}{0}
+
+% Supplementary figure 1
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure1.png}
+  \caption{\label{fig:chp6supfig1}
+    \textbf{Overview of the analysis pipeline.}
+}
+\end{figure}
+
+% Supplementary figure 2
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure2-1.png}
+  \caption{\label{fig:chp6supfig2}
+    \textbf{UMAP showing the batch effects before and after harmony integration from each scRNA-seq.}
+  }
+\end{figure}
+
+% \begin{landscape}
+% \begin{figure}[!ht]
+%   \addtocounter{figure}{-1}
+%   \centering
+%   \includegraphics[width=\textwidth]{Chapter6_supp_figure2-2.png}
+%   \caption{\label{fig:chp6supfig2}
+%     \textbf{UMAP showing the batch effects before and after harmony integration from each scRNA-seq and scATAC-seq library.}
+%   }
+% \end{figure}
+% \end{landscape}
+
+% Supplementary figure 3
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure3.png}
+  \caption{\label{fig:chp6supfig3}
+    \textbf{Marker genes and cell type annotation in scRNA-seq and scATAC-seq.}
+    \textbf{A}. UMAP visualization showing the identified cell clusters from scRNA-seq, 165,054 cells from 64 samples (N = 37 hospitalized, N = 27 convalescent individuals).
+    \textbf{B}. Expression of cell type markers in scRNA-seq clusters.
+    \textbf{C}. UMAP visualization showing the identified cell clusters from scATAC-seq, 46,690 cells across 49 samples (N = 25 hospitalized, N = 24 convalescent individuals), 28 individuals shared between scRNA-seq and scATAC-seq profiling.
+    \textbf{D}. Visualization of imputed marker gene activity scores in scATAC-seq clusters.
+    \textbf{E}. UMAP showing the cell distribution between severe and mild patients in scRNA-seq.
+    \textbf{F}. UMAP showing the cell distribution between severe and mild patients in scATAC-seq.
+}
+\end{figure}
+
+% Supplementary figure 4
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[height=0.8\textwidth,angle=90]{Chapter6_supp_figure4-1.png}
+  \caption{\label{fig:chp6supfig4}
+    \textbf{Severity-associated signatures in PBMC clusters (1).}
+    \textbf{A1-2}. Box plots showing the cell proportion of each cell type across severe, mild, and convalescent patients.
+    \textbf{B}. Bar plots showing the number of significant differential expression genes (DEGs) identified in each cell type. DE analysis was performed to compare hospitalized vs convalescent individuals via Wilcoxon ranked-sum test.
+}
+\end{figure}
+\begin{figure}[!ht]
+  \addtocounter{figure}{-1}
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure4-2.png}
+  \caption{
+    \textbf{Severity-associated signatures in PBMC clusters (2).}
+    \textbf{C}. Pathway enrichments of the DEGs identified.
+}
+\end{figure}
+
+% Supplementary figure 5
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Chapter6_supp_figure5.png}
+  \caption{\label{fig:chp6supfig5}
+    \textbf{Chromatin accessibility signatures of PBMC clusters in COVID-19 patients.}
+    \textbf{A}. Bar plots showing the number of regulatory elements in the open chromatin region (OCR) identified in each cell type. These were further classified into ‘distal’, ‘extronic’, ‘intronic’ and ‘promoter’ groups based on genome annotation.
+    \textbf{B}. Barplots showing the overlap of significant differential expression genes (DEGs) and nominal differential accessible peaks (DAP) with shared or opposite regulation direction in hospitalized COVID-19 patients compared with convalescent patients.
+    \textbf{C}. Heatmap showing the expression correlation of \textit{LUCAT1}, IFI30 and transcriptional factor (TF) genes in classical monocytes of convalescent patients.
+}
+\end{figure}
+
+% Supplementary figure 6
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure6.png}
+  \caption{\label{fig:chp6supfig6}
+    \textbf{Cross-platform linkage across monocyte sub-clusters identified in scATAC-seq and scRNA-seq.}
+    \textbf{A}. Heatmap showing the imputed activity scores of top-20 marker genes identified in monocytes sub-clusters of scATAC-seq.
+    \textbf{B}. Dot plot showing the expression of top-10 marker genes identified in monocytes sub-clusters of scRNA-seq.
+    \textbf{C}. Pie chart showing the percentage of matched cells in each scATAC-seq sub-clusters aligning to each scRNA-seq sub-clusters.
+    \textbf{D}. UMAP showing the distribution of matched identities of cells in scATAC-seq datasets. Cells with a predicted $linkage score < 0.6$ were regarded as not matched cells and are colored as gray.
+}
+\end{figure}
+
+% Supplementary figure 7
+\begin{landscape}
+  \begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.62\textwidth,angle=90]{Chapter6_supp_figure7.png}
+    \caption{\label{fig:chp6supfig7}
+      \textbf{Full heatmap showing chromatin accessibility of peaks detected with hospitalized COVID-19 risk variants (supplementary to Figure 4B).}
+      TF motifs that bind to peaks are indicated on the row names.
+    }
+  \end{figure}
+
+% Supplementary figure 8
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[height=0.7\textwidth]{Chapter6_supp_figure8-1.png}
+  \caption{\label{fig:chp6supfig8}
+    \textbf{Supplementary figures for ASoC analysis (1).}
+    \textbf{A}. Ratio of reference allele of each heterozygous SNPs used in the ASoC analysis.
+    \textbf{B}. Number of identified ASoC SNPs in each cell type from hospitalized COVID-19 patients.
+    \textbf{C}. Number of identified ASoC SNPs in each cell type from convalescent COVID-19 participants.
+    \textbf{D}. Enrichment of ASoC SNPs that were located in open chromatin regions identified in our scATAC-seq analysis.
+    \textbf{E}. Enrichment of ASoC SNPs that were located in promoter, enhancer and TFBS per cell type per condition.
+    \textbf{F}. Enrichment of ASoC SNPs that were assigned to genes by eQTL analysis from eQTLGen consortium.
+    \textbf{G}. QQ plot showing COVID-19 GWAS P values (“Hospitalized covid vs. population”, release 6) of ASoC SNPs per cell type per condition.
+}
+\end{figure}
+\end{landscape}
+
+\begin{figure}[!ht]
+  \addtocounter{figure}{-1}
+  \centering
+  \includegraphics[width=\textwidth]{Chapter6_supp_figure8-2.png}
+  \caption{
+    \textbf{Supplementary figures for ASoC analysis (2).}
+    \textbf{H}. Volcano plot showing the differentially expressed genes between individuals carrying risk alleles (CC) and non-risk allele (TT).
+    \textbf{I}. Allele-specific read counts at rs7255545 per cell type per condition.
+    \textbf{J}. Data integration illustrated a potential regulatory program showing the effect of rs7255545 in COVID-19.
+    \textbf{K}. Schematic plot showing the potential epigenetic and genetic regulating program at DPP9 locus under COVID-19 scenario.
+}
+\end{figure}
+
+\renewcommand{\thetable}{\textbf{Table S\arabic{chapter}.\arabic{table}}}
+\setcounter{table}{0}
+
+\begin{landscape}
+  \scriptsize
+  \begin{longtable}{p{0.7cm}p{0.7cm}p{0.5cm}p{0.75cm}p{0.75cm}p{0.75cm}p{1.75cm}p{0.8cm}p{0.75cm}p{1cm}p{0.75cm}p{1cm}p{0.75cm}}
+    \hline
+    Patient ID & Sample ID & Sex & Active disease (days) & Days post convalescent & Days post 1st symptoms & Sample Hospitalized & WHO score confirm & O2 Suppl. & Intubation & Severity & Active sample & DataSet \\
+    \hline
+    1  & 1   & F & 14 & 123 & 137 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    2  & 2   & M & 30 & -25 & 5   & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    2  & 2a  & M & 30 & -5  & 25  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scRNA \\
+    2  & 2b  & M & 30 & 23  & 53  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    2  & 2b  & M & 30 & 23  & 53  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    3  & 3   & M & 14 & 89  & 103 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    3  & 3   & M & 14 & 89  & 103 & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    4  & 4   & F & 14 & 75  & 89  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    4  & 4   & F & 14 & 75  & 89  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    5  & 5   & M & 26 & -6  & 20  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scRNA \\
+    5  & 5a  & M & 26 & 43  & 69  & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    5  & 5a  & M & 26 & 43  & 69  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    6  & 6   & M & 29 & -10 & 19  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    7  & 7   & M & 16 & 62  & 78  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    8  & 8   & M & 15 & 56  & 71  & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    8  & 8   & M & 15 & 56  & 71  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    9  & 9   & M & 28 & 49  & 77  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    10 & 10  & F & 14 & 22  & 36  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    10 & 10a & F & 14 & 44  & 58  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    11 & 11  & F & 16 & -1  & 15  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scATAC \\
+    11 & 11a & F & 16 & 45  & 60  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    12 & 12  & M & 55 & -39 & 16  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scATAC \\
+    12 & 12a & M & 55 & -36 & 19  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    13 & 13  & F & 21 & 54  & 75  & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    14 & 14  & F & 32 & -19 & 13  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scATAC \\
+    14 & 14a & F & 32 & -7  & 25  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    14 & 14b & F & 32 & -3  & 29  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    14 & 14c & F & 32 & 30  & 62  & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    14 & 14c & F & 32 & 30  & 62  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    15 & 15  & F & 42 & 62  & 104 & At home                                            & 2 & Yes & No  & post   & 0 & scRNA \\
+    15 & 15  & F & 42 & 62  & 104 & At home                                            & 2 & Yes & No  & post   & 0 & scATAC \\
+    16 & 16  & M & 27 & -13 & 14  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    17 & 17  & M & 14 & 87  & 101 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    17 & 17  & M & 14 & 87  & 101 & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    18 & 18  & F & 14 & 68  & 82  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    18 & 18  & F & 14 & 68  & 82  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    18 & 18a & F & 14 & 97  & 111 & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    18 & 18a & F & 14 & 97  & 111 & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    19 & 19  & M & 21 & -7  & 14  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    19 & 19  & M & 21 & -7  & 14  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    20 & 20  & F & 14 & 92  & 106 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    20 & 20  & F & 14 & 92  & 106 & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    21 & 21  & M & 14 & 47  & 61  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    22 & 22  & M & 19 & -1  & 18  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    23 & 23  & M & 51 & -44 & 7   & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scATAC \\
+    23 & 23a & M & 51 & -35 & 16  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    24 & 24  & M & 28 & 49  & 77  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    24 & 24  & M & 28 & 49  & 77  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    25 & 25  & M & 16 & -6  & 10  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scRNA \\
+    25 & 25  & M & 16 & -6  & 10  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scATAC \\
+    25 & 25a & M & 16 & 0   & 16  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    26 & 26  & M & 14 & 54  & 68  & At home                                            & 1 & No  & No  & post   & 0 & scRNA \\
+    26 & 26  & M & 14 & 54  & 68  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    27 & 27a & F & 37 & -22 & 22  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    27 & 27b & F & 37 & -15 & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    27 & 27b & F & 37 & -15 & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    28 & 28  & M & 14 & -11 & 3   & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    29 & 29  & M & 32 & -4  & 28  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    29 & 29a & M & 32 & -3  & 29  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    29 & 29b & M & 32 & 57  & 89  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    29 & 29b & M & 32 & 57  & 89  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    30 & 30  & M & 43 & 27  & 70  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    31 & 31  & M & 62 & -58 & 4   & ICU                                                & 7 & Yes & Yes & severe & 1 & scRNA \\
+    31 & 31  & M & 62 & -58 & 4   & ICU                                                & 7 & Yes & Yes & severe & 1 & scATAC \\
+    32 & 32  & M & 49 & -33 & 16  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    33 & 33  & F & 18 & 0   & 18  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    34 & 34  & M & 55 & -23 & 32  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    34 & 34a & M & 55 & -3  & 52  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    34 & 34a & M & 55 & -3  & 52  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    34 & 34b & M & 55 & 2   & 57  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    34 & 34b & M & 55 & 2   & 57  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    34 & 34c & M & 55 & 47  & 102 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    34 & 34c & M & 55 & 47  & 102 & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    35 & 35  & M & 68 & -64 & 4   & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    35 & 35  & M & 68 & -64 & 4   & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    36 & 36  & F & 14 & -7  & 7   & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    36 & 36  & F & 14 & -7  & 7   & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    37 & 37  & M & 14 & 56  & 70  & Hospitalized (Z.n. Corona, aktuell Pyelonephritis) & 1 & No  & No  & post   & 0 & scRNA \\
+    38 & 38  & M & 32 & -15 & 17  & ICU                                                & 7 & Yes & Yes & severe & 1 & scRNA \\
+    38 & 38a & M & 32 & -8  & 24  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    38 & 38a & M & 32 & -8  & 24  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    38 & 38b & M & 32 & 0   & 32  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    38 & 38b & M & 32 & 0   & 32  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    39 & 39  & M & 20 & -12 & 8   & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    39 & 39a & M & 20 & -5  & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    39 & 39a & M & 20 & -5  & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    40 & 40  & F & 25 & -12 & 13  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    40 & 40a & F & 25 & -3  & 22  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    41 & 41  & F & 35 & -27 & 8   & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    41 & 41a & F & 35 & -20 & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    41 & 41a & F & 35 & -20 & 15  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    41 & 41b & F & 35 & -3  & 32  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    41 & 41b & F & 35 & -3  & 32  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    42 & 42  & M & 19 & -10 & 9   & ICU                                                & 5 & Yes & No  & severe & 1 & scRNA \\
+    42 & 42a & M & 19 & -3  & 16  & Hospitalized                                       & 4 & Yes & No  & mild   & 1 & scRNA \\
+    42 & 42b & M & 19 & -1  & 18  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    42 & 42b & M & 19 & -1  & 18  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    42 & 42c & M & 19 & 34  & 53  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    42 & 42c & M & 19 & 34  & 53  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    43 & 43  & F & 14 & 49  & 63  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    44 & 44  & F & 24 & -15 & 9   & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    44 & 44  & F & 24 & -15 & 9   & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    44 & 44a & F & 24 & -5  & 19  & ICU                                                & 6 & Yes & Yes & severe & 1 & scRNA \\
+    44 & 44a & F & 24 & -5  & 19  & ICU                                                & 6 & Yes & Yes & severe & 1 & scATAC \\
+    45 & 45  & M & 23 & 72  & 95  & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    45 & 45  & M & 23 & 72  & 95  & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    45 & 45a & M & 23 & 114 & 137 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    45 & 45a & M & 23 & 114 & 137 & At home                                            & 2 & No  & No  & post   & 0 & scATAC \\
+    46 & 46  & M & 26 & -9  & 17  & ICU                                                & 5 & Yes & No  & severe & 1 & scRNA \\
+    46 & 46a & M & 26 & -3  & 23  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scRNA \\
+    46 & 46a & M & 26 & -3  & 23  & Hospitalized                                       & 3 & No  & No  & mild   & 1 & scATAC \\
+    47 & 47  & M & 14 & 103 & 117 & At home                                            & 2 & No  & No  & post   & 0 & scRNA \\
+    48 & 48  & F & 14 & 81  & 95  & At home                                            & 1 & No  & No  & post   & 0 & scATAC \\
+    \hline
+    \caption{\label{tab:chp6suptab1}
+    \textbf{Participants information.}
+  }
+  \end{longtable}
+
+\normalsize
+The following supplementary tables will be available online after the current chapter published.
+ % Supplementary table 2
+\begin{table}[H]
+  \caption{\label{tab:chp6suptab2}
+  \textbf{Marker genes to identify cell types in scRNA-seq and scATAC-seq.}
+}
+\end{table}
+
+\vspace{-3em}
+ % Supplementary table 3
+\begin{table}[H]
+  \caption{\label{tab:chp6suptab3}
+  \textbf{Differential expressed genes identified in classical monocytes from scRNA-seq data.}
+}
+\end{table}
+
+\vspace{-3em}
+ % Supplementary table 4
+\begin{table}[H]
+  \caption{\label{tab:chp6suptab4}
+  \textbf{Gene-to-peak linkages identified by correlating the gene expression from scRNA-seq and chromatin accessibility from scATAC-seq}
+}
+\end{table}
+
+\vspace{-3em}
+ % Supplementary table 5
+\begin{table}[H]
+  \caption{\label{tab:chp6suptab5}
+  \textbf{Genes associated with peaks harboring SPI1, JUN/FOS, or C/EBP motifs}
+}
+\end{table}
+
+\vspace{-3em}
+ % Supplementary table 6
+\begin{table}[H]
+  \caption{\label{tab:chp6suptab6}
+  \textbf{Marker genes used to identify sub-clusters of classical monocytes}
+}
+\end{table}
+
+\end{landscape}
+
+% Reference list
+\section*{References}
+\printbibliography[heading=none]
+
+\clearpage
+
+\end{refsection}
+\end{document}
+
+% vim: set tw=1000:

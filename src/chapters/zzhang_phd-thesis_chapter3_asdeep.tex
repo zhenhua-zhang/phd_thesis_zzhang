@@ -1,0 +1,109 @@
+\documentclass{book}
+
+\begin{document}
+% \marginwatermark{\thechapter}{-160}
+\renewcommand{\thetable}{\textbf{Table \arabic{chapter}.\arabic{table}}}
+\renewcommand{\thefigure}{\textbf{Figure \arabic{chapter}.\arabic{figure}}}
+
+\begin{refsection} % To make a local bibliography
+
+% \chapter*{\textit{ASdeep} uses a deep-learning neural network to attribute allelic expression to non-coding genetic variants}
+% Zhenhua Zhang \textsuperscript{1,2}, Herbert T. Kruitbosch \textsuperscript{3}, Morris A. Swertz \textsuperscript{1,2}, and K. Joeri van der Velde \textsuperscript{1,2}
+%
+% \textsuperscript{1} Genomics Coordination Center, University of Groningen and University Medical Center Groningen, Antonius Deusinglaan 1, 9713 AV, Groningen, The Netherlands \par
+% \textsuperscript{2} Department of Genetics, University of Groningen and University Medical Center Groningen, Antonius Deusinglaan 1, 9713 AV, Groningen, The Netherlands \par
+% \textsuperscript{3} Center for Information Technology, University of Groningen, Nettelbosje 1, 9747 AJ Groningen, The Netherlands \par
+
+\chapter{\textit{ASdeep} uses a deep-learning neural network to attribute allelic expression to non-coding genetic variants}
+\textbf{Zhenhua Zhang}, Herbert T. Kruitbosch, Morris A. Swertz, and K. Joeri van der Velde
+\vfill
+\begin{flushright}
+\textit{Draft is ready}
+\end{flushright}
+
+\newpage
+
+\section*{Abstract}
+\paragraph*{Summary}
+  Many studies have shown that non-coding variants (NCV) affect phenotypes via regulation.
+  Estimation of allelic difference is thus a novel way to identify underlying mechanisms through the potential regulating programmes.
+  However, existing variant annotation tools do not incorporate allelic differences well.
+  We therefore developed \textit{ASdeep}, a tool that attributes allelic differences such as allele-specific expressions to NCV that are potentially involved in the regulation.
+
+\paragraph*{Availability and Implementation} PyPi (\url{https://pypi.org/project/asdeep}) and GitHub (\url{https://github.com/zhenhua-zhang/asdeep}).
+% \paragraph*{Contact}: k.j.van.der.velde@umcg.nl (UMCG email)
+% \paragraph*{Supplementary information}: Supplementary data are available at Bioinformatics online.
+% The test dataset is available on Zenodo (https://zenodo.org/xxx).
+
+\newpage
+\section*{Introduction}
+Diploid organisms inherit two sets of genetic information from their parents.
+This introduces allelic differences that can consequently result in distinct behaviors between alleles like allele-specific expression (ASE).
+In ASE, the transcripts from the maternal and paternal alleles have different abundances \cite{Pastinen2010Genome}.
+In the past few decades, researchers have demonstrated important roles for ASE in many human phenotypes and diseases, including aging \cite{Balliu2019Genetic}, tumor development \cite{Liu2018A,Przytycki2020Differential} and Parkinson’s disease \cite{Langmyhr2021Allele}.
+Apart from well-known mechanisms such as chromatin openness and random monoallelic expression, studies have also suggested that the differential regulation caused by non-coding variants (NCV) interferes with the expression balance of allelic transcripts \cite{Bader2015Negative,Ge2009Global,Pickrell2010Understanding,Lefebvre2012Genotype}.
+Linking NCV to ASE can thus provide new insights into the regulatory mechanisms of human traits such as diseases.
+However, existing tools are limited to a small number of NCV due to the computational capacity of the algorithms implemented.
+Here, we introduce \textit{ASdeep}, a command-line tool based on a state-of-the-art convolutional neural network (CNN) to predict the consequence of NCV that explicitly focusses on ASE.
+\textit{ASdeep} uses Markov chain–Monte Carlo (MCMC) methods to estimate ASE using allelic read counts quantified from RNA sequencing data.
+The model can be used to predict ASE from a DNA sequence in the absence of RNA data to enable targeted follow-up transcriptomics.
+\textit{ASdeep} can also pinpoint hot-spot genomic regions that harbor potentially causal NCV using feature-attribution methods \cite{Explainable2020Xie}, which can aid in exploring the architecture of genomic regulations.
+
+\section*{Implementation}
+The \textit{ASdeep} package was written in Python and built upon \textit{PyTorch}, a sophisticated deep-learning framework, to work as a downstream analysis tool after quantifying reads using software like ASEReadCounter from GATK \cite{Castel2015Tools}.
+\textit{ASdeep} has four main functions: (i) to infer ASE, (ii) to create the train/test database, (iii) to train the CNN model and (iv) to predict/attribute the ASE effects to NCV.
+To estimate the ASE (target) of a transcript, \textit{ASdeep} assigns allelic read counts to each allele based on phased genotypes at the heterozygous positions, per individual.
+The imbalance is then estimated by Bayesian estimation using the MCMC approach, assuming the number of allelic read counts follows a Beta-Binomial distribution.
+Next, \textit{ASdeep} transforms the DNA sequence into an image-like matrix (a two-dimensional Hilbert curve) following the same steps introduced in a previously published work \cite{Image2018Yin}.
+However, we did not use one-hot encoding methods but rather directly used the index of the 4-mers in the k-mers list, where the order of the k-mers list follows the alphabetic order of the bases, i.e., A, C, G, T (see the online document of \textit{ASdeep} for more details).
+To quickly and conveniently access the training, testing and unseen samples, \textit{ASdeep} stores the ASE effects (for training and testing) and the Hilbert curve of a transcript in an HDF5 database.
+We then train a CNN model with pre-built architecture (e.g., \textit{AlexNet} and \textit{ResNext}) using sample information loaded from the HDF5 database.
+Finally, the prediction function outputs the probability (P\textsubscript{ASE}) of ASE.
+Moreover, it can also attribute ASE to genomic regions that harbor genetic variants involved in regulating the allelic expression of the transcript.
+
+\section*{Usage}
+\textit{ASdeep} has a text user-interface with four sub-commands - \textit{inferai}, \textit{makedb}, \textit{train} and \textit{predict} - that corresponds to the four key steps.
+In the current implementation, we designed \textit{ASdeep} as a downstream tool of allelic read counts from \textit{ASEReadCounter}.
+The first step is inference of ASE by \textit{inferai} using the allelic read counts per sample.
+This generates a report with the estimated PASE, the corresponding highest density interval (HDI) and allelic read counts at the heterozygous positions for each transcript of a sample.
+Users can then select a transcript of interest and collect ASE effects for each individual into a plain text report (ASE reports).
+A list of canonical transcripts compiled from the ENSEMBL database \cite{Howe2020Ensembl} is available (see Data Availability).
+Using the \textit{makedb} sub-command, an HDF5 database can be created that includes the reference genome sequence, genetic variants, compiled ASE reports and genomic regions that are upstream to the transcript of interest. 
+The \textit{train} sub-command allows training of a CNN model with pre-built architecture using the Hilbert curve stored in the HDF5 database.
+Finally, we implemented two functions in the predict sub-command: 1) to predict the probability of ASE and 2) to attribute the ASE effects to a genomic sequence (variants).
+A detailed example is available in the Supplementary Material, and the corresponding test dataset is hosted on Zenodo (see Data Availability).
+We created the test dataset via an in-house pipeline using \textit{fastp} \cite{Chen2018fastp} for quality control, \textit{STAR} \cite{Dobin2012STAR} for alignment, \textit{WASP} \cite{Hoek2021WASP} to remove mapping bias and \textit{ASEReadCounter} \cite{Castel2015Tools} to count allelic reads.
+
+\section*{Conclusion}
+We have developed a deep-learning tool, \textit{ASdeep}, that can predict ASE from NCV and attribute these variants to the divergence of alleles.
+As a starting point, \textit{ASdeep} first estimates the ASE effects of a transcript from allelic read counts using Bayesian estimation and MCMC.
+The tool then trains a CNN model with pre-built architecture on the genomic context of the transcript.
+Finally, \textit{ASdeep} can predict ASE effects and attribute them to hot-spot genomic regions that potentially harbor variants involved in regulation of gene expression.
+\textit{ASdeep} is also applicable to other allele-specific data, such as allele-specific methylation and allele-specific open chromatin, where allelic read counts are available.
+
+\section*{Acknowledgments}
+We thank the UMCG Genomics Coordination Center, the UMCG Research IT programme and the UG Center for Information Technology and their sponsors Biobanking and Biomolecular Research Infrastructure Netherlands (BBMRI-NL) \& TarGet for storage and compute infrastructure.
+We thank the Biobank-Based Integrative Omics Studies (BIOS) Consortium, funded by BBMRI-NL, a research infrastructure financed by the Netherlands Organization for Scientific Research (NWO) under award number 184.021.007.
+The BIOS Consortium members are listed in Supplementary Data S1.
+We thank the Genotype-Tissue Expression (GTEx) Project, supported by the Common Fund of the Office of the Director of the National Institutes of Health (commonfund.nih.gov/GTEx).
+
+\section*{Funding}
+Z.Z. received a joint scholarship from the University Groningen and China Scholarship Council (under grant number 201706350277).
+Z.Z., K.J.v.d.V and M.A.S. received funding from the Netherlands Organisation for Scientific Research (NWO) under VIDI grant number 917.164.455.
+In addition, we acknowledge support from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 779257 (Solve-RD) and 825575 (European Joint Programme on Rare Disease).
+
+\section*{Data availability}
+The source code of \textit{ASDeep} is publicly available on GitHub (\url{https://github.com/zhenhua-zhang/ASdeep}), and its release versions are available at PyPi (\url{https://pypi.org/project/ASdeep}).
+% Along with the package, a testing dataset derived from the GEUVADIS project \cite{Lappalainen2013Transcriptome} is available at Zenodo (\url{https://zenodo.org/xxx})
+
+
+% Reference list
+\section*{References}
+\printbibliography[heading=none]
+
+\clearpage
+
+\end{refsection}
+\end{document}
+
+% vim: set tw=500:
